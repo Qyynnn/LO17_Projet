@@ -1,11 +1,12 @@
+import GenerationSQL.*;
 import Library.DictionnaryName;
 import Normalisation.Lexique;
 import Normalisation.NormalisationHelper;
+import org.antlr.runtime.ANTLRReaderStream;
+import org.antlr.runtime.CommonTokenStream;
 
-import java.io.BufferedReader;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Scanner;
 
 public class Application {
     private static String normalisation(String req){
@@ -23,9 +24,23 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String req = "je veux les fichier qui parle de automati de rubrique nice.";
-        //req=normalisation(req);
+        String s = "je veux les fichier qui parle de automati et de rubrique nice et de date 20/12/2014.";
+        s=normalisation(s);
         //antlr
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Requete : ");
+        //String s = scanner.nextLine();
+        System.out.println(s);
+        try {
+            tal_sqlLexer lexer = new tal_sqlLexer(new ANTLRReaderStream(new StringReader(s)));
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            tal_sqlParser parser = new tal_sqlParser(tokens);
+            String arbre = parser.listerequetes();
+            System.out.println(arbre);
+        }
+        catch (Exception e) {
+            System.out.println(""+e);
+        }
     }
 }
 

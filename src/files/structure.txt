@@ -4,6 +4,6 @@ cherche 	vouloir
 article 	article
 fichier 	article
 page 	page
-parlant 	parler
-parle 	parler
-parlent 	parler
+parlant 	mot
+parle 	mot
+parlent 	mot
