@@ -11048,7 +11048,8 @@ royale 	roya
 royant 	roya
 royaume 	roya
 rt 	rt 
-rubis 	rubis 
+rubis 	rubis
+rubrique 	rubrique
 ruche 	ruche 
 rude 	rude 
 rues 	rues 
