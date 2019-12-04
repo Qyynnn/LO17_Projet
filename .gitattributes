@@ -1,4 +1,1 @@
-*.js diff=Java
-*.css diff=Java
-*.html diff=Java
-*.java diff=Java
+*.html linguist-language = Java
