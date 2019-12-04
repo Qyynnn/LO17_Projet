@@ -1,27 +1,48 @@
 grammar tal_sql;
 
+//SELECT
 SELECT : 'vouloir'
 ;
 
+// Colonne à sélecter
 ARTICLE : 'article'
-;
-
-BULLETIN : 'bulletin'
 ;
 
 AUTEUR 	: 'auteur'
 ;
 
+BULLETIN : 'bulletin'
+;
+
+// Contraints
+TITRE 	: 'titre'
+;
+	
+RUBRIQUE : 'rubrique'
+;
+
+MOT : 'mot'
+;
+
+DATE :	'date'
+;
+ 
+MOIS : 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre'
+;
+
+ANNEE : ('0'..'9')('0'..'9')('0'..'9')('0'..'9')
+;
+
+JOUR :	('0'..'3')?('0'..'9')
+;
+
+VAR_DATE : (JOUR' 'MOIS' 'ANNEE)| (JOUR'/'('0'..'1')('0'..'9')'/'ANNEE) | ANNEE
+;
+// Autres paramètres
 CONJ : 'et' | 'ou'
 ;
 
 POINT : '.'
-;
-
-RUBRIQUE : 'rubrique'
-;
-
-MOT : 'mot' | 'contenir' | 'parler' | 'traiter' | 'porter' | 'écrire'
 ;
 
 WS  : (' ' |'\t' | '\r' | 'je' | 'qui' | 'dont') {skip();} | '\n' 
@@ -57,17 +78,17 @@ requete returns [Arbre req_arbre = new Arbre("")]
 		 	{
 			req_arbre.ajouteFils(new Arbre("","auteur"));
 			})
-		
 		(MOT
 			{
 				tableArbre=new Arbre("","FROM ");
 				req_arbre.ajouteFils(tableArbre);
 				req_arbre.ajouteFils(new Arbre("","WHERE"));
 			})?
-			
 		ps = params 
 			{
 				ps_arbre = $ps.les_pars_arbre;
+				
+				
 				tableArbre.mot+=$ps.les_pars_arbre.table.trim().replace(" "," INNER JOIN ");
 				req_arbre.ajouteFils(ps_arbre);
 			}
@@ -81,11 +102,16 @@ params returns [Arbre les_pars_arbre = new Arbre("")]
 				les_pars_arbre.ajouteFils(par1_arbre);
 				les_pars_arbre.table+=par1_arbre.table;
 			}
-		((CONJ |MOT)+
+		((conj = CONJ | mot = MOT)+
 		par2 = param
 			{
 				par2_arbre = $par2.lepar_arbre;
-				les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+				if(conj.getText().equals("et")){
+					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+				}
+				else if(conj.getText().equals("ou")){
+					les_pars_arbre.ajouteFils(new Arbre("", "OR"));
+				}
 				les_pars_arbre.ajouteFils(par2_arbre);
 				if (!les_pars_arbre.table.contains(par2_arbre.table)){
 					les_pars_arbre.table+=par2_arbre.table;
@@ -95,7 +121,15 @@ params returns [Arbre les_pars_arbre = new Arbre("")]
 ;
 
 param returns [Arbre lepar_arbre = new Arbre("")]:
-	a=((BULLETIN b = VAR)?{lepar_arbre.ajouteFils(new Arbre("bulletin =", "'"+b.getText()+"'"));lepar_arbre.table="bulletin ";} 
-	|(RUBRIQUE b = VAR)?{lepar_arbre.ajouteFils(new Arbre("rubrique =", "'"+b.getText()+"'"));lepar_arbre.table="rubrique ";} 
-	|VAR { lepar_arbre.ajouteFils(new Arbre("mot =", "'"+a.getText()+"'"));lepar_arbre.table="mot ";});
+	a = (
+		(BULLETIN b = VAR)
+			{lepar_arbre.ajouteFils(new Arbre("bulletin =", "'"+b.getText()+"'"));lepar_arbre.table="bulletin ";} 
+		|(RUBRIQUE b = VAR)
+			{lepar_arbre.ajouteFils(new Arbre("rubrique =", "'"+b.getText()+"'"));lepar_arbre.table="rubrique ";} 
+		|(TITRE b = VAR)
+			{lepar_arbre.ajouteFils(new Arbre("titre =", "'"+b.getText()+"'"));lepar_arbre.table="titre ";}
+		|(DATE b = VAR_DATE)
+			{lepar_arbre.ajouteFils(new Arbre("date =", "'"+b.getText()+"'"));lepar_arbre.table="date ";} 
+		|VAR 
+			{ lepar_arbre.ajouteFils(new Arbre("mot =", "'"+a.getText()+"'"));lepar_arbre.table="mot ";});
 
