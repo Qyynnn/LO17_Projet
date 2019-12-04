@@ -7,8 +7,8 @@ import java.util.HashMap;
 public class StringHelper {
     private static HashMap<String,String> structureDic=new HashMap<>();
     private static HashMap<String,String> stoplistDic=new HashMap<>();
-    private static String structurePath="/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/structure.txt";
-    private static String stoplistPath="/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/stoplist_P16.txt";
+    private static String structurePath="src/files/stoplist_P16.txt";
+    private static String stoplistPath="src/files/structure.txt";
 
     public StringHelper(){
         addFileToDictionnary(structurePath,structureDic);
@@ -25,10 +25,7 @@ public class StringHelper {
             case "structure":
                 dic=structureDic;
         }
-        if (dic.containsKey(s)){
-            return true;
-        }
-        return false;
+        return dic.containsKey(s);
     }
 
     public String getValueOfDic(String s,String dicStr){
@@ -73,7 +70,7 @@ public class StringHelper {
             }
         }
         catch(Exception e) {
-            System.out.println(e);
+            System.out.println(""+e);
         }
         return result;
     }

@@ -32,8 +32,6 @@ public class Application {
         Lexique lexique = new Lexique(stringHelper);
 
         String req="je veux les fichier qui parle de automati de rubrique shit.";
-        String structurePath="/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/structure.txtt";
-        String stoplistPath="/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/stoplist_P16.txt";
 
         req = stringHelper.replaceFromFile(req,"stoplist");
         req = stringHelper.replaceFromFile(req,"structure");

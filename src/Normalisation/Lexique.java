@@ -5,15 +5,14 @@ import java.util.*;
 import static java.lang.Math.*;
 
 public class Lexique {
-    private static HashMap<String, String> dictionnaire = new HashMap<String, String>();
+    private static HashMap<String, String> dictionnaire = new HashMap<>();
     private static int seuilMax = 3; // Le nombre minimum de lettres d'un mot
     private static int seuilMin = 4; // La différence de longueur entre deux mots
     private static int seuilLettresCommunes = 4;
     private static int proxMin = 70;
-    private String filePath = "/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/filtreCorpus_P16.txt";
+    private String filePath = "src/files/filtreCorpus_P16.txt";
 
     public Lexique(StringHelper stringHelper) {
-        //dictionnaire = new HashMap<String, String>();
         stringHelper.addFileToDictionnary(filePath, dictionnaire);
     }
 
@@ -67,7 +66,7 @@ public class Lexique {
     }
 
     public ArrayList<String> searchPrefixe(String mot){
-        ArrayList<String> listLemme=new ArrayList<String>();
+        ArrayList<String> listLemme= new ArrayList<>();
         if (dictionnaire.containsKey(mot)){
             listLemme.add(dictionnaire.get(mot));
             return listLemme;
@@ -91,7 +90,7 @@ public class Lexique {
     }
 
     public ArrayList<String> searchLemmeLeven(String mot){
-        ArrayList<String> listLemme=new ArrayList<String>();
+        ArrayList<String> listLemme= new ArrayList<>();
         for (String motLex : dictionnaire.keySet()) {
             int distance = levenshtein(motLex, mot);
             if (distance <= 3) {
@@ -103,14 +102,13 @@ public class Lexique {
 
     public ArrayList<String> removeDuplicate(ArrayList<String> list){
         //Constructing LinkedHashSet using list
-        LinkedHashSet<String> set = new LinkedHashSet<String>(list);
+        LinkedHashSet<String> set = new LinkedHashSet<>(list);
         //Constructing list without duplicate using set
-        return new ArrayList<String>(set);
+        return new ArrayList<>(set);
     }
 
     public ArrayList<String> searchLemme(String mot){
-        ArrayList<String> listLemme=new ArrayList<String>();
-        listLemme = searchPrefixe(mot);
+        ArrayList<String> listLemme = searchPrefixe(mot);
         if(listLemme.isEmpty()){
             listLemme = searchLemmeLeven(mot);
             if(listLemme.isEmpty()){
