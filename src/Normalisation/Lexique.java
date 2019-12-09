@@ -115,7 +115,7 @@ public class Lexique {
         return listLemme;
     }
 
-    public String replaceByLemme(String str) {
+    public String replaceByLemme(String str){
         char ponc=str.charAt(str.length()-1);
         String[] split = str.substring(0,str.length()-1).split("\\s");
         ArrayList<String> strList = new ArrayList<>();

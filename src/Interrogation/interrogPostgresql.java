@@ -21,7 +21,7 @@ public class interrogPostgresql  {
 
 	String requete;
 
-	requete="select distinct fichier,rubrique from titretexte where mot='micro';";
+	requete="select distinct fichier from  and  where mot='micro';";
 
 	// INSTALL/load the Driver (Vendor specific Code)
 	try {

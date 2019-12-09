@@ -31,7 +31,7 @@ public class NormalisationHelper {
     }
 
 
-    public boolean existInDic(String s,DictionnaryName dicStr){
+    private boolean existInDic(String s,DictionnaryName dicStr){
         HashMap<String,String> dic=new HashMap<>();
         switch (dicStr){
             case stoplist:
@@ -62,6 +62,7 @@ public class NormalisationHelper {
     }
 
     public String replaceFromDic(String s,DictionnaryName dicStr){
+        s=s.trim();
         String result="";
         ArrayList<String> strList=new ArrayList<>();
         char ponc=s.charAt(s.length()-1);

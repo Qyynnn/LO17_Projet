@@ -24,7 +24,7 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "je veux les fichier qui parle de automati et de rubrique nice et de date 20/12/2014.";
+        String s = "je veux les articles de la rubrique focus parlant innovation. ";
         s=normalisation(s);
         //antlr
         Scanner scanner = new Scanner(System.in);

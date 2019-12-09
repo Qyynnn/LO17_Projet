@@ -3,12 +3,8 @@ grammar tal_sql;
 //SELECT
 SELECT : 'vouloir'
 ;
-
 // Colonne à sélecter
 ARTICLE : 'article'
-;
-
-AUTEUR 	: 'auteur'
 ;
 
 BULLETIN : 'bulletin'
@@ -33,10 +29,10 @@ MOIS : 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | '
 ANNEE : ('0'..'9')('0'..'9')('0'..'9')('0'..'9')
 ;
 
-JOUR :	('0'..'3')?('0'..'9')
+JOUR :	(('0'..'2')?('0'..'9'))|'30'|'31'
 ;
 
-VAR_DATE : (JOUR' 'MOIS' 'ANNEE)| (JOUR'/'('0'..'1')('0'..'9')'/'ANNEE) | ANNEE
+VAR_DATE :  (JOUR' 'MOIS' 'ANNEE)|(JOUR'/'(('0'?('1'..'9'))|'10'|'11'|'12')'/'ANNEE)
 ;
 // Autres paramètres
 CONJ : 'et' | 'ou'
@@ -66,7 +62,7 @@ requete returns [Arbre req_arbre = new Arbre("")]
 			{
 				req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
 			} 
-		(ARTICLE
+		/*(ARTICLE
 			{
 			req_arbre.ajouteFils(new Arbre("","article"));
 			}
@@ -74,16 +70,22 @@ requete returns [Arbre req_arbre = new Arbre("")]
 			{
 			req_arbre.ajouteFils(new Arbre("","bulletin"));
 			}
-		 | AUTEUR
+		 | RUBRIQUE
 		 	{
-			req_arbre.ajouteFils(new Arbre("","auteur"));
-			})
-		(MOT
+			req_arbre.ajouteFils(new Arbre("","rubrique"));
+			})*/
+		selectItem =(ARTICLE | BULLETIN | RUBRIQUE)
 			{
+				req_arbre.ajouteFils(new Arbre(selectItem.getText()));
 				tableArbre=new Arbre("","FROM ");
 				req_arbre.ajouteFils(tableArbre);
 				req_arbre.ajouteFils(new Arbre("","WHERE"));
-			})?
+			}
+		
+		/*(MOT
+			{
+				
+			})?*/
 		ps = params 
 			{
 				ps_arbre = $ps.les_pars_arbre;
@@ -95,34 +97,38 @@ requete returns [Arbre req_arbre = new Arbre("")]
 ;
 
 params returns [Arbre les_pars_arbre = new Arbre("")]
-	@init	{Arbre par1_arbre, par2_arbre;} : 
-		par1 = param 
+	@init	{Arbre par1_arbre, par2_arbre;int flag=0;} : 
+		/*par1 = param 
 			{
 				par1_arbre = $par1.lepar_arbre;
 				les_pars_arbre.ajouteFils(par1_arbre);
 				les_pars_arbre.table+=par1_arbre.table;
 			}
 		((conj = CONJ | mot = MOT)+
-		par2 = param
+		*/
+		(par2 = param
 			{
 				par2_arbre = $par2.lepar_arbre;
-				if(conj.getText().equals("et")){
+				if(flag==1){
 					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
 				}
-				else if(conj.getText().equals("ou")){
-					les_pars_arbre.ajouteFils(new Arbre("", "OR"));
-				}
+				flag=1;
 				les_pars_arbre.ajouteFils(par2_arbre);
 				if (!les_pars_arbre.table.contains(par2_arbre.table)){
 					les_pars_arbre.table+=par2_arbre.table;
 				}	
 			}
-		)*
+		)+
 ;
 
+
 param returns [Arbre lepar_arbre = new Arbre("")]:
-	a = (
-		(BULLETIN b = VAR)
+		key=(BULLETIN| RUBRIQUE| TITRE| DATE| MOT)
+		value = (VAR|VAR_DATE|ANNEE)
+			{lepar_arbre.ajouteFils(new Arbre(key.getText()+" = ", "'"+value.getText()+"'"));lepar_arbre.table= ' '+key.getText();}
+		;
+			
+			/*(BULLETIN b = VAR)
 			{lepar_arbre.ajouteFils(new Arbre("bulletin =", "'"+b.getText()+"'"));lepar_arbre.table="bulletin ";} 
 		|(RUBRIQUE b = VAR)
 			{lepar_arbre.ajouteFils(new Arbre("rubrique =", "'"+b.getText()+"'"));lepar_arbre.table="rubrique ";} 
@@ -131,5 +137,5 @@ param returns [Arbre lepar_arbre = new Arbre("")]:
 		|(DATE b = VAR_DATE)
 			{lepar_arbre.ajouteFils(new Arbre("date =", "'"+b.getText()+"'"));lepar_arbre.table="date ";} 
 		|VAR 
-			{ lepar_arbre.ajouteFils(new Arbre("mot =", "'"+a.getText()+"'"));lepar_arbre.table="mot ";});
+			{lepar_arbre.ajouteFils(new Arbre("mot =", "'"+a.getText()+"'"));lepar_arbre.table="mot ";});*/
 

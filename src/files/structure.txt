@@ -7,3 +7,4 @@ page 	page
 parlant 	mot
 parle 	mot
 parlent 	mot
+parler 	mot
