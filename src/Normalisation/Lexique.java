@@ -20,7 +20,7 @@ public class Lexique {
         dictionnaire = normHelper.getDictionnary(DictionnaryName.lexique);
     }
 
-    public float calculProx(String m1, String m2) {
+    private float calculProx(String m1, String m2) {
         if (m1.length() < seuilMax || m2.length() < seuilMax) {
             return 0;
         } else if (abs(m1.length() - m2.length()) > seuilMin) {
@@ -38,7 +38,7 @@ public class Lexique {
         }
     }
 
-    public int levenshtein(String m1, String m2) {
+    private int levenshtein(String m1, String m2) {
         int[][] dis = new int[m1.length() + 1][m2.length() + 1];
 
         for (int i = 1; i <= m1.length(); i++) {
@@ -61,7 +61,7 @@ public class Lexique {
         return dis[m1.length() - 1][m2.length() - 1];
     }
 
-    public ArrayList<String> searchPrefixe(String mot) {
+    private ArrayList<String> searchPrefixe(String mot) {
         ArrayList<String> listLemme = new ArrayList<>();
         if (dictionnaire.containsKey(mot)) {
             listLemme.add(dictionnaire.get(mot));
@@ -84,7 +84,7 @@ public class Lexique {
         }
     }
 
-    public ArrayList<String> searchLemmeLeven(String mot) {
+    private ArrayList<String> searchLemmeLeven(String mot) {
         ArrayList<String> listLemme = new ArrayList<>();
         for (String motLex : dictionnaire.keySet()) {
             int distance = levenshtein(motLex, mot);
@@ -95,14 +95,14 @@ public class Lexique {
         return removeDuplicate(listLemme);
     }
 
-    public ArrayList<String> removeDuplicate(ArrayList<String> list) {
+    private ArrayList<String> removeDuplicate(ArrayList<String> list) {
         //Constructing LinkedHashSet using list
         LinkedHashSet<String> set = new LinkedHashSet<>(list);
         //Constructing list without duplicate using set
         return new ArrayList<>(set);
     }
 
-    public ArrayList<String> searchLemme(String mot) {
+    private ArrayList<String> searchLemme(String mot) {
         ArrayList<String> listLemme = searchPrefixe(mot);
         if (listLemme.isEmpty()) {
             listLemme = searchLemmeLeven(mot);
@@ -115,13 +115,13 @@ public class Lexique {
         return listLemme;
     }
 
-    public String replaceByLemme(String str) {
+    public String replaceByLemme(String str){
         char ponc=str.charAt(str.length()-1);
         String[] split = str.substring(0,str.length()-1).split("\\s");
         ArrayList<String> strList = new ArrayList<>();
         if (split.length > 0) {
             for (String s : split) {
-                if (!s.isBlank()) {
+                if (!s.isEmpty()) {
                     ArrayList<String> lemmeList = searchLemme(s);
                     if (lemmeList.size() == 0) {
                         strList.add(s);
