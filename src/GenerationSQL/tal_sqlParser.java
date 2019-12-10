@@ -1,6 +1,5 @@
-// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-09 15:19:48
+// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-10 16:11:43
 package GenerationSQL;
-
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
@@ -51,7 +50,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "listerequetes"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:50:1: listerequetes returns [String sql = \"\"] : r= requete POINT ;
+	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:1: listerequetes returns [String sql = \"\"] : r= requete POINT ;
 	public final String listerequetes() throws RecognitionException {
 		String sql =  "";
 
@@ -60,14 +59,14 @@ public class tal_sqlParser extends Parser {
 
 		Arbre lr_arbre;
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:25: (r= requete POINT )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:3: r= requete POINT
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:25: (r= requete POINT )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:53:3: r= requete POINT
 			{
-			pushFollow(FOLLOW_requete_in_listerequetes327);
+			pushFollow(FOLLOW_requete_in_listerequetes328);
 			r=requete();
 			state._fsp--;
 
-			match(input,POINT,FOLLOW_POINT_in_listerequetes329); 
+			match(input,POINT,FOLLOW_POINT_in_listerequetes330); 
 
 							lr_arbre = r;
 							sql = lr_arbre.sortArbre();
@@ -87,10 +86,16 @@ public class tal_sqlParser extends Parser {
 	// $ANTLR end "listerequetes"
 
 
+	protected static class requete_scope {
+		String tableNames;
+	}
+	protected Stack<requete_scope> requete_stack = new Stack<requete_scope>();
+
 
 	// $ANTLR start "requete"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:59:1: requete returns [Arbre req_arbre = new Arbre(\"\")] : SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params ;
+	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:63:1: requete returns [Arbre req_arbre = new Arbre(\"\")] : SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params ;
 	public final Arbre requete() throws RecognitionException {
+		requete_stack.push(new requete_scope());
 		Arbre req_arbre =  new Arbre("");
 
 
@@ -99,10 +104,10 @@ public class tal_sqlParser extends Parser {
 
 		Arbre ps_arbre;Arbre tableArbre=new Arbre("");
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:60:57: ( SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:61:3: SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:65:57: ( SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:66:3: SELECT selectItem= ( ARTICLE | BULLETIN | RUBRIQUE ) ps= params
 			{
-			match(input,SELECT,FOLLOW_SELECT_in_requete356); 
+			match(input,SELECT,FOLLOW_SELECT_in_requete364); 
 
 							req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
 						
@@ -116,20 +121,47 @@ public class tal_sqlParser extends Parser {
 				throw mse;
 			}
 
-							req_arbre.ajouteFils(new Arbre(selectItem.getText()));
-							tableArbre=new Arbre("","FROM ");
+							req_arbre.ajouteFils(new Arbre("tt.fichier"));
+							req_arbre.ajouteFils(new Arbre("","FROM"));
 							req_arbre.ajouteFils(tableArbre);
 							req_arbre.ajouteFils(new Arbre("","WHERE"));
+							requete_stack.peek().tableNames ="";
 						
 			pushFollow(FOLLOW_params_in_requete404);
 			ps=params();
 			state._fsp--;
 
 
+							String[] split=requete_stack.peek().tableNames.trim().split(" ");
+							boolean first=true;
+							String result="titretexte tt";
+							ArrayList<String> tab=new ArrayList<>();
+							for (String s : split){
+								String tabName;
+								switch(s){
+									case "auteur":
+										tabName="auteur";
+										break;
+									case "date":
+										tabName="date";
+										break;
+									default:
+										tabName="";
+										break;
+								}	
+								if (!tabName.isEmpty() && !tab.contains(tabName)){
+									tab.add(tabName);
+								}
+							}
+							if (tab.size()>0){
+								int ind=1;
+								for (String s: tab){
+									result+=" INNER JOIN "+s+" t"+ind+" ON tt.numero=t"+ind+".numero ";
+									ind++;
+								}
+							}				
+							tableArbre.mot=result;
 							ps_arbre = ps;
-							
-							
-							tableArbre.mot+=ps.table.trim().replace(" "," INNER JOIN ");
 							req_arbre.ajouteFils(ps_arbre);
 						
 			}
@@ -141,6 +173,7 @@ public class tal_sqlParser extends Parser {
 		}
 		finally {
 			// do for sure before leaving
+			requete_stack.pop();
 		}
 		return req_arbre;
 	}
@@ -149,7 +182,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "params"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:99:1: params returns [Arbre les_pars_arbre = new Arbre(\"\")] : (par2= param )+ ;
+	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:115:1: params returns [Arbre les_pars_arbre = new Arbre(\"\")] : (par2= param )+ ;
 	public final Arbre params() throws RecognitionException {
 		Arbre les_pars_arbre =  new Arbre("");
 
@@ -158,10 +191,10 @@ public class tal_sqlParser extends Parser {
 
 		Arbre par1_arbre, par2_arbre;int flag=0;
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:100:51: ( (par2= param )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:109:3: (par2= param )+
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:116:51: ( (par2= param )+ )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:117:3: (par2= param )+
 			{
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:109:3: (par2= param )+
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:117:3: (par2= param )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -173,9 +206,9 @@ public class tal_sqlParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:109:4: par2= param
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:117:4: par2= param
 					{
-					pushFollow(FOLLOW_param_in_params441);
+					pushFollow(FOLLOW_param_in_params437);
 					par2=param();
 					state._fsp--;
 
@@ -186,9 +219,6 @@ public class tal_sqlParser extends Parser {
 									}
 									flag=1;
 									les_pars_arbre.ajouteFils(par2_arbre);
-									if (!les_pars_arbre.table.contains(par2_arbre.table)){
-										les_pars_arbre.table+=par2_arbre.table;
-									}	
 								
 					}
 					break;
@@ -218,7 +248,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "param"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:125:1: param returns [Arbre lepar_arbre = new Arbre(\"\")] : key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE ) ;
+	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:130:1: param returns [Arbre lepar_arbre = new Arbre(\"\")] : key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE ) ;
 	public final Arbre param() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
@@ -227,8 +257,8 @@ public class tal_sqlParser extends Parser {
 		Token value=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:125:50: (key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE ) )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:126:3: key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:130:50: (key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE ) )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:131:3: key= ( BULLETIN | RUBRIQUE | TITRE | DATE | MOT ) value= ( VAR | VAR_DATE | ANNEE )
 			{
 			key=input.LT(1);
 			if ( input.LA(1)==BULLETIN||input.LA(1)==DATE||input.LA(1)==MOT||input.LA(1)==RUBRIQUE||input.LA(1)==TITRE ) {
@@ -248,7 +278,13 @@ public class tal_sqlParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			lepar_arbre.ajouteFils(new Arbre(key.getText()+" = ", "'"+value.getText()+"'"));lepar_arbre.table= ' '+key.getText();
+
+							lepar_arbre.ajouteFils(new Arbre(key.getText()+" = ", "'"+value.getText()+"'"));
+							if (!requete_stack.peek().tableNames.contains(key.getText())){
+								requete_stack.peek().tableNames+= ' '+key.getText();
+							}
+							
+						
 			}
 
 		}
@@ -267,12 +303,12 @@ public class tal_sqlParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_requete_in_listerequetes327 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_POINT_in_listerequetes329 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SELECT_in_requete356 = new BitSet(new long[]{0x0000000000002060L});
-	public static final BitSet FOLLOW_set_in_requete374 = new BitSet(new long[]{0x000000000000A940L});
+	public static final BitSet FOLLOW_requete_in_listerequetes328 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_POINT_in_listerequetes330 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SELECT_in_requete364 = new BitSet(new long[]{0x0000000000002060L});
+	public static final BitSet FOLLOW_set_in_requete378 = new BitSet(new long[]{0x000000000000A940L});
 	public static final BitSet FOLLOW_params_in_requete404 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_param_in_params441 = new BitSet(new long[]{0x000000000000A942L});
-	public static final BitSet FOLLOW_set_in_param468 = new BitSet(new long[]{0x0000000000030010L});
-	public static final BitSet FOLLOW_set_in_param490 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_param_in_params437 = new BitSet(new long[]{0x000000000000A942L});
+	public static final BitSet FOLLOW_set_in_param464 = new BitSet(new long[]{0x0000000000030010L});
+	public static final BitSet FOLLOW_set_in_param486 = new BitSet(new long[]{0x0000000000000002L});
 }

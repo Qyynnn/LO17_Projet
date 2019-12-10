@@ -1,7 +1,6 @@
 donne 	vouloir
 veux 	vouloir
 cherche 	vouloir
-article 	article
 fichier 	article
 page 	page
 parlant 	mot

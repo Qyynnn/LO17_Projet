@@ -16,8 +16,8 @@ public class Lexique {
     private static int distanceMin=3;
     private String filePath = "src/files/filtreCorpus_P16.txt";
 
-    public Lexique(NormalisationHelper normHelper) {
-        dictionnaire = normHelper.getDictionnary(DictionnaryName.lexique);
+    public Lexique(HashMap<String, String> dic) {
+        dictionnaire=dic;
     }
 
     private float calculProx(String m1, String m2) {

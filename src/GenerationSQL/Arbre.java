@@ -8,7 +8,7 @@ public class Arbre {
     Arbre frere=null;
     String categorie;
     String mot;
-    String table="";
+
     Arbre(String categorie,String mot) {
         this.categorie = categorie ;
         this.mot = mot ;

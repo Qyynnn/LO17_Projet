@@ -4,21 +4,20 @@ import Normalisation.Lexique;
 import Normalisation.NormalisationHelper;
 import org.antlr.runtime.ANTLRReaderStream;
 import org.antlr.runtime.CommonTokenStream;
-
+import Interrogation.*;
 import java.io.*;
 import java.util.Scanner;
 
 public class Application {
     private static String normalisation(String req){
         NormalisationHelper normHelper = new NormalisationHelper();
-        Lexique lexique = new Lexique(normHelper);
 
         System.out.println("Input : "+req);
         req = normHelper.replaceFromDic(req, DictionnaryName.stoplist);
         System.out.println("After stoplist : "+req);
         req = normHelper.replaceFromDic(req, DictionnaryName.structure);
         System.out.println("After structure : "+req);
-        req = lexique.replaceByLemme(req);
+        req = normHelper.replaceFromDic(req, DictionnaryName.lexique);
         System.out.println("Output : "+req);
         return req;
     }
@@ -37,6 +36,7 @@ public class Application {
             tal_sqlParser parser = new tal_sqlParser(tokens);
             String arbre = parser.listerequetes();
             System.out.println(arbre);
+            interrogPostgresql.interroger(arbre);
         }
         catch (Exception e) {
             System.out.println(""+e);
