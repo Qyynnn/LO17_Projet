@@ -48,7 +48,6 @@ public class interrogPostgresql  {
 		ArrayList<String> columnNames=new ArrayList<>();
 		for (int i = 1; i <= columnCount; i++ ) {
 			columnNames.add(rsmd.getColumnName(i));
-			// Do stuff with name
 		}
 		for (String str : columnNames){
 			System.out.print(str);
@@ -59,8 +58,8 @@ public class interrogPostgresql  {
 			for (String str : columnNames){
 				s = rs.getString(str);
 				System.out.print(s);
-				System.out.println();
 			}
+			System.out.println();
 
 		}
 	// Close resources

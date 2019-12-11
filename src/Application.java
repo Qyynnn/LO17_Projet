@@ -23,24 +23,28 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "je veux les articles de la rubrique focus parlant innovation. ";
-        s=normalisation(s);
+        //String s = "je veux les articles de la rubrique focus parlant innovation. ";
         //antlr
         Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
-        //String s = scanner.nextLine();
-        System.out.println(s);
-        try {
-            tal_sqlLexer lexer = new tal_sqlLexer(new ANTLRReaderStream(new StringReader(s)));
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            tal_sqlParser parser = new tal_sqlParser(tokens);
-            String arbre = parser.listerequetes();
-            System.out.println(arbre);
-            interrogPostgresql.interroger(arbre);
-        }
-        catch (Exception e) {
-            System.out.println(""+e);
-        }
+        String s = scanner.nextLine();
+        while (s!="*"){
+            s=normalisation(s);
+            System.out.println(s);
+            try {
+                tal_sqlLexer lexer = new tal_sqlLexer(new ANTLRReaderStream(new StringReader(s)));
+                CommonTokenStream tokens = new CommonTokenStream(lexer);
+                tal_sqlParser parser = new tal_sqlParser(tokens);
+                String arbre = parser.listerequetes();
+                System.out.println(arbre);
+                interrogPostgresql.interroger(arbre);
+            }
+            catch (Exception e) {
+                System.out.println(""+e);
+            }
+            s = scanner.nextLine();
+        };
+
     }
 }
 
