@@ -2,6 +2,8 @@ package Interrogation;
 
 import java.sql.*;
 import java.io.*;
+import java.util.ArrayList;
+
 import GenerationSQL.*;
 
 public class interrogPostgresql  {
@@ -26,9 +28,10 @@ public class interrogPostgresql  {
 	// INSTALL/load the Driver (Vendor specific Code)
 	try {
 		Class.forName("org.postgresql.Driver");
-	} catch(java.lang.ClassNotFoundException e) {
-	System.err.print("ClassNotFoundException: ");
-	System.err.println(e.getMessage());
+	}
+	catch(java.lang.ClassNotFoundException e) {
+		System.err.print("ClassNotFoundException: ");
+		System.err.println(e.getMessage());
 	}
 
 	try {
@@ -40,14 +43,24 @@ public class interrogPostgresql  {
 		stmt = con.createStatement();
 		 // Send the query and bind to the result set
 		ResultSet rs = stmt.executeQuery(requete);
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnCount = rsmd.getColumnCount();
+		ArrayList<String> columnNames=new ArrayList<>();
+		for (int i = 1; i <= columnCount; i++ ) {
+			columnNames.add(rsmd.getColumnName(i));
+		}
+		for (String str : columnNames){
+			System.out.print(str);
+		}
+		System.out.println();
 		while (rs.next()) {
- 			String s = rs.getString("fichier");
-			System.out.print(s);
+			String s;
+			for (String str : columnNames){
+				s = rs.getString(str);
+				System.out.print(s);
+			}
 			System.out.println();
 
-			/*s = rs.getString("rubrique");
-			System.out.print(s);
-			System.out.println();*/
 		}
 	// Close resources
 	stmt.close();
@@ -62,7 +75,7 @@ public class interrogPostgresql  {
 		System.out.println("SQLState:  " + ex.getSQLState ());
 		System.out.println("ErrorCode: " + ex.getErrorCode ());
 		ex = ex.getNextException();
-		System.out.println("");
+		System.out.println();
 		}
 	}
 

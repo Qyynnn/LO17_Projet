@@ -64,7 +64,6 @@ public class NormalisationHelper {
     }
 
     public String replaceFromDic(String s,DictionnaryName dicStr){
-
         s=s.trim();
         if (dicStr.equals(DictionnaryName.lexique)){
             return _lexique.replaceByLemme(s);
