@@ -12,11 +12,13 @@ public class NormalisationHelper {
     private static String structurePath="src/files/structure.txt";
     private static String stoplistPath="src/files/stoplist_P16.txt";
     private static String lexiquePath="src/files/filtreCorpus_P16.txt";
+    private static Lexique _lexique;
 
     public NormalisationHelper(){
         addFileToDictionnary(structurePath,structureDic);
         addFileToDictionnary(stoplistPath,stoplistDic);
         addFileToDictionnary(lexiquePath,lexiqueDic);
+        _lexique=new Lexique(lexiqueDic);
     }
 
     public HashMap<String,String> getDictionnary(DictionnaryName dicStr){
@@ -62,7 +64,11 @@ public class NormalisationHelper {
     }
 
     public String replaceFromDic(String s,DictionnaryName dicStr){
+
         s=s.trim();
+        if (dicStr.equals(DictionnaryName.lexique)){
+            return _lexique.replaceByLemme(s);
+        }
         String result="";
         ArrayList<String> strList=new ArrayList<>();
         char ponc=s.charAt(s.length()-1);

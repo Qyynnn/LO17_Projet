@@ -1,6 +1,5 @@
-// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-09 15:19:48
+// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-10 16:11:43
 package GenerationSQL;
-
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;

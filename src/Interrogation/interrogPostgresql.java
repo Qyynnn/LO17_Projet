@@ -2,9 +2,10 @@ package Interrogation;
 
 import java.sql.*;
 import java.io.*;
+import GenerationSQL.*;
 
 public class interrogPostgresql  {
-	public static void main(String args[]) throws SQLException {
+	public static void interroger(String requete) throws SQLException {
 
 	String username;
 	String password;
@@ -19,9 +20,8 @@ public class interrogPostgresql  {
 	// Syntax: jdbc:TYPE:machine:port/DB_NAME
 	url = "jdbc:postgresql://tuxa.sme.utc/dblo17";
 
-	String requete;
 
-	requete="select distinct fichier from  and  where mot='micro';";
+	//requete="select distinct numero from  rubrique  where rubrique='focus';";
 
 	// INSTALL/load the Driver (Vendor specific Code)
 	try {
@@ -43,10 +43,11 @@ public class interrogPostgresql  {
 		while (rs.next()) {
  			String s = rs.getString("fichier");
 			System.out.print(s);
-			System.out.print("\t");
-			s = rs.getString("rubrique");
-			System.out.print(s);
 			System.out.println();
+
+			/*s = rs.getString("rubrique");
+			System.out.print(s);
+			System.out.println();*/
 		}
 	// Close resources
 	stmt.close();
