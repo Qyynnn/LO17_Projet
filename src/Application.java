@@ -28,7 +28,7 @@ public class Application {
         //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
         //String s = scanner.nextLine();
-        while (s.equals("*")){
+        while (!s.equals("*")){
             s=s.toLowerCase();
             s=normalisation(s);
             System.out.println(s);
