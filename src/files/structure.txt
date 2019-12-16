@@ -1,7 +1,12 @@
 donne 	vouloir
 veux 	vouloir
 cherche 	vouloir
+quel 	vouloir
+quels 	vouloir
+quelle 	vouloir
+quelles 	vouloir
 fichier 	article
+fichiers 	article
 page 	page
 parlant 	mot
 parle 	mot

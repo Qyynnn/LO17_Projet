@@ -5040,7 +5040,7 @@ fibrillaires 	fibr
 fibrée 	fibr
 fiche 	fiche 
 fiches 	fiches 
-fichiers 	fichier
+fichiers 	fichiers
 fiction 	fiction 
 fidèles 	fidèles 
 field 	field

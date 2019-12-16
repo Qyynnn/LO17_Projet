@@ -23,7 +23,7 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "Je veux les articles dont le titre contenir mot asdfsa et date 09/12/2094. ";
+        String s = "je veux les articles qui a le numéro 291 dans la rubrique \"Du côté des pôles\".";
         //antlr
         //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
@@ -38,7 +38,7 @@ public class Application {
                 tal_sqlParser parser = new tal_sqlParser(tokens);
                 String arbre = parser.listerequetes();
                 System.out.println(arbre);
-                //interrogPostgresql.interroger(arbre);
+                interrogPostgresql.interroger(arbre);
             }
             catch (Exception e) {
                 System.out.println(""+e);

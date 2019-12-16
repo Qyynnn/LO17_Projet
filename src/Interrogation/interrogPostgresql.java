@@ -7,20 +7,19 @@ import java.util.ArrayList;
 import GenerationSQL.*;
 
 public class interrogPostgresql  {
-	public static void interroger(String requete) throws SQLException {
+	private static String username="lo17xxx";
+	private static String password="dblo17";
+	private static String url = "jdbc:postgresql://tuxa.sme.utc/dblo17";
 
-	String username;
-	String password;
-	String url;
+	public static void interroger(String requete) throws SQLException {
 	String nom;
 	int nbre;
 	
 	// ---- configure START
-	username = "lo17xxx";
-	password = "dblo17";
+
 	// The URL that will connect to TECFA's MySQL server
 	// Syntax: jdbc:TYPE:machine:port/DB_NAME
-	url = "jdbc:postgresql://tuxa.sme.utc/dblo17";
+
 
 
 	//requete="select distinct numero from  rubrique  where rubrique='focus';";
@@ -37,12 +36,13 @@ public class interrogPostgresql  {
 	try {
 		Connection con;
 		Statement stmt;
-	    
 		// Establish Connection to the database at URL with usename and password
 		con = DriverManager.getConnection(url, username, password);
 		stmt = con.createStatement();
 		 // Send the query and bind to the result set
 		ResultSet rs = stmt.executeQuery(requete);
+
+		int counter=0;
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnCount = rsmd.getColumnCount();
 		ArrayList<String> columnNames=new ArrayList<>();
@@ -50,7 +50,7 @@ public class interrogPostgresql  {
 			columnNames.add(rsmd.getColumnName(i));
 		}
 		for (String str : columnNames){
-			System.out.print(str);
+			System.out.print(str+"\t");
 		}
 		System.out.println();
 		while (rs.next()) {
@@ -60,8 +60,10 @@ public class interrogPostgresql  {
 				System.out.print(s);
 			}
 			System.out.println();
-
+			counter++;
 		}
+		System.out.println();
+		System.out.println("Nombre total des fichiers: "+counter);
 	// Close resources
 	stmt.close();
 	con.close();
