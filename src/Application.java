@@ -23,12 +23,13 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        //String s = "je veux les articles de la rubrique focus parlant innovation. ";
+        String s = "Je veux les articles dont le titre contenir mot asdfsa et date 09/12/2094. ";
         //antlr
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
-        String s = scanner.nextLine();
-        while (s!="*"){
+        //String s = scanner.nextLine();
+        while (s.equals("*")){
+            s=s.toLowerCase();
             s=normalisation(s);
             System.out.println(s);
             try {
@@ -37,13 +38,14 @@ public class Application {
                 tal_sqlParser parser = new tal_sqlParser(tokens);
                 String arbre = parser.listerequetes();
                 System.out.println(arbre);
-                interrogPostgresql.interroger(arbre);
+                //interrogPostgresql.interroger(arbre);
             }
             catch (Exception e) {
                 System.out.println(""+e);
             }
-            s = scanner.nextLine();
-        };
+            //s = scanner.nextLine();
+            s="*";
+        }
 
     }
 }

@@ -107,31 +107,56 @@ public class Lexique {
         if (listLemme.isEmpty()) {
             listLemme = searchLemmeLeven(mot);
             if (listLemme.isEmpty()) {
-                System.out.println("Aucun mot n'a été trouvé");
+                System.out.println("Aucun lemme trouvé pour le mot \""+mot+"\"");
                 return listLemme;
             }
         }
-        System.out.println("liste de lemmes candidats de " + mot + " : " + listLemme);
         return listLemme;
     }
 
-    public String replaceByLemme(String str){
-        char ponc=str.charAt(str.length()-1);
-        String[] split = str.substring(0,str.length()-1).split("\\s");
-        ArrayList<String> strList = new ArrayList<>();
-        if (split.length > 0) {
-            for (String s : split) {
-                if (!s.isEmpty()) {
-                    ArrayList<String> lemmeList = searchLemme(s);
-                    if (lemmeList.size() == 0) {
-                        strList.add(s);
+    private void printLemmeList(ArrayList<String> lemmeList,String mot){
+        int ind=1;
+        System.out.print("liste de lemmes candidats de \"" + mot + "\" : [");
+        for (String s:
+                lemmeList) {
+            System.out.print(ind+": "+s+"; ");
+            ind++;
+        }
+        System.out.println("]");
+        System.out.println("Veuillez choisir un lemme souhaité, tapez 0 pour choisir le mot origine");
+    }
+
+    public String replaceTokenByLemme(String str){
+        try{
+            ArrayList<String> lemmeList = searchLemme(str);
+            if (lemmeList.size() == 0) {
+                return str;
+            } else if (lemmeList.size() == 1) {
+                return lemmeList.get(0);
+            } else {
+                String choix = "";
+                while (true) {
+                    printLemmeList(lemmeList, str);
+                    Scanner scan = new Scanner(System.in);
+                    choix = scan.nextLine();
+                    if (Integer.parseInt(choix) <= lemmeList.size()) {
+                        if (Integer.parseInt(choix) == 0) {
+                            return str;
+                        } else {
+                            return lemmeList.get(Integer.parseInt(choix) - 1);
+                        }
                     } else {
-                        strList.add(lemmeList.get(0));
+                        printLemmeList(lemmeList, str);
+                        System.out.println("Veuillez saisir un integer, tapez 0 pour choisir le mot origine");
                     }
                 }
             }
         }
-        return String.join(" ", strList)+ponc;
+        catch (Exception e){
+            System.out.println("Erreur lors de remplacement de token"+e);
+            return str;
+        }
+
     }
 
 }

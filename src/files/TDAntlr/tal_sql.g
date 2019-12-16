@@ -23,7 +23,8 @@ MOT : 'mot'
 DATE :	'date'
 ;
  
-MOIS : 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre'
+MOIS : 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre'|
+(('0'?('1'..'9'))|'10'|'11'|'12')
 ;
 
 ANNEE : ('0'..'9')('0'..'9')('0'..'9')('0'..'9')
@@ -32,11 +33,17 @@ ANNEE : ('0'..'9')('0'..'9')('0'..'9')('0'..'9')
 JOUR :	(('0'..'2')?('0'..'9'))|'30'|'31'
 ;
 
-VAR_DATE :  (JOUR' 'MOIS' 'ANNEE)|(JOUR'/'(('0'?('1'..'9'))|'10'|'11'|'12')'/'ANNEE)
+VAR_DATE :  (JOUR' 'MOIS' 'ANNEE)|(JOUR'/'MOIS'/'ANNEE)
 ;
 // Autres paramètres
 CONJ : 'et' | 'ou'
 ;
+
+EN 	: 'en'
+	;
+
+DANS 	:	'dans'
+	;
 
 POINT : '.'
 ;
@@ -44,7 +51,7 @@ POINT : '.'
 WS  : (' ' |'\t' | '\r' | 'je' | 'qui' | 'dont') {skip();} | '\n' 
 ;
 
-VAR 	: ('A'..'Z' | 'a'..'z') ('a'..'z')+
+VAR 	: ('a'..'z'|'é'|'è'|'ê'|'ù'|'î'|'à'|'û'|'ç'|'ï'|'ü')+
 ;
 
 
@@ -67,9 +74,11 @@ requete returns [Arbre req_arbre = new Arbre("")]
 			{
 				req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
 			} 
-		selectItem =(ARTICLE | BULLETIN | RUBRIQUE)
+		(ARTICLE 
+		| BULLETIN 
+		| RUBRIQUE)
 			{
-				req_arbre.ajouteFils(new Arbre("tt.fichier"));
+				req_arbre.ajouteFils(new Arbre("","tt.fichier,tt.rubrique"));
 				req_arbre.ajouteFils(new Arbre("","FROM"));
 				req_arbre.ajouteFils(tableArbre);
 				req_arbre.ajouteFils(new Arbre("","WHERE"));
@@ -78,29 +87,14 @@ requete returns [Arbre req_arbre = new Arbre("")]
 		
 		ps = params 
 			{
-				String[] split=$requete::tableNames.trim().split(" ");
-				boolean first=true;
+				ArrayList<String> tab=new ArrayList(Arrays.asList($requete::tableNames.trim().split(" ")));
 				String result="titretexte tt";
-				ArrayList<String> tab=new ArrayList<>();
-				for (String s : split){
-					String tabName;
-					switch(s){
-						case "auteur":
-							tabName="auteur";
-							break;
-						case "date":
-							tabName="date";
-							break;
-						default:
-							tabName="";
-							break;
-					}	
-					if (!tabName.isEmpty() && !tab.contains(tabName)){
-						tab.add(tabName);
-					}
-				}
 				if (tab.size()>0){
 					int ind=1;
+					if (tab.contains("titre")){
+						result="titre tt";
+						tab.remove("titre");
+					}
 					for (String s: tab){
 						result+=" INNER JOIN "+s+" t"+ind+" ON tt.numero=t"+ind+".numero ";
 						ind++;
@@ -113,30 +107,104 @@ requete returns [Arbre req_arbre = new Arbre("")]
 ;
 
 params returns [Arbre les_pars_arbre = new Arbre("")]
-	@init	{Arbre par1_arbre, par2_arbre;int flag=0;} : 
-		(par2 = param
-			{
-				par2_arbre = $par2.lepar_arbre;
+	@init	{Arbre par_arbre;int flag=0;} : 
+		(
+		par= motEnTitreParam{
+			par_arbre = $par.lepar_arbre;
 				if(flag==1){
 					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
 				}
 				flag=1;
-				les_pars_arbre.ajouteFils(par2_arbre);
+				les_pars_arbre.ajouteFils(par_arbre);
+		}
+		|par = dateParam
+			{
+				par_arbre = $par.lepar_arbre;
+				if(flag==1){
+					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+				}
+				flag=1;
+				les_pars_arbre.ajouteFils(par_arbre);
 			}
+		|par = motParam
+		{
+				par_arbre = $par.lepar_arbre;
+				if(flag==1){
+					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+				}
+				flag=1;
+				les_pars_arbre.ajouteFils(par_arbre);
+		}
 		)+
 ;
 
 
-param returns [Arbre lepar_arbre = new Arbre("")]:
-		key=(BULLETIN| RUBRIQUE| TITRE| DATE| MOT)
-		value = (VAR|VAR_DATE|ANNEE)
+/*param returns [Arbre lepar_arbre = new Arbre("")]:
+		key= (stringParam|dateParam){
+			lepar_arbre.ajouteFils($key.lepar_arbre);
+		}
+		;*/
+		
+motParam returns [Arbre lepar_arbre = new Arbre("")]:
+		MOT
+		value = VAR+
 			{
-				lepar_arbre.ajouteFils(new Arbre(key.getText()+" = ", "'"+value.getText()+"'"));
-				if (!$requete::tableNames.contains(key.getText())){
-					$requete::tableNames+= ' '+key.getText();
-				}
-				
+				lepar_arbre.ajouteFils(new Arbre("", "mot = '"+value.getText()+"'"));
+				if (!$requete::tableNames.contains("mot")){
+					$requete::tableNames+= " titretexte";
+				}			
 			}
-		;
-			
+			;
 
+dateParam returns [Arbre lepar_arbre = new Arbre("")]:
+	key=DATE
+	value=(VAR_DATE|ANNEE){
+		String[] dateStr=value.getText().trim().replace(" ","/").split("/");
+		int n=dateStr.length;
+		String annee;
+		String jour;
+		String mois;
+		switch(n){
+			case 1:
+				annee=dateStr[0];
+				lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+				break;
+			case 2:
+				annee=dateStr[1];
+				mois=dateStr[0];
+				lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+				lepar_arbre.ajouteFils(new Arbre("","AND"));
+				lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+				break;
+			default:
+				annee=dateStr[2];
+				mois=dateStr[1];
+				jour=dateStr[0];
+				lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+				lepar_arbre.ajouteFils(new Arbre("","AND"));
+				lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+				lepar_arbre.ajouteFils(new Arbre("","AND"));
+				lepar_arbre.ajouteFils(new Arbre("", "jour = '"+jour+"'"));
+				break;
+		}
+		if (!$requete::tableNames.contains(key.getText())){
+			$requete::tableNames+= ' '+key.getText();
+		}	
+	};
+	
+motEnTitreParam returns [Arbre lepar_arbre = new Arbre("")]:
+		(TITRE
+		MOT+
+		value = VAR+)
+		|
+		(MOT+
+		value=VAR+
+		(EN|DANS)
+		TITRE)
+			{
+				lepar_arbre.ajouteFils(new Arbre("", "titre.mot = '"+value.getText()+"'"));
+				if (!$requete::tableNames.contains("titre")){
+					$requete::tableNames+= " titre";
+				}	
+			}
+			;

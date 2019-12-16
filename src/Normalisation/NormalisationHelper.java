@@ -4,6 +4,7 @@ import Library.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class NormalisationHelper {
     private static HashMap<String,String> structureDic=new HashMap<>();
@@ -65,26 +66,30 @@ public class NormalisationHelper {
 
     public String replaceFromDic(String s,DictionnaryName dicStr){
         s=s.trim();
-        if (dicStr.equals(DictionnaryName.lexique)){
-            return _lexique.replaceByLemme(s);
-        }
         String result="";
         ArrayList<String> strList=new ArrayList<>();
         char ponc=s.charAt(s.length()-1);
         try {
             try {
-                String[] strSplit=s.substring(0,s.length()-1).split("\\s");
-                for (String str:
-                     strSplit) {
-                    if (existInDic(str,dicStr)){
-                        String value=getValueOfDic(str,dicStr);
-                        if (!value.isEmpty()){
-                            strList.add(value);
+                StringTokenizer tokenizer=new StringTokenizer(s.substring(0,s.length()-1),"' ");
+                if (dicStr.equals(DictionnaryName.lexique)){
+                    while (tokenizer.hasMoreTokens()) {
+                        strList.add(_lexique.replaceTokenByLemme(tokenizer.nextToken()));
+                    }
+                }
+                else {
+                    while (tokenizer.hasMoreTokens()) {
+                        String str = tokenizer.nextToken();
+                        if (existInDic(str, dicStr)) {
+                            String value = getValueOfDic(str, dicStr);
+                            if (!value.isEmpty()) {
+                                strList.add(value);
+                            }
+                        } else {
+                            strList.add(str);
                         }
                     }
-                    else{
-                        strList.add(str);
-                    }
+
                 }
                 result=String.join(" ",strList)+ponc;
             }

@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-11 13:22:31
+// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-16 12:29:04
 package GenerationSQL;
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -12,17 +12,19 @@ public class tal_sqlLexer extends Lexer {
 	public static final int ARTICLE=5;
 	public static final int BULLETIN=6;
 	public static final int CONJ=7;
-	public static final int DATE=8;
-	public static final int JOUR=9;
-	public static final int MOIS=10;
-	public static final int MOT=11;
-	public static final int POINT=12;
-	public static final int RUBRIQUE=13;
-	public static final int SELECT=14;
-	public static final int TITRE=15;
-	public static final int VAR=16;
-	public static final int VAR_DATE=17;
-	public static final int WS=18;
+	public static final int DANS=8;
+	public static final int DATE=9;
+	public static final int EN=10;
+	public static final int JOUR=11;
+	public static final int MOIS=12;
+	public static final int MOT=13;
+	public static final int POINT=14;
+	public static final int RUBRIQUE=15;
+	public static final int SELECT=16;
+	public static final int TITRE=17;
+	public static final int VAR=18;
+	public static final int VAR_DATE=19;
+	public static final int WS=20;
 
 	// delegates
 	// delegators
@@ -191,24 +193,24 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = MOIS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:26:6: ( 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre' )
-			int alt1=12;
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:26:6: ( 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre' | ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) )
+			int alt3=13;
 			switch ( input.LA(1) ) {
 			case 'j':
 				{
-				int LA1_1 = input.LA(2);
-				if ( (LA1_1=='a') ) {
-					alt1=1;
+				int LA3_1 = input.LA(2);
+				if ( (LA3_1=='a') ) {
+					alt3=1;
 				}
-				else if ( (LA1_1=='u') ) {
-					int LA1_10 = input.LA(3);
-					if ( (LA1_10=='i') ) {
-						int LA1_14 = input.LA(4);
-						if ( (LA1_14=='n') ) {
-							alt1=6;
+				else if ( (LA3_1=='u') ) {
+					int LA3_11 = input.LA(3);
+					if ( (LA3_11=='i') ) {
+						int LA3_15 = input.LA(4);
+						if ( (LA3_15=='n') ) {
+							alt3=6;
 						}
-						else if ( (LA1_14=='l') ) {
-							alt1=7;
+						else if ( (LA3_15=='l') ) {
+							alt3=7;
 						}
 
 						else {
@@ -218,7 +220,7 @@ public class tal_sqlLexer extends Lexer {
 									input.consume();
 								}
 								NoViableAltException nvae =
-									new NoViableAltException("", 1, 14, input);
+									new NoViableAltException("", 3, 15, input);
 								throw nvae;
 							} finally {
 								input.rewind(nvaeMark);
@@ -234,7 +236,7 @@ public class tal_sqlLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 1, 10, input);
+								new NoViableAltException("", 3, 11, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -248,7 +250,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 1, 1, input);
+							new NoViableAltException("", 3, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -259,19 +261,19 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 'f':
 				{
-				alt1=2;
+				alt3=2;
 				}
 				break;
 			case 'm':
 				{
-				int LA1_3 = input.LA(2);
-				if ( (LA1_3=='a') ) {
-					int LA1_11 = input.LA(3);
-					if ( (LA1_11=='r') ) {
-						alt1=3;
+				int LA3_3 = input.LA(2);
+				if ( (LA3_3=='a') ) {
+					int LA3_12 = input.LA(3);
+					if ( (LA3_12=='r') ) {
+						alt3=3;
 					}
-					else if ( (LA1_11=='i') ) {
-						alt1=5;
+					else if ( (LA3_12=='i') ) {
+						alt3=5;
 					}
 
 					else {
@@ -281,7 +283,7 @@ public class tal_sqlLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 1, 11, input);
+								new NoViableAltException("", 3, 12, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -295,7 +297,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 1, 3, input);
+							new NoViableAltException("", 3, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -306,12 +308,12 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 'a':
 				{
-				int LA1_4 = input.LA(2);
-				if ( (LA1_4=='v') ) {
-					alt1=4;
+				int LA3_4 = input.LA(2);
+				if ( (LA3_4=='v') ) {
+					alt3=4;
 				}
-				else if ( (LA1_4=='o') ) {
-					alt1=8;
+				else if ( (LA3_4=='o') ) {
+					alt3=8;
 				}
 
 				else {
@@ -319,7 +321,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 1, 4, input);
+							new NoViableAltException("", 3, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -330,30 +332,44 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 's':
 				{
-				alt1=9;
+				alt3=9;
 				}
 				break;
 			case 'o':
 				{
-				alt1=10;
+				alt3=10;
 				}
 				break;
 			case 'n':
 				{
-				alt1=11;
+				alt3=11;
 				}
 				break;
 			case 'd':
 				{
-				alt1=12;
+				alt3=12;
+				}
+				break;
+			case '0':
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			case '5':
+			case '6':
+			case '7':
+			case '8':
+			case '9':
+				{
+				alt3=13;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 1, 0, input);
+					new NoViableAltException("", 3, 0, input);
 				throw nvae;
 			}
-			switch (alt1) {
+			switch (alt3) {
 				case 1 :
 					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:26:8: 'janvier'
 					{
@@ -438,6 +454,104 @@ public class tal_sqlLexer extends Lexer {
 
 					}
 					break;
+				case 13 :
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:2: ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' )
+					{
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:2: ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' )
+					int alt2=4;
+					int LA2_0 = input.LA(1);
+					if ( (LA2_0=='0'||(LA2_0 >= '2' && LA2_0 <= '9')) ) {
+						alt2=1;
+					}
+					else if ( (LA2_0=='1') ) {
+						switch ( input.LA(2) ) {
+						case '0':
+							{
+							alt2=2;
+							}
+							break;
+						case '1':
+							{
+							alt2=3;
+							}
+							break;
+						case '2':
+							{
+							alt2=4;
+							}
+							break;
+						default:
+							alt2=1;
+						}
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 2, 0, input);
+						throw nvae;
+					}
+
+					switch (alt2) {
+						case 1 :
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:2: ( ( '0' )? ( '1' .. '9' ) )
+							{
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:2: ( ( '0' )? ( '1' .. '9' ) )
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:3: ( '0' )? ( '1' .. '9' )
+							{
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:3: ( '0' )?
+							int alt1=2;
+							int LA1_0 = input.LA(1);
+							if ( (LA1_0=='0') ) {
+								alt1=1;
+							}
+							switch (alt1) {
+								case 1 :
+									// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:3: '0'
+									{
+									match('0'); 
+									}
+									break;
+
+							}
+
+							if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
+								input.consume();
+							}
+							else {
+								MismatchedSetException mse = new MismatchedSetException(null,input);
+								recover(mse);
+								throw mse;
+							}
+							}
+
+							}
+							break;
+						case 2 :
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:19: '10'
+							{
+							match("10"); 
+
+							}
+							break;
+						case 3 :
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:24: '11'
+							{
+							match("11"); 
+
+							}
+							break;
+						case 4 :
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:29: '12'
+							{
+							match("12"); 
+
+							}
+							break;
+
+					}
+
+					}
+					break;
 
 			}
 			state.type = _type;
@@ -454,8 +568,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = ANNEE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:29:7: ( ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:29:9: ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:30:7: ( ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:30:9: ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' )
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -505,52 +619,52 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = JOUR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:6: ( ( ( '0' .. '2' )? ( '0' .. '9' ) ) | '30' | '31' )
-			int alt3=3;
-			int LA3_0 = input.LA(1);
-			if ( ((LA3_0 >= '0' && LA3_0 <= '2')||(LA3_0 >= '4' && LA3_0 <= '9')) ) {
-				alt3=1;
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:6: ( ( ( '0' .. '2' )? ( '0' .. '9' ) ) | '30' | '31' )
+			int alt5=3;
+			int LA5_0 = input.LA(1);
+			if ( ((LA5_0 >= '0' && LA5_0 <= '2')||(LA5_0 >= '4' && LA5_0 <= '9')) ) {
+				alt5=1;
 			}
-			else if ( (LA3_0=='3') ) {
+			else if ( (LA5_0=='3') ) {
 				switch ( input.LA(2) ) {
 				case '0':
 					{
-					alt3=2;
+					alt5=2;
 					}
 					break;
 				case '1':
 					{
-					alt3=3;
+					alt5=3;
 					}
 					break;
 				default:
-					alt3=1;
+					alt5=1;
 				}
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 3, 0, input);
+					new NoViableAltException("", 5, 0, input);
 				throw nvae;
 			}
 
-			switch (alt3) {
+			switch (alt5) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:9: ( '0' .. '2' )? ( '0' .. '9' )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:9: ( '0' .. '2' )? ( '0' .. '9' )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:9: ( '0' .. '2' )?
-					int alt2=2;
-					int LA2_0 = input.LA(1);
-					if ( ((LA2_0 >= '0' && LA2_0 <= '2')) ) {
-						int LA2_1 = input.LA(2);
-						if ( ((LA2_1 >= '0' && LA2_1 <= '9')) ) {
-							alt2=1;
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:9: ( '0' .. '2' )?
+					int alt4=2;
+					int LA4_0 = input.LA(1);
+					if ( ((LA4_0 >= '0' && LA4_0 <= '2')) ) {
+						int LA4_1 = input.LA(2);
+						if ( ((LA4_1 >= '0' && LA4_1 <= '9')) ) {
+							alt4=1;
 						}
 					}
-					switch (alt2) {
+					switch (alt4) {
 						case 1 :
 							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:
 							{
@@ -580,14 +694,14 @@ public class tal_sqlLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:32: '30'
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:32: '30'
 					{
 					match("30"); 
 
 					}
 					break;
 				case 3 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:32:37: '31'
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:33:37: '31'
 					{
 					match("31"); 
 
@@ -609,7 +723,7 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = VAR_DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:10: ( ( JOUR ' ' MOIS ' ' ANNEE ) | ( JOUR '/' ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) '/' ANNEE ) )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:10: ( ( JOUR ' ' MOIS ' ' ANNEE ) | ( JOUR '/' MOIS '/' ANNEE ) )
 			int alt6=2;
 			switch ( input.LA(1) ) {
 			case '0':
@@ -789,10 +903,10 @@ public class tal_sqlLexer extends Lexer {
 			}
 			switch (alt6) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:13: ( JOUR ' ' MOIS ' ' ANNEE )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:13: ( JOUR ' ' MOIS ' ' ANNEE )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:13: ( JOUR ' ' MOIS ' ' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:14: JOUR ' ' MOIS ' ' ANNEE
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:13: ( JOUR ' ' MOIS ' ' ANNEE )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:14: JOUR ' ' MOIS ' ' ANNEE
 					{
 					mJOUR(); 
 
@@ -807,119 +921,15 @@ public class tal_sqlLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:35: ( JOUR '/' ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) '/' ANNEE )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:35: ( JOUR '/' MOIS '/' ANNEE )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:35: ( JOUR '/' ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) '/' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:36: JOUR '/' ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) '/' ANNEE
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:35: ( JOUR '/' MOIS '/' ANNEE )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:36:36: JOUR '/' MOIS '/' ANNEE
 					{
 					mJOUR(); 
 
 					match('/'); 
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:43: ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' )
-					int alt5=4;
-					int LA5_0 = input.LA(1);
-					if ( (LA5_0=='0'||(LA5_0 >= '2' && LA5_0 <= '9')) ) {
-						alt5=1;
-					}
-					else if ( (LA5_0=='1') ) {
-						switch ( input.LA(2) ) {
-						case '0':
-							{
-							alt5=2;
-							}
-							break;
-						case '1':
-							{
-							alt5=3;
-							}
-							break;
-						case '2':
-							{
-							alt5=4;
-							}
-							break;
-						case '/':
-							{
-							alt5=1;
-							}
-							break;
-						default:
-							int nvaeMark = input.mark();
-							try {
-								input.consume();
-								NoViableAltException nvae =
-									new NoViableAltException("", 5, 2, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-					}
-
-					else {
-						NoViableAltException nvae =
-							new NoViableAltException("", 5, 0, input);
-						throw nvae;
-					}
-
-					switch (alt5) {
-						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:44: ( ( '0' )? ( '1' .. '9' ) )
-							{
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:44: ( ( '0' )? ( '1' .. '9' ) )
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:45: ( '0' )? ( '1' .. '9' )
-							{
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:45: ( '0' )?
-							int alt4=2;
-							int LA4_0 = input.LA(1);
-							if ( (LA4_0=='0') ) {
-								alt4=1;
-							}
-							switch (alt4) {
-								case 1 :
-									// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:45: '0'
-									{
-									match('0'); 
-									}
-									break;
-
-							}
-
-							if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
-								input.consume();
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								recover(mse);
-								throw mse;
-							}
-							}
-
-							}
-							break;
-						case 2 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:61: '10'
-							{
-							match("10"); 
-
-							}
-							break;
-						case 3 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:66: '11'
-							{
-							match("11"); 
-
-							}
-							break;
-						case 4 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:35:71: '12'
-							{
-							match("12"); 
-
-							}
-							break;
-
-					}
+					mMOIS(); 
 
 					match('/'); 
 					mANNEE(); 
@@ -944,7 +954,7 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = CONJ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:38:6: ( 'et' | 'ou' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:39:6: ( 'et' | 'ou' )
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='e') ) {
@@ -962,14 +972,14 @@ public class tal_sqlLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:38:8: 'et'
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:39:8: 'et'
 					{
 					match("et"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:38:15: 'ou'
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:39:15: 'ou'
 					{
 					match("ou"); 
 
@@ -986,13 +996,55 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "CONJ"
 
+	// $ANTLR start "EN"
+	public final void mEN() throws RecognitionException {
+		try {
+			int _type = EN;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:42:5: ( 'en' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:42:7: 'en'
+			{
+			match("en"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "EN"
+
+	// $ANTLR start "DANS"
+	public final void mDANS() throws RecognitionException {
+		try {
+			int _type = DANS;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:45:7: ( 'dans' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:45:9: 'dans'
+			{
+			match("dans"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "DANS"
+
 	// $ANTLR start "POINT"
 	public final void mPOINT() throws RecognitionException {
 		try {
 			int _type = POINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:41:7: ( '.' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:41:9: '.'
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:48:7: ( '.' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:48:9: '.'
 			{
 			match('.'); 
 			}
@@ -1011,7 +1063,7 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:5: ( ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' ) | '\\n' )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:5: ( ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' ) | '\\n' )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0=='\t'||LA9_0=='\r'||LA9_0==' '||LA9_0=='d'||LA9_0=='j'||LA9_0=='q') ) {
@@ -1029,9 +1081,9 @@ public class tal_sqlLexer extends Lexer {
 
 			switch (alt9) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
 					int alt8=6;
 					switch ( input.LA(1) ) {
 					case ' ':
@@ -1071,39 +1123,39 @@ public class tal_sqlLexer extends Lexer {
 					}
 					switch (alt8) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:8: ' '
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:8: ' '
 							{
 							match(' '); 
 							}
 							break;
 						case 2 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:13: '\\t'
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:13: '\\t'
 							{
 							match('\t'); 
 							}
 							break;
 						case 3 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:20: '\\r'
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:20: '\\r'
 							{
 							match('\r'); 
 							}
 							break;
 						case 4 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:27: 'je'
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:27: 'je'
 							{
 							match("je"); 
 
 							}
 							break;
 						case 5 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:34: 'qui'
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:34: 'qui'
 							{
 							match("qui"); 
 
 							}
 							break;
 						case 6 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:42: 'dont'
+							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:42: 'dont'
 							{
 							match("dont"); 
 
@@ -1116,7 +1168,7 @@ public class tal_sqlLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:44:62: '\\n'
+					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:51:62: '\\n'
 					{
 					match('\n'); 
 					}
@@ -1137,24 +1189,16 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:47:6: ( ( 'A' .. 'Z' | 'a' .. 'z' ) ( 'a' .. 'z' )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:47:8: ( 'A' .. 'Z' | 'a' .. 'z' ) ( 'a' .. 'z' )+
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:54:6: ( ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+ )
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:54:8: ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+
 			{
-			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
-				input.consume();
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				recover(mse);
-				throw mse;
-			}
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:47:30: ( 'a' .. 'z' )+
+			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:54:8: ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+
 			int cnt10=0;
 			loop10:
 			while (true) {
 				int alt10=2;
 				int LA10_0 = input.LA(1);
-				if ( ((LA10_0 >= 'a' && LA10_0 <= 'z')) ) {
+				if ( ((LA10_0 >= 'a' && LA10_0 <= 'z')||LA10_0=='\u00E0'||(LA10_0 >= '\u00E7' && LA10_0 <= '\u00EA')||(LA10_0 >= '\u00EE' && LA10_0 <= '\u00EF')||LA10_0=='\u00F9'||(LA10_0 >= '\u00FB' && LA10_0 <= '\u00FC')) ) {
 					alt10=1;
 				}
 
@@ -1162,7 +1206,7 @@ public class tal_sqlLexer extends Lexer {
 				case 1 :
 					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:
 					{
-					if ( (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+					if ( (input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E7' && input.LA(1) <= '\u00EA')||(input.LA(1) >= '\u00EE' && input.LA(1) <= '\u00EF')||input.LA(1)=='\u00F9'||(input.LA(1) >= '\u00FB' && input.LA(1) <= '\u00FC') ) {
 						input.consume();
 					}
 					else {
@@ -1194,8 +1238,8 @@ public class tal_sqlLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:8: ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | POINT | WS | VAR )
-		int alt11=15;
+		// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:8: ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | EN | DANS | POINT | WS | VAR )
+		int alt11=17;
 		alt11 = dfa11.predict(input);
 		switch (alt11) {
 			case 1 :
@@ -1283,21 +1327,35 @@ public class tal_sqlLexer extends Lexer {
 				}
 				break;
 			case 13 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:88: POINT
+				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:88: EN
+				{
+				mEN(); 
+
+				}
+				break;
+			case 14 :
+				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:91: DANS
+				{
+				mDANS(); 
+
+				}
+				break;
+			case 15 :
+				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:96: POINT
 				{
 				mPOINT(); 
 
 				}
 				break;
-			case 14 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:94: WS
+			case 16 :
+				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:102: WS
 				{
 				mWS(); 
 
 				}
 				break;
-			case 15 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:97: VAR
+			case 17 :
+				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:105: VAR
 				{
 				mVAR(); 
 
@@ -1310,142 +1368,155 @@ public class tal_sqlLexer extends Lexer {
 
 	protected DFA11 dfa11 = new DFA11(this);
 	static final String DFA11_eotS =
-		"\15\uffff\3\52\5\uffff\16\24\1\22\3\24\1\103\1\24\1\52\2\uffff\2\52\1"+
-		"\uffff\1\103\10\24\1\115\1\24\1\117\10\24\1\uffff\1\24\1\22\3\24\1\117"+
-		"\3\24\1\uffff\1\117\1\uffff\1\140\1\24\1\22\1\24\1\117\7\24\1\117\1\24"+
-		"\1\153\1\24\1\uffff\12\24\1\uffff\10\24\1\177\1\u0080\3\24\3\117\1\24"+
-		"\1\117\1\24\2\uffff\1\u0086\1\u0087\1\117\1\24\1\117\2\uffff\1\117";
+		"\1\uffff\14\26\1\55\4\62\1\26\2\uffff\1\26\1\uffff\16\26\1\24\3\26\1\114"+
+		"\1\26\1\62\1\55\2\uffff\3\62\1\uffff\2\55\1\uffff\1\114\1\116\10\26\1"+
+		"\127\1\26\1\62\11\26\1\uffff\1\26\1\uffff\1\24\3\26\1\62\3\26\1\uffff"+
+		"\1\62\1\152\1\153\1\26\1\24\1\26\1\62\7\26\1\62\1\26\1\166\1\26\2\uffff"+
+		"\12\26\1\uffff\10\26\1\u008a\1\u008b\3\26\3\62\1\26\1\62\1\26\2\uffff"+
+		"\1\u0091\1\u0092\1\62\1\26\1\62\2\uffff\1\62";
 	static final String DFA11_eofS =
-		"\u0089\uffff";
+		"\u0094\uffff";
 	static final String DFA11_minS =
-		"\1\11\14\141\3\40\1\141\2\uffff\1\141\1\uffff\1\165\1\164\1\162\1\165"+
-		"\1\154\1\164\1\142\1\164\1\151\1\164\1\143\2\156\1\151\1\141\1\166\1\160"+
-		"\1\164\1\141\1\166\1\40\2\uffff\2\40\1\uffff\1\141\1\151\1\154\2\151\1"+
-		"\164\1\154\2\162\1\141\1\163\1\141\2\145\1\164\1\166\1\154\1\162\1\164"+
-		"\1\157\1\uffff\1\145\1\141\1\157\1\143\1\154\1\141\2\145\1\151\1\uffff"+
-		"\1\141\1\uffff\1\141\1\155\1\141\1\151\1\141\1\154\1\151\1\145\1\142\1"+
-		"\155\1\151\1\154\1\141\1\164\1\141\1\161\1\uffff\1\142\3\145\1\155\1\162"+
-		"\1\142\1\162\1\145\1\151\1\uffff\1\165\2\162\1\164\1\162\1\142\1\145\1"+
-		"\162\2\141\1\156\2\145\3\141\1\162\1\141\1\145\2\uffff\3\141\1\145\1\141"+
-		"\2\uffff\1\141";
+		"\1\11\2\157\1\165\1\151\1\165\3\141\2\145\1\143\1\157\5\40\1\156\2\uffff"+
+		"\1\165\1\uffff\1\165\1\164\1\162\1\165\1\154\1\164\1\142\1\164\1\151\1"+
+		"\156\1\143\2\156\1\151\1\141\1\166\1\160\1\164\1\141\1\166\2\40\2\uffff"+
+		"\3\40\1\uffff\2\40\1\uffff\2\141\1\151\1\154\2\151\1\164\1\154\2\162\1"+
+		"\141\1\163\1\141\1\145\1\163\1\145\1\164\1\166\1\154\1\162\1\164\1\157"+
+		"\1\uffff\1\145\1\uffff\1\141\1\157\1\143\1\154\1\141\2\145\1\151\1\uffff"+
+		"\3\141\1\155\1\141\1\151\1\141\1\154\1\151\1\145\1\142\1\155\1\151\1\154"+
+		"\1\141\1\164\1\141\1\161\2\uffff\1\142\3\145\1\155\1\162\1\142\1\162\1"+
+		"\145\1\151\1\uffff\1\165\2\162\1\164\1\162\1\142\1\145\1\162\2\141\1\156"+
+		"\2\145\3\141\1\162\1\141\1\145\2\uffff\3\141\1\145\1\141\2\uffff\1\141";
 	static final String DFA11_maxS =
-		"\15\172\3\71\1\172\2\uffff\1\172\1\uffff\1\165\1\164\1\162\1\165\1\154"+
-		"\1\164\1\142\1\164\1\162\1\164\1\143\2\156\1\151\1\172\1\166\1\160\1\164"+
-		"\1\172\1\166\1\71\2\uffff\2\71\1\uffff\1\172\1\151\1\154\2\151\1\164\1"+
-		"\154\2\162\1\172\1\163\1\172\2\145\1\164\1\166\1\156\1\162\1\164\1\157"+
-		"\1\uffff\1\145\1\172\1\157\1\143\1\154\1\172\2\145\1\151\1\uffff\1\172"+
-		"\1\uffff\1\172\1\155\1\172\1\151\1\172\1\154\1\151\1\145\1\142\1\155\1"+
-		"\151\1\154\1\172\1\164\1\172\1\161\1\uffff\1\142\3\145\1\155\1\162\1\142"+
-		"\1\162\1\145\1\151\1\uffff\1\165\2\162\1\164\1\162\1\142\1\145\1\162\2"+
-		"\172\1\156\2\145\3\172\1\162\1\172\1\145\2\uffff\3\172\1\145\1\172\2\uffff"+
-		"\1\172";
+		"\1\u00fc\1\157\1\166\1\165\1\151\1\165\2\157\1\165\2\145\1\165\1\157\5"+
+		"\71\1\164\2\uffff\1\165\1\uffff\1\165\1\164\1\162\1\165\1\154\1\164\1"+
+		"\142\1\164\1\162\1\164\1\143\2\156\1\151\1\u00fc\1\166\1\160\1\164\1\u00fc"+
+		"\1\166\2\71\2\uffff\3\71\1\uffff\2\71\1\uffff\2\u00fc\1\151\1\154\2\151"+
+		"\1\164\1\154\2\162\1\u00fc\1\163\1\u00fc\1\145\1\163\1\145\1\164\1\166"+
+		"\1\156\1\162\1\164\1\157\1\uffff\1\145\1\uffff\1\u00fc\1\157\1\143\1\154"+
+		"\1\u00fc\2\145\1\151\1\uffff\3\u00fc\1\155\1\u00fc\1\151\1\u00fc\1\154"+
+		"\1\151\1\145\1\142\1\155\1\151\1\154\1\u00fc\1\164\1\u00fc\1\161\2\uffff"+
+		"\1\142\3\145\1\155\1\162\1\142\1\162\1\145\1\151\1\uffff\1\165\2\162\1"+
+		"\164\1\162\1\142\1\145\1\162\2\u00fc\1\156\2\145\3\u00fc\1\162\1\u00fc"+
+		"\1\145\2\uffff\3\u00fc\1\145\1\u00fc\2\uffff\1\u00fc";
 	static final String DFA11_acceptS =
-		"\21\uffff\1\15\1\16\1\uffff\1\17\25\uffff\1\12\1\13\2\uffff\1\11\24\uffff"+
-		"\1\14\11\uffff\1\6\1\uffff\1\10\20\uffff\1\7\12\uffff\1\4\23\uffff\1\1"+
-		"\1\2\5\uffff\1\3\1\5\1\uffff";
+		"\23\uffff\1\17\1\20\1\uffff\1\21\26\uffff\1\12\1\13\3\uffff\1\10\2\uffff"+
+		"\1\11\26\uffff\1\14\1\uffff\1\15\10\uffff\1\6\22\uffff\1\7\1\16\12\uffff"+
+		"\1\4\23\uffff\1\1\1\2\5\uffff\1\3\1\5\1\uffff";
 	static final String DFA11_specialS =
-		"\u0089\uffff}>";
+		"\u0094\uffff}>";
 	static final String[] DFA11_transitionS = {
-			"\2\22\2\uffff\1\22\22\uffff\1\22\15\uffff\1\21\1\uffff\3\15\1\16\6\17"+
-			"\7\uffff\32\24\6\uffff\1\2\1\3\1\24\1\7\1\20\1\11\3\24\1\10\2\24\1\6"+
-			"\1\14\1\13\1\24\1\23\1\5\1\12\1\4\1\24\1\1\4\24",
-			"\16\24\1\25\13\24",
-			"\16\24\1\30\2\24\1\26\3\24\1\27\4\24",
-			"\24\24\1\31\5\24",
-			"\10\24\1\32\21\24",
-			"\24\24\1\33\5\24",
-			"\1\35\15\24\1\34\13\24",
-			"\1\36\3\24\1\37\11\24\1\40\13\24",
-			"\1\41\3\24\1\43\17\24\1\42\5\24",
-			"\4\24\1\44\25\24",
-			"\4\24\1\45\25\24",
-			"\2\24\1\46\21\24\1\47\5\24",
-			"\16\24\1\50\13\24",
-			"\1\53\16\uffff\1\53\12\51",
-			"\1\53\16\uffff\1\53\1\54\1\55\10\56",
-			"\1\53\16\uffff\1\53\12\56",
-			"\23\24\1\57\6\24",
+			"\2\24\2\uffff\1\24\22\uffff\1\24\15\uffff\1\23\1\uffff\1\15\1\16\1\17"+
+			"\1\20\6\21\47\uffff\1\2\1\3\1\26\1\7\1\22\1\11\3\26\1\10\2\26\1\6\1\14"+
+			"\1\13\1\26\1\25\1\5\1\12\1\4\1\26\1\1\4\26\145\uffff\1\26\6\uffff\4\26"+
+			"\3\uffff\2\26\11\uffff\1\26\1\uffff\2\26",
+			"\1\27",
+			"\1\32\2\uffff\1\30\3\uffff\1\31",
+			"\1\33",
+			"\1\34",
+			"\1\35",
+			"\1\37\15\uffff\1\36",
+			"\1\40\3\uffff\1\41\11\uffff\1\42",
+			"\1\43\3\uffff\1\45\17\uffff\1\44",
+			"\1\46",
+			"\1\47",
+			"\1\50\21\uffff\1\51",
+			"\1\52",
+			"\1\56\16\uffff\1\56\1\54\11\53",
+			"\1\56\16\uffff\1\56\1\57\1\60\1\61\7\54",
+			"\1\56\16\uffff\1\56\12\54",
+			"\1\56\16\uffff\1\56\1\63\1\64\10\65",
+			"\1\56\16\uffff\1\56\12\65",
+			"\1\67\5\uffff\1\66",
 			"",
 			"",
-			"\24\24\1\60\5\24",
-			"",
-			"\1\61",
-			"\1\62",
-			"\1\63",
-			"\1\64",
-			"\1\65",
-			"\1\66",
-			"\1\67",
 			"\1\70",
-			"\1\72\10\uffff\1\71",
+			"",
+			"\1\71",
+			"\1\72",
 			"\1\73",
 			"\1\74",
 			"\1\75",
 			"\1\76",
 			"\1\77",
-			"\32\24",
 			"\1\100",
-			"\1\101",
-			"\1\102",
-			"\32\24",
-			"\1\104",
-			"\1\53\16\uffff\1\53\12\56",
-			"",
-			"",
-			"\1\53\16\uffff\1\53\12\56",
-			"\1\53\16\uffff\1\53\12\56",
-			"",
-			"\32\24",
+			"\1\102\10\uffff\1\101",
+			"\1\104\5\uffff\1\103",
 			"\1\105",
 			"\1\106",
 			"\1\107",
 			"\1\110",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\111",
 			"\1\112",
 			"\1\113",
-			"\1\114",
-			"\32\24",
-			"\1\116",
-			"\32\24",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\115",
+			"\1\56\16\uffff\1\56\12\65",
+			"\1\56\16\uffff\1\56\12\65",
+			"",
+			"",
+			"\1\56\16\uffff\1\56\12\65",
+			"\1\56\16\uffff\1\56\12\65",
+			"\1\56\16\uffff\1\56\12\65",
+			"",
+			"\1\56\16\uffff\1\56\12\65",
+			"\1\56\16\uffff\1\56\12\65",
+			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\117",
 			"\1\120",
 			"\1\121",
 			"\1\122",
 			"\1\123",
-			"\1\125\1\uffff\1\124",
+			"\1\124",
+			"\1\125",
 			"\1\126",
-			"\1\127",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\130",
-			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\131",
-			"\32\24",
 			"\1\132",
 			"\1\133",
 			"\1\134",
-			"\32\24",
 			"\1\135",
-			"\1\136",
-			"\1\137",
-			"",
-			"\32\24",
-			"",
-			"\32\24",
+			"\1\137\1\uffff\1\136",
+			"\1\140",
 			"\1\141",
-			"\32\24",
 			"\1\142",
-			"\32\24",
+			"",
 			"\1\143",
+			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\144",
 			"\1\145",
 			"\1\146",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\147",
 			"\1\150",
 			"\1\151",
-			"\32\24",
-			"\1\152",
-			"\32\24",
-			"\1\154",
 			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\154",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\155",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\156",
 			"\1\157",
 			"\1\160",
@@ -1453,10 +1524,14 @@ public class tal_sqlLexer extends Lexer {
 			"\1\162",
 			"\1\163",
 			"\1\164",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\165",
-			"\1\166",
-			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
 			"\1\167",
+			"",
+			"",
 			"\1\170",
 			"\1\171",
 			"\1\172",
@@ -1464,27 +1539,50 @@ public class tal_sqlLexer extends Lexer {
 			"\1\174",
 			"\1\175",
 			"\1\176",
-			"\32\24",
-			"\32\24",
+			"\1\177",
+			"\1\u0080",
 			"\1\u0081",
+			"",
 			"\1\u0082",
 			"\1\u0083",
-			"\32\24",
-			"\32\24",
-			"\32\24",
 			"\1\u0084",
-			"\32\24",
 			"\1\u0085",
-			"",
-			"",
-			"\32\24",
-			"\32\24",
-			"\32\24",
+			"\1\u0086",
+			"\1\u0087",
 			"\1\u0088",
-			"\32\24",
+			"\1\u0089",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\u008c",
+			"\1\u008d",
+			"\1\u008e",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\u008f",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\u0090",
 			"",
 			"",
-			"\32\24"
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"\1\u0093",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26",
+			"",
+			"",
+			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
+			"\2\26"
 	};
 
 	static final short[] DFA11_eot = DFA.unpackEncodedString(DFA11_eotS);
@@ -1518,7 +1616,7 @@ public class tal_sqlLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | POINT | WS | VAR );";
+			return "1:1: Tokens : ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | EN | DANS | POINT | WS | VAR );";
 		}
 	}
 

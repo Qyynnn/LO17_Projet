@@ -7,3 +7,4 @@ parlant 	mot
 parle 	mot
 parlent 	mot
 parler 	mot
+contenir 	mot
