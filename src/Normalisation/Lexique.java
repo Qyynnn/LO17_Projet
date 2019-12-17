@@ -4,6 +4,9 @@ import Library.DictionnaryName;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.lang.Math.*;
 
 public class Lexique {
@@ -121,11 +124,20 @@ public class Lexique {
             ind++;
         }
         System.out.println("]");
-        System.out.println("Veuillez choisir un lemme souhaité, tapez 0 pour choisir le mot origine");
+        System.out.println("Veuillez choisir un lemme souhaité, tapez 0 pour choisir le mot original");
+    }
+
+    private boolean isNumeric(String str){
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        return isNum.matches();
     }
 
     public String replaceTokenByLemme(String str){
         try{
+            if (isNumeric(str)) {
+                return str;
+            }
             ArrayList<String> lemmeList = searchLemme(str);
             if (lemmeList.size() == 0) {
                 return str;

@@ -11,20 +11,7 @@ public class interrogPostgresql  {
 	private static String password="dblo17";
 	private static String url = "jdbc:postgresql://tuxa.sme.utc/dblo17";
 
-	public static void interroger(String requete) throws SQLException {
-	String nom;
-	int nbre;
-	
-	// ---- configure START
-
-	// The URL that will connect to TECFA's MySQL server
-	// Syntax: jdbc:TYPE:machine:port/DB_NAME
-
-
-
-	//requete="select distinct numero from  rubrique  where rubrique='focus';";
-
-	// INSTALL/load the Driver (Vendor specific Code)
+	public static void interroger(String requete) {
 	try {
 		Class.forName("org.postgresql.Driver");
 	}
@@ -42,7 +29,6 @@ public class interrogPostgresql  {
 		 // Send the query and bind to the result set
 		ResultSet rs = stmt.executeQuery(requete);
 
-		int counter=0;
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnCount = rsmd.getColumnCount();
 		ArrayList<String> columnNames=new ArrayList<>();
@@ -60,10 +46,8 @@ public class interrogPostgresql  {
 				System.out.print(s);
 			}
 			System.out.println();
-			counter++;
 		}
 		System.out.println();
-		System.out.println("Nombre total des fichiers: "+counter);
 	// Close resources
 	stmt.close();
 	con.close();

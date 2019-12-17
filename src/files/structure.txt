@@ -1,5 +1,6 @@
 donne 	vouloir
 veux 	vouloir
+voudrais 	vouloir
 cherche 	vouloir
 affiche 	vouloir
 afficher 	vouloir
@@ -16,6 +17,7 @@ fichier 	article
 fichiers 	article
 page 	page
 datant 	date
+datent 	date
 parus 	date
 parlant 	mot
 parle 	mot
@@ -23,6 +25,7 @@ parlent 	mot
 parler 	mot
 contenir 	mot
 contient 	mot
+contiennent 	mot
 contenant 	mot
 traitent 	mot
 traite 	mot
@@ -31,3 +34,6 @@ traitant 	mot
 concernent 	mot
 concernant 	mot
 sur 	mot
+combien 	nombre
+contact 	auteur
+contacts  	auteur
