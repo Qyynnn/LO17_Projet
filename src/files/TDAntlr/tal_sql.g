@@ -9,58 +9,75 @@ ARTICLE : 'article'
 BULLETIN : 'bulletin'
 ;
 
+AUTEUR : 'auteur'
+	;
 // Contraints
-TITRE 	: 'titre'
+TITRE : 'titre'
 ;
 	
 RUBRIQUE : 'rubrique'
 ;
 
+NOMBRE	:'nombre'
+	;
+
+STR_MOIS	:	'mois'
+	;
+
+	
 MOT : 'mot'
 ;
 
 DATE :	'date'
 ;
 
-NUMERO	:	'numÃ©ro'
+NUMERO	:'num¨¦ro'
 ;
 
 
-MOIS : 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre'
+MONTH : 'janvier' | 'fevrier'| 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre'
 ;
 
 
-INT	:	DIGIT DIGIT
+DIGIT4	:	DIGIT DIGIT DIGIT DIGIT
+;
+
+DIGIT2	:	DIGIT DIGIT
+;
+
+INT : DIGIT+
 ;
 
 
-VAR_DATE :  (INT' 'INT' 'ANNEE)|(INT'/'MOIS'/'ANNEE)|(MOIS'/'ANNEE)
+VAR_DATE :  (DIGIT2' '(DIGIT2|MONTH)' 'DIGIT4)|(DIGIT2'/'(DIGIT2|MONTH)'/'DIGIT4)|((MONTH|DIGIT2)'/'DIGIT4)|((MONTH|DIGIT2)' 'DIGIT4)
 ;
+
+
 // Autres paramÃ¨tres
 CONJ : 'et' | 'ou'
 ;
 
-EN 	: 'en'
+EN : 'en'
 	;
 
-DANS 	:	'dans'
+DANS :'dans'
 	;
 
-POINT : '.'
+PONC : '.'|'?'
 ;
 
 
 WS  : (' ' |'\t' | '\r' | 'je' | 'qui' | 'dont') {skip();} | '\n' 
 ;
 
-VAR 	: ('a'..'z'|'Ã©'|'Ã¨'|'Ãª'|'Ã¹'|'Ã®'|'Ã '|'Ã»'|'Ã§'|'Ã¯'|'Ã¼')+
+VAR : ('a'..'z'|'¨¦'|'¨¨'|'¨¤'|'¨¹')+
 ;
 
-DIGIT	:	('0'..'9');
+fragment DIGIT  : ('0' .. '9');
 
 listerequetes returns [String sql = ""]
 	@init	{Arbre lr_arbre;}: 
-		r = requete POINT
+		r = requete PONC
 			{
 				lr_arbre = $r.req_arbre;
 				sql = lr_arbre.sortArbre();
@@ -74,14 +91,28 @@ requete returns [Arbre req_arbre = new Arbre("")]
 	scope {String tableNames;}
 	@init {Arbre ps_arbre;Arbre tableArbre=new Arbre("");} : 
 		{$requete::tableNames="";}
-		SELECT 
+		SELECT* 
 			{
 				req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
-			} 
-		(ARTICLE 
+			}
+		(((ARTICLE 
 		| BULLETIN)
 			{
+				
 				req_arbre.ajouteFils(new Arbre("","tt.fichier,tt.rubrique"));
+				
+			})
+		|(AUTEUR
+			{
+				req_arbre.ajouteFils(new Arbre("","email"));
+			})
+		|(NOMBRE
+		ARTICLE
+			{
+				req_arbre.ajouteFils(new Arbre("","COUNT(*)"));
+			}
+		))
+			{
 				req_arbre.ajouteFils(new Arbre("","FROM"));
 				req_arbre.ajouteFils(tableArbre);
 				req_arbre.ajouteFils(new Arbre("","WHERE"));
@@ -111,8 +142,12 @@ requete returns [Arbre req_arbre = new Arbre("")]
 ;
 
 params returns [Arbre les_pars_arbre = new Arbre("")]
-	@init	{Arbre par_arbre;int flag=0;} : 
-		((par= motEnTitreParam
+	@init	{Arbre par_arbre;int flag=0;String conj="";} : 
+		((c=CONJ
+				{
+					conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+				})?
+		(par= motEnTitreParam
 		|par = dateParam
 		|par = motParam
 		|par=rubriqueParam
@@ -121,64 +156,113 @@ params returns [Arbre les_pars_arbre = new Arbre("")]
 				{
 				par_arbre = $par.lepar_arbre;
 				if(flag==1){
-					les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+					les_pars_arbre.ajouteFils(new Arbre("", conj.isEmpty()?"AND":conj));
 				}
 				flag=1;
 				les_pars_arbre.ajouteFils(par_arbre);
+				conj="";
 				}
 		)+
 ;
 
 
-/*param returns [Arbre lepar_arbre = new Arbre("")]:
-		key= (stringParam|dateParam){
-			lepar_arbre.ajouteFils($key.lepar_arbre);
-		}
-		;*/
-
 numeroParam returns [Arbre lepar_arbre = new Arbre("")]:
 		NUMERO
-		value = INT
+		value = (INT|DIGIT2|DIGIT4)
 			{
 				lepar_arbre.ajouteFils(new Arbre("", "tt.numero = '"+value.getText()+"'"));		
 			}
 			;
 		
 rubriqueParam returns [Arbre lepar_arbre = new Arbre("")]:
+		(DANS|EN)?
 		RUBRIQUE
 		value = VAR+
 			{
+				lepar_arbre.ajouteFils(new Arbre("", "("));	
 				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
 			}
-			;
+		(c=CONJ 
+		value = VAR+
+			{
+				String conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+				lepar_arbre.ajouteFils(new Arbre("", conj));	
+				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
+			})*
+			{
+				lepar_arbre.ajouteFils(new Arbre("", ")"));	
+			}
+		;
 		
 motParam returns [Arbre lepar_arbre = new Arbre("")]:
 		MOT
 		value = VAR+
 			{
+				lepar_arbre.ajouteFils(new Arbre("", "("));	
 				lepar_arbre.ajouteFils(new Arbre("", "tt.mot = '"+value.getText()+"'"));		
+			}
+		(c=CONJ 
+		value = VAR+
+			{
+				String conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+				lepar_arbre.ajouteFils(new Arbre("", conj));	
+				lepar_arbre.ajouteFils(new Arbre("", "tt.mot = '"+value.getText()+"'"));		
+			})*
+			{
+				lepar_arbre.ajouteFils(new Arbre("", ")"));	
 			}
 			;
 
+	
 dateParam returns [Arbre lepar_arbre = new Arbre("")]:
-	(DATE|EN)
-	value=(VAR_DATE|ANNEE){
-		String[] dateStr=value.getText().trim().replace(" ","/").split("/");
+	DATE?
+	(EN|STR_MOIS)?
+	value=(VAR_DATE|DIGIT4|MONTH)
+	{
+		String[] dateStr=value.getText().trim().replace(" ","/")
+			.replace("janvier","01")
+			.replace("fevrier","02")
+			.replace("mars","03")
+			.replace("avril","04")
+			.replace("mai","05")
+			.replace("juin","06")
+			.replace("juillet","07")
+			.replace("aout","08")
+			.replace("septembre","09")
+			.replace("octobre","10")
+			.replace("novembre","11")
+			.replace("decembre","12")
+			.split("/");
 		int n=dateStr.length;
 		String annee;
 		String jour;
 		String mois;
 		switch(n){
 			case 1:
-				annee=dateStr[0];
-				lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+				if (dateStr[0].length()==4){
+					annee=dateStr[0];
+					lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+				}
+				else{
+					mois=dateStr[0];
+					lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+				}
 				break;
 			case 2:
-				annee=dateStr[1];
-				mois=dateStr[0];
-				lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
-				lepar_arbre.ajouteFils(new Arbre("","AND"));
-				lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+				if (dateStr[1].length()==4){
+					annee=dateStr[1];
+					mois=dateStr[0];
+					lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+					lepar_arbre.ajouteFils(new Arbre("","AND"));
+					lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+				}
+				else{
+					mois=dateStr[1];
+					jour=dateStr[0];
+					lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+					lepar_arbre.ajouteFils(new Arbre("","AND"));
+					lepar_arbre.ajouteFils(new Arbre("", "jour = '"+jour+"'"));
+				}
 				break;
 			default:
 				annee=dateStr[2];

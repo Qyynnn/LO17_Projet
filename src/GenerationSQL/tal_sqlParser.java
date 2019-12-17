@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-16 19:31:20
+// $ANTLR 3.5.1 C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g 2019-12-17 01:31:20
 package GenerationSQL;
 import org.antlr.runtime.*;
 
@@ -10,29 +10,35 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class tal_sqlParser extends Parser {
 	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ANNEE", "ARTICLE", "BULLETIN", 
-		"CONJ", "DANS", "DATE", "EN", "JOUR", "MOIS", "MOT", "NUMERO", "POINT", 
-		"RUBRIQUE", "SELECT", "TITRE", "VAR", "VAR_DATE", "WS"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ARTICLE", "AUTEUR", "BULLETIN", 
+		"CONJ", "DANS", "DATE", "DIGIT", "DIGIT2", "DIGIT4", "EN", "INT", "MONTH", 
+		"MOT", "NOMBRE", "NUMERO", "PONC", "RUBRIQUE", "SELECT", "STR_MOIS", "TITRE", 
+		"VAR", "VAR_DATE", "WS"
 	};
 	public static final int EOF=-1;
-	public static final int ANNEE=4;
-	public static final int ARTICLE=5;
+	public static final int ARTICLE=4;
+	public static final int AUTEUR=5;
 	public static final int BULLETIN=6;
 	public static final int CONJ=7;
 	public static final int DANS=8;
 	public static final int DATE=9;
-	public static final int EN=10;
-	public static final int JOUR=11;
-	public static final int MOIS=12;
-	public static final int MOT=13;
-	public static final int NUMERO=14;
-	public static final int POINT=15;
-	public static final int RUBRIQUE=16;
-	public static final int SELECT=17;
-	public static final int TITRE=18;
-	public static final int VAR=19;
-	public static final int VAR_DATE=20;
-	public static final int WS=21;
+	public static final int DIGIT=10;
+	public static final int DIGIT2=11;
+	public static final int DIGIT4=12;
+	public static final int EN=13;
+	public static final int INT=14;
+	public static final int MONTH=15;
+	public static final int MOT=16;
+	public static final int NOMBRE=17;
+	public static final int NUMERO=18;
+	public static final int PONC=19;
+	public static final int RUBRIQUE=20;
+	public static final int SELECT=21;
+	public static final int STR_MOIS=22;
+	public static final int TITRE=23;
+	public static final int VAR=24;
+	public static final int VAR_DATE=25;
+	public static final int WS=26;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -50,12 +56,12 @@ public class tal_sqlParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return tal_sqlParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g"; }
 
 
 
 	// $ANTLR start "listerequetes"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:59:1: listerequetes returns [String sql = \"\"] : r= requete POINT ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:78:1: listerequetes returns [String sql = \"\"] : r= requete PONC ;
 	public final String listerequetes() throws RecognitionException {
 		String sql =  "";
 
@@ -64,14 +70,14 @@ public class tal_sqlParser extends Parser {
 
 		Arbre lr_arbre;
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:60:25: (r= requete POINT )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:61:3: r= requete POINT
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:79:25: (r= requete PONC )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:80:3: r= requete PONC
 			{
-			pushFollow(FOLLOW_requete_in_listerequetes380);
+			pushFollow(FOLLOW_requete_in_listerequetes395);
 			r=requete();
 			state._fsp--;
 
-			match(input,POINT,FOLLOW_POINT_in_listerequetes382); 
+			match(input,PONC,FOLLOW_PONC_in_listerequetes397); 
 
 							lr_arbre = r;
 							sql = lr_arbre.sortArbre();
@@ -98,7 +104,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "requete"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:71:1: requete returns [Arbre req_arbre = new Arbre(\"\")] : SELECT ( ARTICLE | BULLETIN ) ps= params ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:90:1: requete returns [Arbre req_arbre = new Arbre(\"\")] : ( SELECT )* ( ( ( ARTICLE | BULLETIN ) ) | ( AUTEUR ) | ( NOMBRE ARTICLE ) ) ps= params ;
 	public final Arbre requete() throws RecognitionException {
 		requete_stack.push(new requete_scope());
 		Arbre req_arbre =  new Arbre("");
@@ -108,29 +114,121 @@ public class tal_sqlParser extends Parser {
 
 		Arbre ps_arbre;Arbre tableArbre=new Arbre("");
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:73:57: ( SELECT ( ARTICLE | BULLETIN ) ps= params )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:74:3: SELECT ( ARTICLE | BULLETIN ) ps= params
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:92:57: ( ( SELECT )* ( ( ( ARTICLE | BULLETIN ) ) | ( AUTEUR ) | ( NOMBRE ARTICLE ) ) ps= params )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:93:3: ( SELECT )* ( ( ( ARTICLE | BULLETIN ) ) | ( AUTEUR ) | ( NOMBRE ARTICLE ) ) ps= params
 			{
 			requete_stack.peek().tableNames ="";
-			match(input,SELECT,FOLLOW_SELECT_in_requete420); 
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:94:3: ( SELECT )*
+			loop1:
+			while (true) {
+				int alt1=2;
+				int LA1_0 = input.LA(1);
+				if ( (LA1_0==SELECT) ) {
+					alt1=1;
+				}
+
+				switch (alt1) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:94:3: SELECT
+					{
+					match(input,SELECT,FOLLOW_SELECT_in_requete436); 
+					}
+					break;
+
+				default :
+					break loop1;
+				}
+			}
+
 
 							req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
 						
-			if ( (input.LA(1) >= ARTICLE && input.LA(1) <= BULLETIN) ) {
-				input.consume();
-				state.errorRecovery=false;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:98:3: ( ( ( ARTICLE | BULLETIN ) ) | ( AUTEUR ) | ( NOMBRE ARTICLE ) )
+			int alt2=3;
+			switch ( input.LA(1) ) {
+			case ARTICLE:
+			case BULLETIN:
+				{
+				alt2=1;
+				}
+				break;
+			case AUTEUR:
+				{
+				alt2=2;
+				}
+				break;
+			case NOMBRE:
+				{
+				alt2=3;
+				}
+				break;
+			default:
+				NoViableAltException nvae =
+					new NoViableAltException("", 2, 0, input);
+				throw nvae;
 			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				throw mse;
+			switch (alt2) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:98:4: ( ( ARTICLE | BULLETIN ) )
+					{
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:98:4: ( ( ARTICLE | BULLETIN ) )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:98:5: ( ARTICLE | BULLETIN )
+					{
+					if ( input.LA(1)==ARTICLE||input.LA(1)==BULLETIN ) {
+						input.consume();
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+
+									
+									req_arbre.ajouteFils(new Arbre("","tt.fichier,tt.rubrique"));
+									
+								
+					}
+
+					}
+					break;
+				case 2 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:105:4: ( AUTEUR )
+					{
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:105:4: ( AUTEUR )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:105:5: AUTEUR
+					{
+					match(input,AUTEUR,FOLLOW_AUTEUR_in_requete470); 
+
+									req_arbre.ajouteFils(new Arbre("","email"));
+								
+					}
+
+					}
+					break;
+				case 3 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:109:4: ( NOMBRE ARTICLE )
+					{
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:109:4: ( NOMBRE ARTICLE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:109:5: NOMBRE ARTICLE
+					{
+					match(input,NOMBRE,FOLLOW_NOMBRE_in_requete482); 
+					match(input,ARTICLE,FOLLOW_ARTICLE_in_requete486); 
+
+									req_arbre.ajouteFils(new Arbre("","COUNT(*)"));
+								
+					}
+
+					}
+					break;
+
 			}
 
-							req_arbre.ajouteFils(new Arbre("","tt.fichier,tt.rubrique"));
+
 							req_arbre.ajouteFils(new Arbre("","FROM"));
 							req_arbre.ajouteFils(tableArbre);
 							req_arbre.ajouteFils(new Arbre("","WHERE"));
 						
-			pushFollow(FOLLOW_params_in_requete453);
+			pushFollow(FOLLOW_params_in_requete509);
 			ps=params();
 			state._fsp--;
 
@@ -173,68 +271,97 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "params"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:111:1: params returns [Arbre les_pars_arbre = new Arbre(\"\")] : ( (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam ) )+ ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:144:1: params returns [Arbre les_pars_arbre = new Arbre(\"\")] : ( (c= CONJ )? (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam ) )+ ;
 	public final Arbre params() throws RecognitionException {
 		Arbre les_pars_arbre =  new Arbre("");
 
 
+		Token c=null;
 		Arbre par =null;
 
-		Arbre par_arbre;int flag=0;
+		Arbre par_arbre;int flag=0;String conj="";
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:112:38: ( ( (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam ) )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:113:3: ( (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam ) )+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:145:53: ( ( (c= CONJ )? (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam ) )+ )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:146:3: ( (c= CONJ )? (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam ) )+
 			{
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:113:3: ( (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam ) )+
-			int cnt2=0;
-			loop2:
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:146:3: ( (c= CONJ )? (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam ) )+
+			int cnt5=0;
+			loop5:
 			while (true) {
-				int alt2=2;
-				int LA2_0 = input.LA(1);
-				if ( ((LA2_0 >= DATE && LA2_0 <= EN)||LA2_0==MOT||LA2_0==RUBRIQUE||LA2_0==TITRE) ) {
-					alt2=1;
+				int alt5=2;
+				int LA5_0 = input.LA(1);
+				if ( ((LA5_0 >= CONJ && LA5_0 <= DATE)||(LA5_0 >= DIGIT4 && LA5_0 <= EN)||(LA5_0 >= MONTH && LA5_0 <= MOT)||LA5_0==NUMERO||LA5_0==RUBRIQUE||(LA5_0 >= STR_MOIS && LA5_0 <= TITRE)||LA5_0==VAR_DATE) ) {
+					alt5=1;
 				}
 
-				switch (alt2) {
+				switch (alt5) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:113:4: (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:146:4: (c= CONJ )? (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:113:4: (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam )
-					int alt1=4;
-					alt1 = dfa1.predict(input);
-					switch (alt1) {
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:146:4: (c= CONJ )?
+					int alt3=2;
+					int LA3_0 = input.LA(1);
+					if ( (LA3_0==CONJ) ) {
+						alt3=1;
+					}
+					switch (alt3) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:113:5: par= motEnTitreParam
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:146:5: c= CONJ
 							{
-							pushFollow(FOLLOW_motEnTitreParam_in_params486);
+							c=(Token)match(input,CONJ,FOLLOW_CONJ_in_params541); 
+
+												conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+											
+							}
+							break;
+
+					}
+
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:150:3: (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam )
+					int alt4=5;
+					alt4 = dfa4.predict(input);
+					switch (alt4) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:150:4: par= motEnTitreParam
+							{
+							pushFollow(FOLLOW_motEnTitreParam_in_params557);
 							par=motEnTitreParam();
 							state._fsp--;
 
 							}
 							break;
 						case 2 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:114:4: par= dateParam
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:151:4: par= dateParam
 							{
-							pushFollow(FOLLOW_dateParam_in_params495);
+							pushFollow(FOLLOW_dateParam_in_params566);
 							par=dateParam();
 							state._fsp--;
 
 							}
 							break;
 						case 3 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:115:4: par= motParam
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:152:4: par= motParam
 							{
-							pushFollow(FOLLOW_motParam_in_params504);
+							pushFollow(FOLLOW_motParam_in_params575);
 							par=motParam();
 							state._fsp--;
 
 							}
 							break;
 						case 4 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:116:4: par= rubriqueParam
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:153:4: par= rubriqueParam
 							{
-							pushFollow(FOLLOW_rubriqueParam_in_params511);
+							pushFollow(FOLLOW_rubriqueParam_in_params582);
 							par=rubriqueParam();
+							state._fsp--;
+
+							}
+							break;
+						case 5 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:154:4: par= numeroParam
+							{
+							pushFollow(FOLLOW_numeroParam_in_params589);
+							par=numeroParam();
 							state._fsp--;
 
 							}
@@ -245,20 +372,21 @@ public class tal_sqlParser extends Parser {
 
 									par_arbre = par;
 									if(flag==1){
-										les_pars_arbre.ajouteFils(new Arbre("", "AND"));
+										les_pars_arbre.ajouteFils(new Arbre("", conj.isEmpty()?"AND":conj));
 									}
 									flag=1;
 									les_pars_arbre.ajouteFils(par_arbre);
+									conj="";
 									
 					}
 					break;
 
 				default :
-					if ( cnt2 >= 1 ) break loop2;
-					EarlyExitException eee = new EarlyExitException(2, input);
+					if ( cnt5 >= 1 ) break loop5;
+					EarlyExitException eee = new EarlyExitException(5, input);
 					throw eee;
 				}
-				cnt2++;
+				cnt5++;
 			}
 
 			}
@@ -278,7 +406,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "numeroParam"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:136:1: numeroParam returns [Arbre lepar_arbre = new Arbre(\"\")] : NUMERO (value= VAR )+ ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:169:1: numeroParam returns [Arbre lepar_arbre = new Arbre(\"\")] : NUMERO value= ( INT | DIGIT2 | DIGIT4 ) ;
 	public final Arbre numeroParam() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
@@ -286,36 +414,19 @@ public class tal_sqlParser extends Parser {
 		Token value=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:136:56: ( NUMERO (value= VAR )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:137:3: NUMERO (value= VAR )+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:169:56: ( NUMERO value= ( INT | DIGIT2 | DIGIT4 ) )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:170:3: NUMERO value= ( INT | DIGIT2 | DIGIT4 )
 			{
-			match(input,NUMERO,FOLLOW_NUMERO_in_numeroParam544); 
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:138:9: (value= VAR )+
-			int cnt3=0;
-			loop3:
-			while (true) {
-				int alt3=2;
-				int LA3_0 = input.LA(1);
-				if ( (LA3_0==VAR) ) {
-					alt3=1;
-				}
-
-				switch (alt3) {
-				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:138:9: value= VAR
-					{
-					value=(Token)match(input,VAR,FOLLOW_VAR_in_numeroParam552); 
-					}
-					break;
-
-				default :
-					if ( cnt3 >= 1 ) break loop3;
-					EarlyExitException eee = new EarlyExitException(3, input);
-					throw eee;
-				}
-				cnt3++;
+			match(input,NUMERO,FOLLOW_NUMERO_in_numeroParam619); 
+			value=input.LT(1);
+			if ( (input.LA(1) >= DIGIT2 && input.LA(1) <= DIGIT4)||input.LA(1)==INT ) {
+				input.consume();
+				state.errorRecovery=false;
 			}
-
+			else {
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				throw mse;
+			}
 
 							lepar_arbre.ajouteFils(new Arbre("", "tt.numero = '"+value.getText()+"'"));		
 						
@@ -336,46 +447,131 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "rubriqueParam"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:144:1: rubriqueParam returns [Arbre lepar_arbre = new Arbre(\"\")] : RUBRIQUE (value= VAR )+ ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:177:1: rubriqueParam returns [Arbre lepar_arbre = new Arbre(\"\")] : ( DANS | EN )? RUBRIQUE (value= VAR )+ (c= CONJ (value= VAR )+ )* ;
 	public final Arbre rubriqueParam() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
 
 		Token value=null;
+		Token c=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:144:58: ( RUBRIQUE (value= VAR )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:145:3: RUBRIQUE (value= VAR )+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:177:58: ( ( DANS | EN )? RUBRIQUE (value= VAR )+ (c= CONJ (value= VAR )+ )* )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:178:3: ( DANS | EN )? RUBRIQUE (value= VAR )+ (c= CONJ (value= VAR )+ )*
 			{
-			match(input,RUBRIQUE,FOLLOW_RUBRIQUE_in_rubriqueParam577); 
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:146:9: (value= VAR )+
-			int cnt4=0;
-			loop4:
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:178:3: ( DANS | EN )?
+			int alt6=2;
+			int LA6_0 = input.LA(1);
+			if ( (LA6_0==DANS||LA6_0==EN) ) {
+				alt6=1;
+			}
+			switch (alt6) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
+					{
+					if ( input.LA(1)==DANS||input.LA(1)==EN ) {
+						input.consume();
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+					}
+					break;
+
+			}
+
+			match(input,RUBRIQUE,FOLLOW_RUBRIQUE_in_rubriqueParam666); 
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:180:9: (value= VAR )+
+			int cnt7=0;
+			loop7:
 			while (true) {
-				int alt4=2;
-				int LA4_0 = input.LA(1);
-				if ( (LA4_0==VAR) ) {
-					alt4=1;
+				int alt7=2;
+				int LA7_0 = input.LA(1);
+				if ( (LA7_0==VAR) ) {
+					alt7=1;
 				}
 
-				switch (alt4) {
+				switch (alt7) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:146:9: value= VAR
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:180:9: value= VAR
 					{
-					value=(Token)match(input,VAR,FOLLOW_VAR_in_rubriqueParam585); 
+					value=(Token)match(input,VAR,FOLLOW_VAR_in_rubriqueParam674); 
 					}
 					break;
 
 				default :
-					if ( cnt4 >= 1 ) break loop4;
-					EarlyExitException eee = new EarlyExitException(4, input);
+					if ( cnt7 >= 1 ) break loop7;
+					EarlyExitException eee = new EarlyExitException(7, input);
 					throw eee;
 				}
-				cnt4++;
+				cnt7++;
 			}
 
 
+							lepar_arbre.ajouteFils(new Arbre("", "("));	
 							lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
+						
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:185:3: (c= CONJ (value= VAR )+ )*
+			loop9:
+			while (true) {
+				int alt9=2;
+				int LA9_0 = input.LA(1);
+				if ( (LA9_0==CONJ) ) {
+					int LA9_2 = input.LA(2);
+					if ( (LA9_2==VAR) ) {
+						alt9=1;
+					}
+
+				}
+
+				switch (alt9) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:185:4: c= CONJ (value= VAR )+
+					{
+					c=(Token)match(input,CONJ,FOLLOW_CONJ_in_rubriqueParam687); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:186:9: (value= VAR )+
+					int cnt8=0;
+					loop8:
+					while (true) {
+						int alt8=2;
+						int LA8_0 = input.LA(1);
+						if ( (LA8_0==VAR) ) {
+							alt8=1;
+						}
+
+						switch (alt8) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:186:9: value= VAR
+							{
+							value=(Token)match(input,VAR,FOLLOW_VAR_in_rubriqueParam696); 
+							}
+							break;
+
+						default :
+							if ( cnt8 >= 1 ) break loop8;
+							EarlyExitException eee = new EarlyExitException(8, input);
+							throw eee;
+						}
+						cnt8++;
+					}
+
+
+									String conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+									lepar_arbre.ajouteFils(new Arbre("", conj));	
+									lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
+								
+					}
+					break;
+
+				default :
+					break loop9;
+				}
+			}
+
+
+							lepar_arbre.ajouteFils(new Arbre("", ")"));	
 						
 			}
 
@@ -394,46 +590,108 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "motParam"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:152:1: motParam returns [Arbre lepar_arbre = new Arbre(\"\")] : MOT (value= VAR )+ ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:197:1: motParam returns [Arbre lepar_arbre = new Arbre(\"\")] : MOT (value= VAR )+ (c= CONJ (value= VAR )+ )* ;
 	public final Arbre motParam() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
 
 		Token value=null;
+		Token c=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:152:53: ( MOT (value= VAR )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:153:3: MOT (value= VAR )+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:197:53: ( MOT (value= VAR )+ (c= CONJ (value= VAR )+ )* )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:198:3: MOT (value= VAR )+ (c= CONJ (value= VAR )+ )*
 			{
-			match(input,MOT,FOLLOW_MOT_in_motParam610); 
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:154:9: (value= VAR )+
-			int cnt5=0;
-			loop5:
+			match(input,MOT,FOLLOW_MOT_in_motParam727); 
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:199:9: (value= VAR )+
+			int cnt10=0;
+			loop10:
 			while (true) {
-				int alt5=2;
-				int LA5_0 = input.LA(1);
-				if ( (LA5_0==VAR) ) {
-					alt5=1;
+				int alt10=2;
+				int LA10_0 = input.LA(1);
+				if ( (LA10_0==VAR) ) {
+					alt10=1;
 				}
 
-				switch (alt5) {
+				switch (alt10) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:154:9: value= VAR
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:199:9: value= VAR
 					{
-					value=(Token)match(input,VAR,FOLLOW_VAR_in_motParam618); 
+					value=(Token)match(input,VAR,FOLLOW_VAR_in_motParam735); 
 					}
 					break;
 
 				default :
-					if ( cnt5 >= 1 ) break loop5;
-					EarlyExitException eee = new EarlyExitException(5, input);
+					if ( cnt10 >= 1 ) break loop10;
+					EarlyExitException eee = new EarlyExitException(10, input);
 					throw eee;
 				}
-				cnt5++;
+				cnt10++;
 			}
 
 
+							lepar_arbre.ajouteFils(new Arbre("", "("));	
 							lepar_arbre.ajouteFils(new Arbre("", "tt.mot = '"+value.getText()+"'"));		
+						
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:204:3: (c= CONJ (value= VAR )+ )*
+			loop12:
+			while (true) {
+				int alt12=2;
+				int LA12_0 = input.LA(1);
+				if ( (LA12_0==CONJ) ) {
+					int LA12_2 = input.LA(2);
+					if ( (LA12_2==VAR) ) {
+						alt12=1;
+					}
+
+				}
+
+				switch (alt12) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:204:4: c= CONJ (value= VAR )+
+					{
+					c=(Token)match(input,CONJ,FOLLOW_CONJ_in_motParam748); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:205:9: (value= VAR )+
+					int cnt11=0;
+					loop11:
+					while (true) {
+						int alt11=2;
+						int LA11_0 = input.LA(1);
+						if ( (LA11_0==VAR) ) {
+							alt11=1;
+						}
+
+						switch (alt11) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:205:9: value= VAR
+							{
+							value=(Token)match(input,VAR,FOLLOW_VAR_in_motParam757); 
+							}
+							break;
+
+						default :
+							if ( cnt11 >= 1 ) break loop11;
+							EarlyExitException eee = new EarlyExitException(11, input);
+							throw eee;
+						}
+						cnt11++;
+					}
+
+
+									String conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
+									lepar_arbre.ajouteFils(new Arbre("", conj));	
+									lepar_arbre.ajouteFils(new Arbre("", "tt.mot = '"+value.getText()+"'"));		
+								
+					}
+					break;
+
+				default :
+					break loop12;
+				}
+			}
+
+
+							lepar_arbre.ajouteFils(new Arbre("", ")"));	
 						
 			}
 
@@ -452,7 +710,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "dateParam"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:160:1: dateParam returns [Arbre lepar_arbre = new Arbre(\"\")] : ( DATE | EN ) value= ( VAR_DATE | ANNEE ) ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:217:1: dateParam returns [Arbre lepar_arbre = new Arbre(\"\")] : ( DATE )? ( EN | STR_MOIS )? value= ( VAR_DATE | DIGIT4 | MONTH ) ;
 	public final Arbre dateParam() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
@@ -460,19 +718,50 @@ public class tal_sqlParser extends Parser {
 		Token value=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:160:54: ( ( DATE | EN ) value= ( VAR_DATE | ANNEE ) )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:161:2: ( DATE | EN ) value= ( VAR_DATE | ANNEE )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:217:54: ( ( DATE )? ( EN | STR_MOIS )? value= ( VAR_DATE | DIGIT4 | MONTH ) )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:218:2: ( DATE )? ( EN | STR_MOIS )? value= ( VAR_DATE | DIGIT4 | MONTH )
 			{
-			if ( (input.LA(1) >= DATE && input.LA(1) <= EN) ) {
-				input.consume();
-				state.errorRecovery=false;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:218:2: ( DATE )?
+			int alt13=2;
+			int LA13_0 = input.LA(1);
+			if ( (LA13_0==DATE) ) {
+				alt13=1;
 			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				throw mse;
+			switch (alt13) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:218:2: DATE
+					{
+					match(input,DATE,FOLLOW_DATE_in_dateParam788); 
+					}
+					break;
+
 			}
+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:219:2: ( EN | STR_MOIS )?
+			int alt14=2;
+			int LA14_0 = input.LA(1);
+			if ( (LA14_0==EN||LA14_0==STR_MOIS) ) {
+				alt14=1;
+			}
+			switch (alt14) {
+				case 1 :
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
+					{
+					if ( input.LA(1)==EN||input.LA(1)==STR_MOIS ) {
+						input.consume();
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+					}
+					break;
+
+			}
+
 			value=input.LT(1);
-			if ( input.LA(1)==ANNEE||input.LA(1)==VAR_DATE ) {
+			if ( input.LA(1)==DIGIT4||input.LA(1)==MONTH||input.LA(1)==VAR_DATE ) {
 				input.consume();
 				state.errorRecovery=false;
 			}
@@ -481,22 +770,50 @@ public class tal_sqlParser extends Parser {
 				throw mse;
 			}
 
-					String[] dateStr=value.getText().trim().replace(" ","/").split("/");
+					String[] dateStr=value.getText().trim().replace(" ","/")
+						.replace("janvier","01")
+						.replace("fevrier","02")
+						.replace("mars","03")
+						.replace("avril","04")
+						.replace("mai","05")
+						.replace("juin","06")
+						.replace("juillet","07")
+						.replace("aout","08")
+						.replace("septembre","09")
+						.replace("octobre","10")
+						.replace("novembre","11")
+						.replace("decembre","12")
+						.split("/");
 					int n=dateStr.length;
 					String annee;
 					String jour;
 					String mois;
 					switch(n){
 						case 1:
-							annee=dateStr[0];
-							lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+							if (dateStr[0].length()==4){
+								annee=dateStr[0];
+								lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+							}
+							else{
+								mois=dateStr[0];
+								lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+							}
 							break;
 						case 2:
-							annee=dateStr[1];
-							mois=dateStr[0];
-							lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
-							lepar_arbre.ajouteFils(new Arbre("","AND"));
-							lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+							if (dateStr[1].length()==4){
+								annee=dateStr[1];
+								mois=dateStr[0];
+								lepar_arbre.ajouteFils(new Arbre("", "annee = '"+annee+"'"));
+								lepar_arbre.ajouteFils(new Arbre("","AND"));
+								lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+							}
+							else{
+								mois=dateStr[1];
+								jour=dateStr[0];
+								lepar_arbre.ajouteFils(new Arbre("", "mois = '"+mois+"'"));
+								lepar_arbre.ajouteFils(new Arbre("","AND"));
+								lepar_arbre.ajouteFils(new Arbre("", "jour = '"+jour+"'"));
+							}
 							break;
 						default:
 							annee=dateStr[2];
@@ -530,7 +847,7 @@ public class tal_sqlParser extends Parser {
 
 
 	// $ANTLR start "motEnTitreParam"
-	// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:196:1: motEnTitreParam returns [Arbre lepar_arbre = new Arbre(\"\")] : ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) ) ;
+	// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:283:1: motEnTitreParam returns [Arbre lepar_arbre = new Arbre(\"\")] : ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) ) ;
 	public final Arbre motEnTitreParam() throws RecognitionException {
 		Arbre lepar_arbre =  new Arbre("");
 
@@ -538,83 +855,83 @@ public class tal_sqlParser extends Parser {
 		Token value=null;
 
 		try {
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:196:60: ( ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) ) )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:197:3: ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:283:60: ( ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) ) )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:284:3: ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) )
 			{
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:197:3: ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) )
-			int alt10=2;
-			int LA10_0 = input.LA(1);
-			if ( (LA10_0==TITRE) ) {
-				alt10=1;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:284:3: ( ( TITRE ( MOT )+ (value= VAR )+ ) | ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE ) )
+			int alt19=2;
+			int LA19_0 = input.LA(1);
+			if ( (LA19_0==TITRE) ) {
+				alt19=1;
 			}
-			else if ( (LA10_0==MOT) ) {
-				alt10=2;
+			else if ( (LA19_0==MOT) ) {
+				alt19=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 10, 0, input);
+					new NoViableAltException("", 19, 0, input);
 				throw nvae;
 			}
 
-			switch (alt10) {
+			switch (alt19) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:197:4: ( TITRE ( MOT )+ (value= VAR )+ )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:284:4: ( TITRE ( MOT )+ (value= VAR )+ )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:197:4: ( TITRE ( MOT )+ (value= VAR )+ )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:197:5: TITRE ( MOT )+ (value= VAR )+
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:284:4: ( TITRE ( MOT )+ (value= VAR )+ )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:284:5: TITRE ( MOT )+ (value= VAR )+
 					{
-					match(input,TITRE,FOLLOW_TITRE_in_motEnTitreParam670); 
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:198:3: ( MOT )+
-					int cnt6=0;
-					loop6:
+					match(input,TITRE,FOLLOW_TITRE_in_motEnTitreParam827); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:285:3: ( MOT )+
+					int cnt15=0;
+					loop15:
 					while (true) {
-						int alt6=2;
-						int LA6_0 = input.LA(1);
-						if ( (LA6_0==MOT) ) {
-							alt6=1;
+						int alt15=2;
+						int LA15_0 = input.LA(1);
+						if ( (LA15_0==MOT) ) {
+							alt15=1;
 						}
 
-						switch (alt6) {
+						switch (alt15) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:198:3: MOT
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:285:3: MOT
 							{
-							match(input,MOT,FOLLOW_MOT_in_motEnTitreParam674); 
+							match(input,MOT,FOLLOW_MOT_in_motEnTitreParam831); 
 							}
 							break;
 
 						default :
-							if ( cnt6 >= 1 ) break loop6;
-							EarlyExitException eee = new EarlyExitException(6, input);
+							if ( cnt15 >= 1 ) break loop15;
+							EarlyExitException eee = new EarlyExitException(15, input);
 							throw eee;
 						}
-						cnt6++;
+						cnt15++;
 					}
 
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:199:9: (value= VAR )+
-					int cnt7=0;
-					loop7:
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:286:9: (value= VAR )+
+					int cnt16=0;
+					loop16:
 					while (true) {
-						int alt7=2;
-						int LA7_0 = input.LA(1);
-						if ( (LA7_0==VAR) ) {
-							alt7=1;
+						int alt16=2;
+						int LA16_0 = input.LA(1);
+						if ( (LA16_0==VAR) ) {
+							alt16=1;
 						}
 
-						switch (alt7) {
+						switch (alt16) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:199:9: value= VAR
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:286:9: value= VAR
 							{
-							value=(Token)match(input,VAR,FOLLOW_VAR_in_motEnTitreParam683); 
+							value=(Token)match(input,VAR,FOLLOW_VAR_in_motEnTitreParam840); 
 							}
 							break;
 
 						default :
-							if ( cnt7 >= 1 ) break loop7;
-							EarlyExitException eee = new EarlyExitException(7, input);
+							if ( cnt16 >= 1 ) break loop16;
+							EarlyExitException eee = new EarlyExitException(16, input);
 							throw eee;
 						}
-						cnt7++;
+						cnt16++;
 					}
 
 					}
@@ -622,61 +939,61 @@ public class tal_sqlParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:201:3: ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:288:3: ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:201:3: ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:201:4: ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:288:3: ( ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:288:4: ( MOT )+ (value= VAR )+ ( EN | DANS ) TITRE
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:201:4: ( MOT )+
-					int cnt8=0;
-					loop8:
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:288:4: ( MOT )+
+					int cnt17=0;
+					loop17:
 					while (true) {
-						int alt8=2;
-						int LA8_0 = input.LA(1);
-						if ( (LA8_0==MOT) ) {
-							alt8=1;
+						int alt17=2;
+						int LA17_0 = input.LA(1);
+						if ( (LA17_0==MOT) ) {
+							alt17=1;
 						}
 
-						switch (alt8) {
+						switch (alt17) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:201:4: MOT
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:288:4: MOT
 							{
-							match(input,MOT,FOLLOW_MOT_in_motEnTitreParam694); 
+							match(input,MOT,FOLLOW_MOT_in_motEnTitreParam851); 
 							}
 							break;
 
 						default :
-							if ( cnt8 >= 1 ) break loop8;
-							EarlyExitException eee = new EarlyExitException(8, input);
+							if ( cnt17 >= 1 ) break loop17;
+							EarlyExitException eee = new EarlyExitException(17, input);
 							throw eee;
 						}
-						cnt8++;
+						cnt17++;
 					}
 
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:202:8: (value= VAR )+
-					int cnt9=0;
-					loop9:
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:289:8: (value= VAR )+
+					int cnt18=0;
+					loop18:
 					while (true) {
-						int alt9=2;
-						int LA9_0 = input.LA(1);
-						if ( (LA9_0==VAR) ) {
-							alt9=1;
+						int alt18=2;
+						int LA18_0 = input.LA(1);
+						if ( (LA18_0==VAR) ) {
+							alt18=1;
 						}
 
-						switch (alt9) {
+						switch (alt18) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:202:8: value= VAR
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:289:8: value= VAR
 							{
-							value=(Token)match(input,VAR,FOLLOW_VAR_in_motEnTitreParam701); 
+							value=(Token)match(input,VAR,FOLLOW_VAR_in_motEnTitreParam858); 
 							}
 							break;
 
 						default :
-							if ( cnt9 >= 1 ) break loop9;
-							EarlyExitException eee = new EarlyExitException(9, input);
+							if ( cnt18 >= 1 ) break loop18;
+							EarlyExitException eee = new EarlyExitException(18, input);
 							throw eee;
 						}
-						cnt9++;
+						cnt18++;
 					}
 
 					if ( input.LA(1)==DANS||input.LA(1)==EN ) {
@@ -687,7 +1004,7 @@ public class tal_sqlParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					match(input,TITRE,FOLLOW_TITRE_in_motEnTitreParam714); 
+					match(input,TITRE,FOLLOW_TITRE_in_motEnTitreParam871); 
 					}
 
 					}
@@ -718,87 +1035,101 @@ public class tal_sqlParser extends Parser {
 	// Delegated rules
 
 
-	protected DFA1 dfa1 = new DFA1(this);
-	static final String DFA1_eotS =
-		"\10\uffff";
-	static final String DFA1_eofS =
-		"\10\uffff";
-	static final String DFA1_minS =
-		"\1\11\1\uffff\1\15\2\uffff\1\10\1\4\1\uffff";
-	static final String DFA1_maxS =
-		"\1\22\1\uffff\1\23\2\uffff\1\23\1\24\1\uffff";
-	static final String DFA1_acceptS =
-		"\1\uffff\1\1\1\uffff\1\2\1\4\2\uffff\1\3";
-	static final String DFA1_specialS =
-		"\10\uffff}>";
-	static final String[] DFA1_transitionS = {
-			"\2\3\2\uffff\1\2\2\uffff\1\4\1\uffff\1\1",
+	protected DFA4 dfa4 = new DFA4(this);
+	static final String DFA4_eotS =
+		"\13\uffff";
+	static final String DFA4_eofS =
+		"\13\uffff";
+	static final String DFA4_minS =
+		"\1\10\1\uffff\1\20\1\uffff\1\14\2\uffff\1\7\1\14\1\uffff\1\24";
+	static final String DFA4_maxS =
+		"\1\31\1\uffff\1\30\1\uffff\1\31\2\uffff\2\31\1\uffff\1\27";
+	static final String DFA4_acceptS =
+		"\1\uffff\1\1\1\uffff\1\2\1\uffff\1\4\1\5\2\uffff\1\3\1\uffff";
+	static final String DFA4_specialS =
+		"\13\uffff}>";
+	static final String[] DFA4_transitionS = {
+			"\1\5\1\3\2\uffff\1\3\1\4\1\uffff\1\3\1\2\1\uffff\1\6\1\uffff\1\5\1\uffff"+
+			"\1\3\1\1\1\uffff\1\3",
 			"",
-			"\1\1\5\uffff\1\5",
+			"\1\1\7\uffff\1\7",
+			"",
+			"\1\3\2\uffff\1\3\4\uffff\1\5\4\uffff\1\3",
 			"",
 			"",
-			"\1\1\1\7\1\6\2\uffff\1\7\1\uffff\2\7\1\uffff\1\7\1\5",
-			"\1\7\15\uffff\1\1\1\uffff\1\7",
-			""
+			"\1\11\1\12\1\11\2\uffff\1\11\1\10\1\uffff\2\11\1\uffff\3\11\1\uffff"+
+			"\2\11\1\7\1\11",
+			"\1\11\2\uffff\1\11\4\uffff\1\11\2\uffff\1\1\1\uffff\1\11",
+			"",
+			"\1\11\2\uffff\1\1"
 	};
 
-	static final short[] DFA1_eot = DFA.unpackEncodedString(DFA1_eotS);
-	static final short[] DFA1_eof = DFA.unpackEncodedString(DFA1_eofS);
-	static final char[] DFA1_min = DFA.unpackEncodedStringToUnsignedChars(DFA1_minS);
-	static final char[] DFA1_max = DFA.unpackEncodedStringToUnsignedChars(DFA1_maxS);
-	static final short[] DFA1_accept = DFA.unpackEncodedString(DFA1_acceptS);
-	static final short[] DFA1_special = DFA.unpackEncodedString(DFA1_specialS);
-	static final short[][] DFA1_transition;
+	static final short[] DFA4_eot = DFA.unpackEncodedString(DFA4_eotS);
+	static final short[] DFA4_eof = DFA.unpackEncodedString(DFA4_eofS);
+	static final char[] DFA4_min = DFA.unpackEncodedStringToUnsignedChars(DFA4_minS);
+	static final char[] DFA4_max = DFA.unpackEncodedStringToUnsignedChars(DFA4_maxS);
+	static final short[] DFA4_accept = DFA.unpackEncodedString(DFA4_acceptS);
+	static final short[] DFA4_special = DFA.unpackEncodedString(DFA4_specialS);
+	static final short[][] DFA4_transition;
 
 	static {
-		int numStates = DFA1_transitionS.length;
-		DFA1_transition = new short[numStates][];
+		int numStates = DFA4_transitionS.length;
+		DFA4_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA1_transition[i] = DFA.unpackEncodedString(DFA1_transitionS[i]);
+			DFA4_transition[i] = DFA.unpackEncodedString(DFA4_transitionS[i]);
 		}
 	}
 
-	protected class DFA1 extends DFA {
+	protected class DFA4 extends DFA {
 
-		public DFA1(BaseRecognizer recognizer) {
+		public DFA4(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 1;
-			this.eot = DFA1_eot;
-			this.eof = DFA1_eof;
-			this.min = DFA1_min;
-			this.max = DFA1_max;
-			this.accept = DFA1_accept;
-			this.special = DFA1_special;
-			this.transition = DFA1_transition;
+			this.decisionNumber = 4;
+			this.eot = DFA4_eot;
+			this.eof = DFA4_eof;
+			this.min = DFA4_min;
+			this.max = DFA4_max;
+			this.accept = DFA4_accept;
+			this.special = DFA4_special;
+			this.transition = DFA4_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "113:4: (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam )";
+			return "150:3: (par= motEnTitreParam |par= dateParam |par= motParam |par= rubriqueParam |par= numeroParam )";
 		}
 	}
 
-	public static final BitSet FOLLOW_requete_in_listerequetes380 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_POINT_in_listerequetes382 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SELECT_in_requete420 = new BitSet(new long[]{0x0000000000000060L});
-	public static final BitSet FOLLOW_set_in_requete431 = new BitSet(new long[]{0x0000000000052600L});
-	public static final BitSet FOLLOW_params_in_requete453 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_motEnTitreParam_in_params486 = new BitSet(new long[]{0x0000000000052602L});
-	public static final BitSet FOLLOW_dateParam_in_params495 = new BitSet(new long[]{0x0000000000052602L});
-	public static final BitSet FOLLOW_motParam_in_params504 = new BitSet(new long[]{0x0000000000052602L});
-	public static final BitSet FOLLOW_rubriqueParam_in_params511 = new BitSet(new long[]{0x0000000000052602L});
-	public static final BitSet FOLLOW_NUMERO_in_numeroParam544 = new BitSet(new long[]{0x0000000000080000L});
-	public static final BitSet FOLLOW_VAR_in_numeroParam552 = new BitSet(new long[]{0x0000000000080002L});
-	public static final BitSet FOLLOW_RUBRIQUE_in_rubriqueParam577 = new BitSet(new long[]{0x0000000000080000L});
-	public static final BitSet FOLLOW_VAR_in_rubriqueParam585 = new BitSet(new long[]{0x0000000000080002L});
-	public static final BitSet FOLLOW_MOT_in_motParam610 = new BitSet(new long[]{0x0000000000080000L});
-	public static final BitSet FOLLOW_VAR_in_motParam618 = new BitSet(new long[]{0x0000000000080002L});
-	public static final BitSet FOLLOW_set_in_dateParam640 = new BitSet(new long[]{0x0000000000100010L});
-	public static final BitSet FOLLOW_set_in_dateParam649 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TITRE_in_motEnTitreParam670 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_MOT_in_motEnTitreParam674 = new BitSet(new long[]{0x0000000000082000L});
-	public static final BitSet FOLLOW_VAR_in_motEnTitreParam683 = new BitSet(new long[]{0x0000000000080002L});
-	public static final BitSet FOLLOW_MOT_in_motEnTitreParam694 = new BitSet(new long[]{0x0000000000082000L});
-	public static final BitSet FOLLOW_VAR_in_motEnTitreParam701 = new BitSet(new long[]{0x0000000000080500L});
-	public static final BitSet FOLLOW_set_in_motEnTitreParam706 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_TITRE_in_motEnTitreParam714 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_requete_in_listerequetes395 = new BitSet(new long[]{0x0000000000080000L});
+	public static final BitSet FOLLOW_PONC_in_listerequetes397 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SELECT_in_requete436 = new BitSet(new long[]{0x0000000000220070L});
+	public static final BitSet FOLLOW_set_in_requete449 = new BitSet(new long[]{0x0000000002D5B380L});
+	public static final BitSet FOLLOW_AUTEUR_in_requete470 = new BitSet(new long[]{0x0000000002D5B380L});
+	public static final BitSet FOLLOW_NOMBRE_in_requete482 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_ARTICLE_in_requete486 = new BitSet(new long[]{0x0000000002D5B380L});
+	public static final BitSet FOLLOW_params_in_requete509 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_CONJ_in_params541 = new BitSet(new long[]{0x0000000002D5B300L});
+	public static final BitSet FOLLOW_motEnTitreParam_in_params557 = new BitSet(new long[]{0x0000000002D5B382L});
+	public static final BitSet FOLLOW_dateParam_in_params566 = new BitSet(new long[]{0x0000000002D5B382L});
+	public static final BitSet FOLLOW_motParam_in_params575 = new BitSet(new long[]{0x0000000002D5B382L});
+	public static final BitSet FOLLOW_rubriqueParam_in_params582 = new BitSet(new long[]{0x0000000002D5B382L});
+	public static final BitSet FOLLOW_numeroParam_in_params589 = new BitSet(new long[]{0x0000000002D5B382L});
+	public static final BitSet FOLLOW_NUMERO_in_numeroParam619 = new BitSet(new long[]{0x0000000000005800L});
+	public static final BitSet FOLLOW_set_in_numeroParam627 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_RUBRIQUE_in_rubriqueParam666 = new BitSet(new long[]{0x0000000001000000L});
+	public static final BitSet FOLLOW_VAR_in_rubriqueParam674 = new BitSet(new long[]{0x0000000001000082L});
+	public static final BitSet FOLLOW_CONJ_in_rubriqueParam687 = new BitSet(new long[]{0x0000000001000000L});
+	public static final BitSet FOLLOW_VAR_in_rubriqueParam696 = new BitSet(new long[]{0x0000000001000082L});
+	public static final BitSet FOLLOW_MOT_in_motParam727 = new BitSet(new long[]{0x0000000001000000L});
+	public static final BitSet FOLLOW_VAR_in_motParam735 = new BitSet(new long[]{0x0000000001000082L});
+	public static final BitSet FOLLOW_CONJ_in_motParam748 = new BitSet(new long[]{0x0000000001000000L});
+	public static final BitSet FOLLOW_VAR_in_motParam757 = new BitSet(new long[]{0x0000000001000082L});
+	public static final BitSet FOLLOW_DATE_in_dateParam788 = new BitSet(new long[]{0x000000000240B000L});
+	public static final BitSet FOLLOW_set_in_dateParam802 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TITRE_in_motEnTitreParam827 = new BitSet(new long[]{0x0000000000010000L});
+	public static final BitSet FOLLOW_MOT_in_motEnTitreParam831 = new BitSet(new long[]{0x0000000001010000L});
+	public static final BitSet FOLLOW_VAR_in_motEnTitreParam840 = new BitSet(new long[]{0x0000000001000002L});
+	public static final BitSet FOLLOW_MOT_in_motEnTitreParam851 = new BitSet(new long[]{0x0000000001010000L});
+	public static final BitSet FOLLOW_VAR_in_motEnTitreParam858 = new BitSet(new long[]{0x0000000001002100L});
+	public static final BitSet FOLLOW_set_in_motEnTitreParam863 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_TITRE_in_motEnTitreParam871 = new BitSet(new long[]{0x0000000000000002L});
 }

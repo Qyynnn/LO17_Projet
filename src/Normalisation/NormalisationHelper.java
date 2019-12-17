@@ -65,13 +65,12 @@ public class NormalisationHelper {
     }
 
     public String replaceFromDic(String s,DictionnaryName dicStr){
-        s=s.trim();
         String result="";
         ArrayList<String> strList=new ArrayList<>();
         char ponc=s.charAt(s.length()-1);
         try {
             try {
-                StringTokenizer tokenizer=new StringTokenizer(s.substring(0,s.length()-1),"\"' ");
+                StringTokenizer tokenizer=new StringTokenizer(s.substring(0,s.length()-1),"\"'<>«» ");
                 if (dicStr.equals(DictionnaryName.lexique)){
                     while (tokenizer.hasMoreTokens()) {
                         strList.add(_lexique.replaceTokenByLemme(tokenizer.nextToken()));

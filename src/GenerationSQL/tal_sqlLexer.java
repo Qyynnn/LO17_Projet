@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g 2019-12-16 19:31:20
+// $ANTLR 3.5.1 C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g 2019-12-17 01:31:20
 package GenerationSQL;
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -8,24 +8,29 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class tal_sqlLexer extends Lexer {
 	public static final int EOF=-1;
-	public static final int ANNEE=4;
-	public static final int ARTICLE=5;
+	public static final int ARTICLE=4;
+	public static final int AUTEUR=5;
 	public static final int BULLETIN=6;
 	public static final int CONJ=7;
 	public static final int DANS=8;
 	public static final int DATE=9;
-	public static final int EN=10;
-	public static final int JOUR=11;
-	public static final int MOIS=12;
-	public static final int MOT=13;
-	public static final int NUMERO=14;
-	public static final int POINT=15;
-	public static final int RUBRIQUE=16;
-	public static final int SELECT=17;
-	public static final int TITRE=18;
-	public static final int VAR=19;
-	public static final int VAR_DATE=20;
-	public static final int WS=21;
+	public static final int DIGIT=10;
+	public static final int DIGIT2=11;
+	public static final int DIGIT4=12;
+	public static final int EN=13;
+	public static final int INT=14;
+	public static final int MONTH=15;
+	public static final int MOT=16;
+	public static final int NOMBRE=17;
+	public static final int NUMERO=18;
+	public static final int PONC=19;
+	public static final int RUBRIQUE=20;
+	public static final int SELECT=21;
+	public static final int STR_MOIS=22;
+	public static final int TITRE=23;
+	public static final int VAR=24;
+	public static final int VAR_DATE=25;
+	public static final int WS=26;
 
 	// delegates
 	// delegators
@@ -40,15 +45,15 @@ public class tal_sqlLexer extends Lexer {
 	public tal_sqlLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "/Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g"; }
 
 	// $ANTLR start "SELECT"
 	public final void mSELECT() throws RecognitionException {
 		try {
 			int _type = SELECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:3:8: ( 'vouloir' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:3:10: 'vouloir'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:3:8: ( 'vouloir' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:3:10: 'vouloir'
 			{
 			match("vouloir"); 
 
@@ -68,8 +73,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = ARTICLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:6:9: ( 'article' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:6:11: 'article'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:6:9: ( 'article' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:6:11: 'article'
 			{
 			match("article"); 
 
@@ -89,8 +94,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = BULLETIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:9:10: ( 'bulletin' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:9:12: 'bulletin'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:9:10: ( 'bulletin' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:9:12: 'bulletin'
 			{
 			match("bulletin"); 
 
@@ -105,13 +110,34 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "BULLETIN"
 
+	// $ANTLR start "AUTEUR"
+	public final void mAUTEUR() throws RecognitionException {
+		try {
+			int _type = AUTEUR;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:12:8: ( 'auteur' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:12:10: 'auteur'
+			{
+			match("auteur"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "AUTEUR"
+
 	// $ANTLR start "TITRE"
 	public final void mTITRE() throws RecognitionException {
 		try {
 			int _type = TITRE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:13:8: ( 'titre' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:13:10: 'titre'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:15:7: ( 'titre' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:15:9: 'titre'
 			{
 			match("titre"); 
 
@@ -131,8 +157,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = RUBRIQUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:16:10: ( 'rubrique' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:16:12: 'rubrique'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:18:10: ( 'rubrique' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:18:12: 'rubrique'
 			{
 			match("rubrique"); 
 
@@ -147,13 +173,55 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "RUBRIQUE"
 
+	// $ANTLR start "NOMBRE"
+	public final void mNOMBRE() throws RecognitionException {
+		try {
+			int _type = NOMBRE;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:21:8: ( 'nombre' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:21:9: 'nombre'
+			{
+			match("nombre"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "NOMBRE"
+
+	// $ANTLR start "STR_MOIS"
+	public final void mSTR_MOIS() throws RecognitionException {
+		try {
+			int _type = STR_MOIS;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:24:10: ( 'mois' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:24:12: 'mois'
+			{
+			match("mois"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "STR_MOIS"
+
 	// $ANTLR start "MOT"
 	public final void mMOT() throws RecognitionException {
 		try {
 			int _type = MOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:19:5: ( 'mot' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:19:7: 'mot'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:28:5: ( 'mot' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:28:7: 'mot'
 			{
 			match("mot"); 
 
@@ -173,8 +241,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:22:6: ( 'date' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:22:8: 'date'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:31:6: ( 'date' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:31:8: 'date'
 			{
 			match("date"); 
 
@@ -194,10 +262,10 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = NUMERO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:25:8: ( 'numero' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:25:10: 'numero'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:34:8: ( 'num��ro' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:34:9: 'num��ro'
 			{
-			match("numero"); 
+			match("num��ro"); 
 
 			}
 
@@ -210,29 +278,29 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "NUMERO"
 
-	// $ANTLR start "MOIS"
-	public final void mMOIS() throws RecognitionException {
+	// $ANTLR start "MONTH"
+	public final void mMONTH() throws RecognitionException {
 		try {
-			int _type = MOIS;
+			int _type = MONTH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:6: ( 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre' | ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' ) )
-			int alt3=13;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:7: ( 'janvier' | 'fevrier' | 'mars' | 'avril' | 'mai' | 'juin' | 'juillet' | 'aout' | 'septembre' | 'octobre' | 'novembre' | 'decembre' )
+			int alt1=12;
 			switch ( input.LA(1) ) {
 			case 'j':
 				{
-				int LA3_1 = input.LA(2);
-				if ( (LA3_1=='a') ) {
-					alt3=1;
+				int LA1_1 = input.LA(2);
+				if ( (LA1_1=='a') ) {
+					alt1=1;
 				}
-				else if ( (LA3_1=='u') ) {
-					int LA3_11 = input.LA(3);
-					if ( (LA3_11=='i') ) {
-						int LA3_15 = input.LA(4);
-						if ( (LA3_15=='n') ) {
-							alt3=6;
+				else if ( (LA1_1=='u') ) {
+					int LA1_10 = input.LA(3);
+					if ( (LA1_10=='i') ) {
+						int LA1_14 = input.LA(4);
+						if ( (LA1_14=='n') ) {
+							alt1=6;
 						}
-						else if ( (LA3_15=='l') ) {
-							alt3=7;
+						else if ( (LA1_14=='l') ) {
+							alt1=7;
 						}
 
 						else {
@@ -242,7 +310,7 @@ public class tal_sqlLexer extends Lexer {
 									input.consume();
 								}
 								NoViableAltException nvae =
-									new NoViableAltException("", 3, 15, input);
+									new NoViableAltException("", 1, 14, input);
 								throw nvae;
 							} finally {
 								input.rewind(nvaeMark);
@@ -258,7 +326,7 @@ public class tal_sqlLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 3, 11, input);
+								new NoViableAltException("", 1, 10, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -272,7 +340,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 3, 1, input);
+							new NoViableAltException("", 1, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -283,19 +351,19 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 'f':
 				{
-				alt3=2;
+				alt1=2;
 				}
 				break;
 			case 'm':
 				{
-				int LA3_3 = input.LA(2);
-				if ( (LA3_3=='a') ) {
-					int LA3_12 = input.LA(3);
-					if ( (LA3_12=='r') ) {
-						alt3=3;
+				int LA1_3 = input.LA(2);
+				if ( (LA1_3=='a') ) {
+					int LA1_11 = input.LA(3);
+					if ( (LA1_11=='r') ) {
+						alt1=3;
 					}
-					else if ( (LA3_12=='i') ) {
-						alt3=5;
+					else if ( (LA1_11=='i') ) {
+						alt1=5;
 					}
 
 					else {
@@ -305,7 +373,7 @@ public class tal_sqlLexer extends Lexer {
 								input.consume();
 							}
 							NoViableAltException nvae =
-								new NoViableAltException("", 3, 12, input);
+								new NoViableAltException("", 1, 11, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -319,7 +387,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 3, 3, input);
+							new NoViableAltException("", 1, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -330,12 +398,12 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 'a':
 				{
-				int LA3_4 = input.LA(2);
-				if ( (LA3_4=='v') ) {
-					alt3=4;
+				int LA1_4 = input.LA(2);
+				if ( (LA1_4=='v') ) {
+					alt1=4;
 				}
-				else if ( (LA3_4=='o') ) {
-					alt3=8;
+				else if ( (LA1_4=='o') ) {
+					alt1=8;
 				}
 
 				else {
@@ -343,7 +411,7 @@ public class tal_sqlLexer extends Lexer {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 3, 4, input);
+							new NoViableAltException("", 1, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -354,226 +422,114 @@ public class tal_sqlLexer extends Lexer {
 				break;
 			case 's':
 				{
-				alt3=9;
+				alt1=9;
 				}
 				break;
 			case 'o':
 				{
-				alt3=10;
+				alt1=10;
 				}
 				break;
 			case 'n':
 				{
-				alt3=11;
+				alt1=11;
 				}
 				break;
 			case 'd':
 				{
-				alt3=12;
-				}
-				break;
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-				{
-				alt3=13;
+				alt1=12;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 3, 0, input);
+					new NoViableAltException("", 1, 0, input);
 				throw nvae;
 			}
-			switch (alt3) {
+			switch (alt1) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:8: 'janvier'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:9: 'janvier'
 					{
 					match("janvier"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:20: 'fevrier'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:21: 'fevrier'
 					{
 					match("fevrier"); 
 
 					}
 					break;
 				case 3 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:32: 'mars'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:32: 'mars'
 					{
 					match("mars"); 
 
 					}
 					break;
 				case 4 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:41: 'avril'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:41: 'avril'
 					{
 					match("avril"); 
 
 					}
 					break;
 				case 5 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:51: 'mai'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:51: 'mai'
 					{
 					match("mai"); 
 
 					}
 					break;
 				case 6 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:59: 'juin'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:59: 'juin'
 					{
 					match("juin"); 
 
 					}
 					break;
 				case 7 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:68: 'juillet'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:68: 'juillet'
 					{
 					match("juillet"); 
 
 					}
 					break;
 				case 8 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:80: 'aout'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:80: 'aout'
 					{
 					match("aout"); 
 
 					}
 					break;
 				case 9 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:89: 'septembre'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:89: 'septembre'
 					{
 					match("septembre"); 
 
 					}
 					break;
 				case 10 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:103: 'octobre'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:103: 'octobre'
 					{
 					match("octobre"); 
 
 					}
 					break;
 				case 11 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:115: 'novembre'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:115: 'novembre'
 					{
 					match("novembre"); 
 
 					}
 					break;
 				case 12 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:27:128: 'decembre'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:38:128: 'decembre'
 					{
 					match("decembre"); 
 
 					}
 					break;
-				case 13 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:2: ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' )
-					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:2: ( ( ( '0' )? ( '1' .. '9' ) ) | '10' | '11' | '12' )
-					int alt2=4;
-					int LA2_0 = input.LA(1);
-					if ( (LA2_0=='0'||(LA2_0 >= '2' && LA2_0 <= '9')) ) {
-						alt2=1;
-					}
-					else if ( (LA2_0=='1') ) {
-						switch ( input.LA(2) ) {
-						case '0':
-							{
-							alt2=2;
-							}
-							break;
-						case '1':
-							{
-							alt2=3;
-							}
-							break;
-						case '2':
-							{
-							alt2=4;
-							}
-							break;
-						default:
-							alt2=1;
-						}
-					}
-
-					else {
-						NoViableAltException nvae =
-							new NoViableAltException("", 2, 0, input);
-						throw nvae;
-					}
-
-					switch (alt2) {
-						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:2: ( ( '0' )? ( '1' .. '9' ) )
-							{
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:2: ( ( '0' )? ( '1' .. '9' ) )
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:3: ( '0' )? ( '1' .. '9' )
-							{
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:3: ( '0' )?
-							int alt1=2;
-							int LA1_0 = input.LA(1);
-							if ( (LA1_0=='0') ) {
-								alt1=1;
-							}
-							switch (alt1) {
-								case 1 :
-									// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:3: '0'
-									{
-									match('0'); 
-									}
-									break;
-
-							}
-
-							if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
-								input.consume();
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								recover(mse);
-								throw mse;
-							}
-							}
-
-							}
-							break;
-						case 2 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:19: '10'
-							{
-							match("10"); 
-
-							}
-							break;
-						case 3 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:24: '11'
-							{
-							match("11"); 
-
-							}
-							break;
-						case 4 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:28:29: '12'
-							{
-							match("12"); 
-
-							}
-							break;
-
-					}
-
-					}
-					break;
 
 			}
 			state.type = _type;
@@ -583,48 +539,24 @@ public class tal_sqlLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "MOIS"
+	// $ANTLR end "MONTH"
 
-	// $ANTLR start "ANNEE"
-	public final void mANNEE() throws RecognitionException {
+	// $ANTLR start "DIGIT4"
+	public final void mDIGIT4() throws RecognitionException {
 		try {
-			int _type = ANNEE;
+			int _type = DIGIT4;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:31:7: ( ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:31:9: ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' ) ( '0' .. '9' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:42:8: ( DIGIT DIGIT DIGIT DIGIT )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:42:10: DIGIT DIGIT DIGIT DIGIT
 			{
-			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-				input.consume();
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				recover(mse);
-				throw mse;
-			}
-			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-				input.consume();
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				recover(mse);
-				throw mse;
-			}
-			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-				input.consume();
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				recover(mse);
-				throw mse;
-			}
-			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
-				input.consume();
-			}
-			else {
-				MismatchedSetException mse = new MismatchedSetException(null,input);
-				recover(mse);
-				throw mse;
-			}
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
+
+			mDIGIT(); 
+
 			}
 
 			state.type = _type;
@@ -634,75 +566,53 @@ public class tal_sqlLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "ANNEE"
+	// $ANTLR end "DIGIT4"
 
-	// $ANTLR start "JOUR"
-	public final void mJOUR() throws RecognitionException {
+	// $ANTLR start "DIGIT2"
+	public final void mDIGIT2() throws RecognitionException {
 		try {
-			int _type = JOUR;
+			int _type = DIGIT2;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:6: ( ( ( '0' .. '2' )? ( '0' .. '9' ) ) | '30' | '31' )
-			int alt5=3;
-			int LA5_0 = input.LA(1);
-			if ( ((LA5_0 >= '0' && LA5_0 <= '2')||(LA5_0 >= '4' && LA5_0 <= '9')) ) {
-				alt5=1;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:45:8: ( DIGIT DIGIT )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:45:10: DIGIT DIGIT
+			{
+			mDIGIT(); 
+
+			mDIGIT(); 
+
 			}
-			else if ( (LA5_0=='3') ) {
-				switch ( input.LA(2) ) {
-				case '0':
-					{
-					alt5=2;
-					}
-					break;
-				case '1':
-					{
-					alt5=3;
-					}
-					break;
-				default:
-					alt5=1;
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "DIGIT2"
+
+	// $ANTLR start "INT"
+	public final void mINT() throws RecognitionException {
+		try {
+			int _type = INT;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:48:5: ( ( DIGIT )+ )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:48:7: ( DIGIT )+
+			{
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:48:7: ( DIGIT )+
+			int cnt2=0;
+			loop2:
+			while (true) {
+				int alt2=2;
+				int LA2_0 = input.LA(1);
+				if ( ((LA2_0 >= '0' && LA2_0 <= '9')) ) {
+					alt2=1;
 				}
-			}
 
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 5, 0, input);
-				throw nvae;
-			}
-
-			switch (alt5) {
+				switch (alt2) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:8: ( ( '0' .. '2' )? ( '0' .. '9' ) )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:9: ( '0' .. '2' )? ( '0' .. '9' )
-					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:9: ( '0' .. '2' )?
-					int alt4=2;
-					int LA4_0 = input.LA(1);
-					if ( ((LA4_0 >= '0' && LA4_0 <= '2')) ) {
-						int LA4_1 = input.LA(2);
-						if ( ((LA4_1 >= '0' && LA4_1 <= '9')) ) {
-							alt4=1;
-						}
-					}
-					switch (alt4) {
-						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:
-							{
-							if ( (input.LA(1) >= '0' && input.LA(1) <= '2') ) {
-								input.consume();
-							}
-							else {
-								MismatchedSetException mse = new MismatchedSetException(null,input);
-								recover(mse);
-								throw mse;
-							}
-							}
-							break;
-
-					}
-
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
 					}
@@ -712,25 +622,18 @@ public class tal_sqlLexer extends Lexer {
 						throw mse;
 					}
 					}
-
-					}
 					break;
-				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:32: '30'
-					{
-					match("30"); 
 
-					}
-					break;
-				case 3 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:34:37: '31'
-					{
-					match("31"); 
-
-					}
-					break;
+				default :
+					if ( cnt2 >= 1 ) break loop2;
+					EarlyExitException eee = new EarlyExitException(2, input);
+					throw eee;
+				}
+				cnt2++;
+			}
 
 			}
+
 			state.type = _type;
 			state.channel = _channel;
 		}
@@ -738,78 +641,206 @@ public class tal_sqlLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "JOUR"
+	// $ANTLR end "INT"
 
 	// $ANTLR start "VAR_DATE"
 	public final void mVAR_DATE() throws RecognitionException {
 		try {
 			int _type = VAR_DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:10: ( ( JOUR ' ' MOIS ' ' ANNEE ) | ( JOUR '/' MOIS '/' ANNEE ) | ( MOIS '/' ANNEE ) | ( MOIS ' ' ANNEE ) )
-			int alt6=4;
-			alt6 = dfa6.predict(input);
-			switch (alt6) {
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:10: ( ( DIGIT2 ' ' ( DIGIT2 | MONTH ) ' ' DIGIT4 ) | ( DIGIT2 '/' ( DIGIT2 | MONTH ) '/' DIGIT4 ) | ( ( MONTH | DIGIT2 ) '/' DIGIT4 ) | ( ( MONTH | DIGIT2 ) ' ' DIGIT4 ) )
+			int alt7=4;
+			alt7 = dfa7.predict(input);
+			switch (alt7) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:13: ( JOUR ' ' MOIS ' ' ANNEE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:13: ( DIGIT2 ' ' ( DIGIT2 | MONTH ) ' ' DIGIT4 )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:13: ( JOUR ' ' MOIS ' ' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:14: JOUR ' ' MOIS ' ' ANNEE
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:13: ( DIGIT2 ' ' ( DIGIT2 | MONTH ) ' ' DIGIT4 )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:14: DIGIT2 ' ' ( DIGIT2 | MONTH ) ' ' DIGIT4
 					{
-					mJOUR(); 
+					mDIGIT2(); 
 
 					match(' '); 
-					mMOIS(); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:23: ( DIGIT2 | MONTH )
+					int alt3=2;
+					int LA3_0 = input.LA(1);
+					if ( ((LA3_0 >= '0' && LA3_0 <= '9')) ) {
+						alt3=1;
+					}
+					else if ( (LA3_0=='a'||LA3_0=='d'||LA3_0=='f'||LA3_0=='j'||(LA3_0 >= 'm' && LA3_0 <= 'o')||LA3_0=='s') ) {
+						alt3=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 3, 0, input);
+						throw nvae;
+					}
+
+					switch (alt3) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:24: DIGIT2
+							{
+							mDIGIT2(); 
+
+							}
+							break;
+						case 2 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:31: MONTH
+							{
+							mMONTH(); 
+
+							}
+							break;
+
+					}
 
 					match(' '); 
-					mANNEE(); 
+					mDIGIT4(); 
 
 					}
 
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:35: ( JOUR '/' MOIS '/' ANNEE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:48: ( DIGIT2 '/' ( DIGIT2 | MONTH ) '/' DIGIT4 )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:35: ( JOUR '/' MOIS '/' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:36: JOUR '/' MOIS '/' ANNEE
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:48: ( DIGIT2 '/' ( DIGIT2 | MONTH ) '/' DIGIT4 )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:49: DIGIT2 '/' ( DIGIT2 | MONTH ) '/' DIGIT4
 					{
-					mJOUR(); 
+					mDIGIT2(); 
 
 					match('/'); 
-					mMOIS(); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:58: ( DIGIT2 | MONTH )
+					int alt4=2;
+					int LA4_0 = input.LA(1);
+					if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
+						alt4=1;
+					}
+					else if ( (LA4_0=='a'||LA4_0=='d'||LA4_0=='f'||LA4_0=='j'||(LA4_0 >= 'm' && LA4_0 <= 'o')||LA4_0=='s') ) {
+						alt4=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 4, 0, input);
+						throw nvae;
+					}
+
+					switch (alt4) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:59: DIGIT2
+							{
+							mDIGIT2(); 
+
+							}
+							break;
+						case 2 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:66: MONTH
+							{
+							mMONTH(); 
+
+							}
+							break;
+
+					}
 
 					match('/'); 
-					mANNEE(); 
+					mDIGIT4(); 
 
 					}
 
 					}
 					break;
 				case 3 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:57: ( MOIS '/' ANNEE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:83: ( ( MONTH | DIGIT2 ) '/' DIGIT4 )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:57: ( MOIS '/' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:58: MOIS '/' ANNEE
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:83: ( ( MONTH | DIGIT2 ) '/' DIGIT4 )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:84: ( MONTH | DIGIT2 ) '/' DIGIT4
 					{
-					mMOIS(); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:84: ( MONTH | DIGIT2 )
+					int alt5=2;
+					int LA5_0 = input.LA(1);
+					if ( (LA5_0=='a'||LA5_0=='d'||LA5_0=='f'||LA5_0=='j'||(LA5_0 >= 'm' && LA5_0 <= 'o')||LA5_0=='s') ) {
+						alt5=1;
+					}
+					else if ( ((LA5_0 >= '0' && LA5_0 <= '9')) ) {
+						alt5=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 5, 0, input);
+						throw nvae;
+					}
+
+					switch (alt5) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:85: MONTH
+							{
+							mMONTH(); 
+
+							}
+							break;
+						case 2 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:91: DIGIT2
+							{
+							mDIGIT2(); 
+
+							}
+							break;
+
+					}
 
 					match('/'); 
-					mANNEE(); 
+					mDIGIT4(); 
 
 					}
 
 					}
 					break;
 				case 4 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:72: ( MOIS ' ' ANNEE )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:109: ( ( MONTH | DIGIT2 ) ' ' DIGIT4 )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:72: ( MOIS ' ' ANNEE )
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:37:73: MOIS ' ' ANNEE
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:109: ( ( MONTH | DIGIT2 ) ' ' DIGIT4 )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:110: ( MONTH | DIGIT2 ) ' ' DIGIT4
 					{
-					mMOIS(); 
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:110: ( MONTH | DIGIT2 )
+					int alt6=2;
+					int LA6_0 = input.LA(1);
+					if ( (LA6_0=='a'||LA6_0=='d'||LA6_0=='f'||LA6_0=='j'||(LA6_0 >= 'm' && LA6_0 <= 'o')||LA6_0=='s') ) {
+						alt6=1;
+					}
+					else if ( ((LA6_0 >= '0' && LA6_0 <= '9')) ) {
+						alt6=2;
+					}
+
+					else {
+						NoViableAltException nvae =
+							new NoViableAltException("", 6, 0, input);
+						throw nvae;
+					}
+
+					switch (alt6) {
+						case 1 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:111: MONTH
+							{
+							mMONTH(); 
+
+							}
+							break;
+						case 2 :
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:52:117: DIGIT2
+							{
+							mDIGIT2(); 
+
+							}
+							break;
+
+					}
 
 					match(' '); 
-					mANNEE(); 
+					mDIGIT4(); 
 
 					}
 
@@ -831,32 +862,32 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = CONJ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:40:6: ( 'et' | 'ou' )
-			int alt7=2;
-			int LA7_0 = input.LA(1);
-			if ( (LA7_0=='e') ) {
-				alt7=1;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:57:6: ( 'et' | 'ou' )
+			int alt8=2;
+			int LA8_0 = input.LA(1);
+			if ( (LA8_0=='e') ) {
+				alt8=1;
 			}
-			else if ( (LA7_0=='o') ) {
-				alt7=2;
+			else if ( (LA8_0=='o') ) {
+				alt8=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 7, 0, input);
+					new NoViableAltException("", 8, 0, input);
 				throw nvae;
 			}
 
-			switch (alt7) {
+			switch (alt8) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:40:8: 'et'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:57:8: 'et'
 					{
 					match("et"); 
 
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:40:15: 'ou'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:57:15: 'ou'
 					{
 					match("ou"); 
 
@@ -878,8 +909,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = EN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:43:5: ( 'en' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:43:7: 'en'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:60:4: ( 'en' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:60:6: 'en'
 			{
 			match("en"); 
 
@@ -899,8 +930,8 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = DANS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:46:7: ( 'dans' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:46:9: 'dans'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:63:6: ( 'dans' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:63:7: 'dans'
 			{
 			match("dans"); 
 
@@ -915,15 +946,22 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "DANS"
 
-	// $ANTLR start "POINT"
-	public final void mPOINT() throws RecognitionException {
+	// $ANTLR start "PONC"
+	public final void mPONC() throws RecognitionException {
 		try {
-			int _type = POINT;
+			int _type = PONC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:49:7: ( '.' )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:49:9: '.'
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:66:6: ( '.' | '?' )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
 			{
-			match('.'); 
+			if ( input.LA(1)=='.'||input.LA(1)=='?' ) {
+				input.consume();
+			}
+			else {
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				recover(mse);
+				throw mse;
+			}
 			}
 
 			state.type = _type;
@@ -933,106 +971,106 @@ public class tal_sqlLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "POINT"
+	// $ANTLR end "PONC"
 
 	// $ANTLR start "WS"
 	public final void mWS() throws RecognitionException {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:5: ( ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' ) | '\\n' )
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0=='\t'||LA9_0=='\r'||LA9_0==' '||LA9_0=='d'||LA9_0=='j'||LA9_0=='q') ) {
-				alt9=1;
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:5: ( ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' ) | '\\n' )
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0=='\t'||LA10_0=='\r'||LA10_0==' '||LA10_0=='d'||LA10_0=='j'||LA10_0=='q') ) {
+				alt10=1;
 			}
-			else if ( (LA9_0=='\n') ) {
-				alt9=2;
+			else if ( (LA10_0=='\n') ) {
+				alt10=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
+					new NoViableAltException("", 10, 0, input);
 				throw nvae;
 			}
 
-			switch (alt9) {
+			switch (alt10) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
 					{
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
-					int alt8=6;
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:7: ( ' ' | '\\t' | '\\r' | 'je' | 'qui' | 'dont' )
+					int alt9=6;
 					switch ( input.LA(1) ) {
 					case ' ':
 						{
-						alt8=1;
+						alt9=1;
 						}
 						break;
 					case '\t':
 						{
-						alt8=2;
+						alt9=2;
 						}
 						break;
 					case '\r':
 						{
-						alt8=3;
+						alt9=3;
 						}
 						break;
 					case 'j':
 						{
-						alt8=4;
+						alt9=4;
 						}
 						break;
 					case 'q':
 						{
-						alt8=5;
+						alt9=5;
 						}
 						break;
 					case 'd':
 						{
-						alt8=6;
+						alt9=6;
 						}
 						break;
 					default:
 						NoViableAltException nvae =
-							new NoViableAltException("", 8, 0, input);
+							new NoViableAltException("", 9, 0, input);
 						throw nvae;
 					}
-					switch (alt8) {
+					switch (alt9) {
 						case 1 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:8: ' '
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:8: ' '
 							{
 							match(' '); 
 							}
 							break;
 						case 2 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:13: '\\t'
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:13: '\\t'
 							{
 							match('\t'); 
 							}
 							break;
 						case 3 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:20: '\\r'
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:20: '\\r'
 							{
 							match('\r'); 
 							}
 							break;
 						case 4 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:27: 'je'
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:27: 'je'
 							{
 							match("je"); 
 
 							}
 							break;
 						case 5 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:34: 'qui'
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:34: 'qui'
 							{
 							match("qui"); 
 
 							}
 							break;
 						case 6 :
-							// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:42: 'dont'
+							// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:42: 'dont'
 							{
 							match("dont"); 
 
@@ -1045,7 +1083,7 @@ public class tal_sqlLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:52:62: '\\n'
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:70:62: '\\n'
 					{
 					match('\n'); 
 					}
@@ -1066,24 +1104,24 @@ public class tal_sqlLexer extends Lexer {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:55:6: ( ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+ )
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:55:8: ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:73:5: ( ( 'a' .. 'z' | '��' | '��' | '��' | '��' )+ )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:73:7: ( 'a' .. 'z' | '��' | '��' | '��' | '��' )+
 			{
-			// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:55:8: ( 'a' .. 'z' | 'é' | 'è' | 'ê' | 'ù' | 'î' | 'à' | 'û' | 'ç' | 'ï' | 'ü' )+
-			int cnt10=0;
-			loop10:
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:73:7: ( 'a' .. 'z' | '��' | '��' | '��' | '��' )+
+			int cnt11=0;
+			loop11:
 			while (true) {
-				int alt10=2;
-				int LA10_0 = input.LA(1);
-				if ( ((LA10_0 >= 'a' && LA10_0 <= 'z')||LA10_0=='\u00E0'||(LA10_0 >= '\u00E7' && LA10_0 <= '\u00EA')||(LA10_0 >= '\u00EE' && LA10_0 <= '\u00EF')||LA10_0=='\u00F9'||(LA10_0 >= '\u00FB' && LA10_0 <= '\u00FC')) ) {
-					alt10=1;
+				int alt11=2;
+				int LA11_0 = input.LA(1);
+				if ( ((LA11_0 >= 'a' && LA11_0 <= 'z')||LA11_0=='\u00E0'||(LA11_0 >= '\u00E8' && LA11_0 <= '\u00E9')||LA11_0=='\u00FC') ) {
+					alt11=1;
 				}
 
-				switch (alt10) {
+				switch (alt11) {
 				case 1 :
-					// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:
+					// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
 					{
-					if ( (input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E7' && input.LA(1) <= '\u00EA')||(input.LA(1) >= '\u00EE' && input.LA(1) <= '\u00EF')||input.LA(1)=='\u00F9'||(input.LA(1) >= '\u00FB' && input.LA(1) <= '\u00FC') ) {
+					if ( (input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00FC' ) {
 						input.consume();
 					}
 					else {
@@ -1095,11 +1133,11 @@ public class tal_sqlLexer extends Lexer {
 					break;
 
 				default :
-					if ( cnt10 >= 1 ) break loop10;
-					EarlyExitException eee = new EarlyExitException(10, input);
+					if ( cnt11 >= 1 ) break loop11;
+					EarlyExitException eee = new EarlyExitException(11, input);
 					throw eee;
 				}
-				cnt10++;
+				cnt11++;
 			}
 
 			}
@@ -1113,133 +1151,184 @@ public class tal_sqlLexer extends Lexer {
 	}
 	// $ANTLR end "VAR"
 
+	// $ANTLR start "DIGIT"
+	public final void mDIGIT() throws RecognitionException {
+		try {
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:76:17: ( ( '0' .. '9' ) )
+			// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:
+			{
+			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
+				input.consume();
+			}
+			else {
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				recover(mse);
+				throw mse;
+			}
+			}
+
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "DIGIT"
+
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:8: ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | NUMERO | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | EN | DANS | POINT | WS | VAR )
-		int alt11=18;
-		alt11 = dfa11.predict(input);
-		switch (alt11) {
+		// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:8: ( SELECT | ARTICLE | BULLETIN | AUTEUR | TITRE | RUBRIQUE | NOMBRE | STR_MOIS | MOT | DATE | NUMERO | MONTH | DIGIT4 | DIGIT2 | INT | VAR_DATE | CONJ | EN | DANS | PONC | WS | VAR )
+		int alt12=22;
+		alt12 = dfa12.predict(input);
+		switch (alt12) {
 			case 1 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:10: SELECT
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:10: SELECT
 				{
 				mSELECT(); 
 
 				}
 				break;
 			case 2 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:17: ARTICLE
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:17: ARTICLE
 				{
 				mARTICLE(); 
 
 				}
 				break;
 			case 3 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:25: BULLETIN
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:25: BULLETIN
 				{
 				mBULLETIN(); 
 
 				}
 				break;
 			case 4 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:34: TITRE
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:34: AUTEUR
+				{
+				mAUTEUR(); 
+
+				}
+				break;
+			case 5 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:41: TITRE
 				{
 				mTITRE(); 
 
 				}
 				break;
-			case 5 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:40: RUBRIQUE
+			case 6 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:47: RUBRIQUE
 				{
 				mRUBRIQUE(); 
 
 				}
 				break;
-			case 6 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:49: MOT
+			case 7 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:56: NOMBRE
+				{
+				mNOMBRE(); 
+
+				}
+				break;
+			case 8 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:63: STR_MOIS
+				{
+				mSTR_MOIS(); 
+
+				}
+				break;
+			case 9 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:72: MOT
 				{
 				mMOT(); 
 
 				}
 				break;
-			case 7 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:53: DATE
+			case 10 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:76: DATE
 				{
 				mDATE(); 
 
 				}
 				break;
-			case 8 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:58: NUMERO
+			case 11 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:81: NUMERO
 				{
 				mNUMERO(); 
 
 				}
 				break;
-			case 9 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:65: MOIS
-				{
-				mMOIS(); 
-
-				}
-				break;
-			case 10 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:70: ANNEE
-				{
-				mANNEE(); 
-
-				}
-				break;
-			case 11 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:76: JOUR
-				{
-				mJOUR(); 
-
-				}
-				break;
 			case 12 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:81: VAR_DATE
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:88: MONTH
+				{
+				mMONTH(); 
+
+				}
+				break;
+			case 13 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:94: DIGIT4
+				{
+				mDIGIT4(); 
+
+				}
+				break;
+			case 14 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:101: DIGIT2
+				{
+				mDIGIT2(); 
+
+				}
+				break;
+			case 15 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:108: INT
+				{
+				mINT(); 
+
+				}
+				break;
+			case 16 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:112: VAR_DATE
 				{
 				mVAR_DATE(); 
 
 				}
 				break;
-			case 13 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:90: CONJ
+			case 17 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:121: CONJ
 				{
 				mCONJ(); 
 
 				}
 				break;
-			case 14 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:95: EN
+			case 18 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:126: EN
 				{
 				mEN(); 
 
 				}
 				break;
-			case 15 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:98: DANS
+			case 19 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:129: DANS
 				{
 				mDANS(); 
 
 				}
 				break;
-			case 16 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:103: POINT
+			case 20 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:134: PONC
 				{
-				mPOINT(); 
+				mPONC(); 
 
 				}
 				break;
-			case 17 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:109: WS
+			case 21 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:139: WS
 				{
 				mWS(); 
 
 				}
 				break;
-			case 18 :
-				// /Users/yvonne/Documents/GI/GI04/LO17/Projet_Indexation/LO17_Projet/src/files/TDAntlr/tal_sql.g:1:112: VAR
+			case 22 :
+				// C:\\Users\\Administrator\\IdeaProjects\\LO17_Projet\\src\\files\\TDAntlr\\tal_sql.g:1:142: VAR
 				{
 				mVAR(); 
 
@@ -1250,102 +1339,244 @@ public class tal_sqlLexer extends Lexer {
 	}
 
 
-	protected DFA6 dfa6 = new DFA6(this);
-	protected DFA11 dfa11 = new DFA11(this);
-	static final String DFA6_eotS =
-		"\142\uffff";
-	static final String DFA6_eofS =
-		"\142\uffff";
-	static final String DFA6_minS =
-		"\1\60\3\40\1\141\1\145\1\141\1\157\1\145\1\143\1\157\1\145\2\40\2\uffff"+
-		"\3\40\2\60\1\156\1\151\1\166\1\151\1\162\1\165\1\160\1\164\1\166\1\143"+
-		"\3\40\1\60\2\40\1\60\2\57\1\166\1\154\1\162\1\163\1\40\1\151\2\164\1\157"+
-		"\2\145\1\40\1\uffff\3\40\1\57\1\uffff\3\57\1\151\1\40\1\154\1\151\1\40"+
-		"\1\154\1\40\1\145\1\142\2\155\3\145\1\40\1\155\1\162\2\142\1\162\1\164"+
-		"\1\162\1\142\1\145\2\162\3\40\1\162\1\40\3\145\3\40";
-	static final String DFA6_maxS =
-		"\1\163\1\71\1\61\1\57\1\165\1\145\1\141\1\166\1\145\1\143\1\157\1\145"+
-		"\2\71\2\uffff\3\57\2\163\1\156\1\151\1\166\2\162\1\165\1\160\1\164\1\166"+
-		"\1\143\3\57\6\71\1\166\1\156\1\162\1\163\1\57\1\151\2\164\1\157\2\145"+
-		"\1\71\1\uffff\4\71\1\uffff\3\71\1\151\1\57\1\154\1\151\1\57\1\154\1\57"+
-		"\1\145\1\142\2\155\3\145\1\57\1\155\1\162\2\142\1\162\1\164\1\162\1\142"+
-		"\1\145\2\162\3\57\1\162\1\57\3\145\3\57";
-	static final String DFA6_acceptS =
-		"\16\uffff\1\1\1\2\44\uffff\1\4\4\uffff\1\3\50\uffff";
-	static final String DFA6_specialS =
-		"\142\uffff}>";
-	static final String[] DFA6_transitionS = {
-			"\1\1\1\14\1\15\1\2\6\3\47\uffff\1\7\2\uffff\1\13\1\uffff\1\5\3\uffff"+
-			"\1\4\2\uffff\1\6\1\12\1\11\3\uffff\1\10",
-			"\1\16\16\uffff\1\17\1\20\11\3",
-			"\1\23\16\uffff\1\24\1\21\1\22",
-			"\1\23\16\uffff\1\24",
-			"\1\25\23\uffff\1\26",
+	protected DFA7 dfa7 = new DFA7(this);
+	protected DFA12 dfa12 = new DFA12(this);
+	static final String DFA7_eotS =
+		"\117\uffff";
+	static final String DFA7_eofS =
+		"\117\uffff";
+	static final String DFA7_minS =
+		"\2\60\1\141\1\145\1\141\1\157\1\145\1\143\1\157\1\145\1\40\1\156\1\151"+
+		"\1\166\1\151\1\162\1\165\1\160\1\164\1\166\1\143\2\60\1\166\1\154\1\162"+
+		"\1\163\1\40\1\151\2\164\1\157\2\145\1\60\1\uffff\1\60\1\uffff\1\151\1"+
+		"\40\1\154\1\151\1\40\2\uffff\1\154\1\40\1\145\1\142\2\155\1\40\1\57\3"+
+		"\145\1\40\1\155\1\162\2\142\1\162\1\164\1\162\1\142\1\145\2\162\3\40\1"+
+		"\162\1\40\3\145\3\40";
+	static final String DFA7_maxS =
+		"\1\163\1\71\1\165\1\145\1\141\1\166\1\145\1\143\1\157\1\145\1\57\1\156"+
+		"\1\151\1\166\2\162\1\165\1\160\1\164\1\166\1\143\2\163\1\166\1\156\1\162"+
+		"\1\163\1\57\1\151\2\164\1\157\2\145\1\71\1\uffff\1\71\1\uffff\1\151\1"+
+		"\57\1\154\1\151\1\57\2\uffff\1\154\1\57\1\145\1\142\2\155\2\71\3\145\1"+
+		"\57\1\155\1\162\2\142\1\162\1\164\1\162\1\142\1\145\2\162\3\57\1\162\1"+
+		"\57\3\145\3\57";
+	static final String DFA7_acceptS =
+		"\43\uffff\1\1\1\uffff\1\2\5\uffff\1\3\1\4\42\uffff";
+	static final String DFA7_specialS =
+		"\117\uffff}>";
+	static final String[] DFA7_transitionS = {
+			"\12\1\47\uffff\1\5\2\uffff\1\11\1\uffff\1\3\3\uffff\1\2\2\uffff\1\4\1"+
+			"\10\1\7\3\uffff\1\6",
+			"\12\12",
+			"\1\13\23\uffff\1\14",
+			"\1\15",
+			"\1\16",
+			"\1\20\6\uffff\1\17",
+			"\1\21",
+			"\1\22",
+			"\1\23",
+			"\1\24",
+			"\1\25\16\uffff\1\26",
 			"\1\27",
 			"\1\30",
-			"\1\32\6\uffff\1\31",
-			"\1\33",
+			"\1\31",
+			"\1\33\10\uffff\1\32",
 			"\1\34",
 			"\1\35",
 			"\1\36",
-			"\1\23\16\uffff\1\24\1\37\1\40\1\41\7\20",
-			"\1\23\16\uffff\1\24\12\20",
-			"",
-			"",
-			"\1\16\16\uffff\1\17",
-			"\1\16\16\uffff\1\17",
-			"\1\16\16\uffff\1\17",
-			"\1\42\1\43\10\44\47\uffff\1\16\2\uffff\1\16\1\uffff\1\16\3\uffff\1\16"+
-			"\2\uffff\3\16\3\uffff\1\16",
-			"\1\45\1\46\10\47\47\uffff\1\17\2\uffff\1\17\1\uffff\1\17\3\uffff\1\17"+
-			"\2\uffff\3\17\3\uffff\1\17",
-			"\1\50",
+			"\1\37",
+			"\1\40",
+			"\1\41",
+			"\12\42\47\uffff\1\43\2\uffff\1\43\1\uffff\1\43\3\uffff\1\43\2\uffff"+
+			"\3\43\3\uffff\1\43",
+			"\12\44\47\uffff\1\45\2\uffff\1\45\1\uffff\1\45\3\uffff\1\45\2\uffff"+
+			"\3\45\3\uffff\1\45",
+			"\1\46",
+			"\1\50\1\uffff\1\47",
 			"\1\51",
 			"\1\52",
-			"\1\54\10\uffff\1\53",
+			"\1\54\16\uffff\1\53",
 			"\1\55",
 			"\1\56",
 			"\1\57",
 			"\1\60",
 			"\1\61",
 			"\1\62",
-			"\1\23\16\uffff\1\24",
-			"\1\23\16\uffff\1\24",
-			"\1\23\16\uffff\1\24",
-			"\1\64\11\63",
-			"\1\16\17\uffff\1\65\1\66\1\67\7\64",
-			"\1\16\17\uffff\12\64",
-			"\1\71\11\70",
-			"\1\17\1\72\1\73\1\74\7\71",
-			"\1\17\12\71",
+			"\12\63",
+			"",
+			"\12\64",
+			"",
+			"\1\65",
+			"\1\54\16\uffff\1\53",
+			"\1\66",
+			"\1\67",
+			"\1\54\16\uffff\1\53",
+			"",
+			"",
+			"\1\70",
+			"\1\54\16\uffff\1\53",
+			"\1\71",
+			"\1\72",
+			"\1\73",
+			"\1\74",
+			"\1\43\17\uffff\12\54",
+			"\1\45\12\53",
 			"\1\75",
-			"\1\77\1\uffff\1\76",
+			"\1\76",
+			"\1\77",
+			"\1\54\16\uffff\1\53",
 			"\1\100",
 			"\1\101",
-			"\1\64\16\uffff\1\71",
 			"\1\102",
 			"\1\103",
 			"\1\104",
 			"\1\105",
 			"\1\106",
 			"\1\107",
-			"\1\16\17\uffff\12\64",
-			"",
-			"\1\16\17\uffff\12\64",
-			"\1\16\17\uffff\12\64",
-			"\1\16\17\uffff\12\64",
-			"\1\17\12\71",
-			"",
-			"\1\17\12\71",
-			"\1\17\12\71",
-			"\1\17\12\71",
 			"\1\110",
-			"\1\64\16\uffff\1\71",
 			"\1\111",
 			"\1\112",
-			"\1\64\16\uffff\1\71",
+			"\1\54\16\uffff\1\53",
+			"\1\54\16\uffff\1\53",
+			"\1\54\16\uffff\1\53",
 			"\1\113",
-			"\1\64\16\uffff\1\71",
+			"\1\54\16\uffff\1\53",
+			"\1\114",
+			"\1\115",
+			"\1\116",
+			"\1\54\16\uffff\1\53",
+			"\1\54\16\uffff\1\53",
+			"\1\54\16\uffff\1\53"
+	};
+
+	static final short[] DFA7_eot = DFA.unpackEncodedString(DFA7_eotS);
+	static final short[] DFA7_eof = DFA.unpackEncodedString(DFA7_eofS);
+	static final char[] DFA7_min = DFA.unpackEncodedStringToUnsignedChars(DFA7_minS);
+	static final char[] DFA7_max = DFA.unpackEncodedStringToUnsignedChars(DFA7_maxS);
+	static final short[] DFA7_accept = DFA.unpackEncodedString(DFA7_acceptS);
+	static final short[] DFA7_special = DFA.unpackEncodedString(DFA7_specialS);
+	static final short[][] DFA7_transition;
+
+	static {
+		int numStates = DFA7_transitionS.length;
+		DFA7_transition = new short[numStates][];
+		for (int i=0; i<numStates; i++) {
+			DFA7_transition[i] = DFA.unpackEncodedString(DFA7_transitionS[i]);
+		}
+	}
+
+	protected class DFA7 extends DFA {
+
+		public DFA7(BaseRecognizer recognizer) {
+			this.recognizer = recognizer;
+			this.decisionNumber = 7;
+			this.eot = DFA7_eot;
+			this.eof = DFA7_eof;
+			this.min = DFA7_min;
+			this.max = DFA7_max;
+			this.accept = DFA7_accept;
+			this.special = DFA7_special;
+			this.transition = DFA7_transition;
+		}
+		@Override
+		public String getDescription() {
+			return "52:1: VAR_DATE : ( ( DIGIT2 ' ' ( DIGIT2 | MONTH ) ' ' DIGIT4 ) | ( DIGIT2 '/' ( DIGIT2 | MONTH ) '/' DIGIT4 ) | ( ( MONTH | DIGIT2 ) '/' DIGIT4 ) | ( ( MONTH | DIGIT2 ) ' ' DIGIT4 ) );";
+		}
+	}
+
+	static final String DFA12_eotS =
+		"\1\uffff\14\22\1\51\1\22\2\uffff\1\22\1\uffff\21\22\1\20\3\22\1\106\1"+
+		"\uffff\1\107\1\106\1\112\15\22\1\130\1\22\1\132\11\22\2\uffff\1\51\2\uffff"+
+		"\1\20\4\22\1\132\6\22\1\160\1\uffff\1\132\1\uffff\1\161\1\162\1\22\1\20"+
+		"\1\22\1\132\4\22\1\171\3\22\1\132\1\22\1\176\4\22\3\uffff\6\22\1\uffff"+
+		"\2\22\1\u008b\1\22\1\uffff\1\22\1\u008e\1\22\1\u0090\6\22\1\u0097\1\u0098"+
+		"\1\uffff\2\22\1\uffff\1\22\1\uffff\1\22\3\132\1\22\1\132\2\uffff\1\u009e"+
+		"\1\u009f\2\132\1\22\2\uffff\1\132";
+	static final String DFA12_eofS =
+		"\u00a1\uffff";
+	static final String DFA12_minS =
+		"\1\11\2\157\1\165\1\151\1\165\1\157\3\141\2\145\1\143\1\60\1\156\2\uffff"+
+		"\1\165\1\uffff\1\165\2\164\1\162\1\165\1\154\1\164\1\142\2\155\2\151\1"+
+		"\156\1\143\2\156\1\151\1\141\1\166\1\160\1\164\1\141\1\uffff\1\40\2\141"+
+		"\1\151\1\154\1\151\1\145\1\151\1\164\1\154\2\162\1\142\1\145\1\u00e9\1"+
+		"\163\1\141\1\163\1\40\1\145\1\163\1\145\1\164\1\166\1\154\1\162\1\164"+
+		"\1\157\2\uffff\1\60\2\uffff\1\141\1\157\1\143\1\165\1\154\1\40\2\145\1"+
+		"\151\1\162\1\155\1\162\1\141\1\uffff\1\40\1\uffff\2\141\1\155\1\141\1"+
+		"\151\1\40\1\154\1\151\1\145\1\142\1\60\1\151\1\154\1\162\1\40\1\164\1"+
+		"\141\1\161\1\145\1\142\1\157\3\uffff\1\142\3\145\1\155\1\162\1\uffff\1"+
+		"\162\1\145\1\141\1\151\1\uffff\1\165\1\141\1\162\1\141\2\162\1\164\1\162"+
+		"\1\142\1\145\2\141\1\uffff\1\156\1\145\1\uffff\1\145\1\uffff\1\145\3\40"+
+		"\1\162\1\40\2\uffff\2\141\2\40\1\145\2\uffff\1\40";
+	static final String DFA12_maxS =
+		"\1\u00fc\1\157\1\166\1\165\1\151\2\165\2\157\1\165\2\145\1\165\1\71\1"+
+		"\164\2\uffff\1\165\1\uffff\1\165\2\164\1\162\1\165\1\154\1\164\1\142\1"+
+		"\166\1\155\1\164\1\162\1\164\1\143\2\156\1\151\1\u00fc\1\166\1\160\1\164"+
+		"\1\u00fc\1\uffff\1\71\2\u00fc\1\151\1\154\1\151\1\145\1\151\1\164\1\154"+
+		"\2\162\1\142\1\145\1\u00e9\1\163\1\u00fc\1\163\1\u00fc\1\145\1\163\1\145"+
+		"\1\164\1\166\1\156\1\162\1\164\1\157\2\uffff\1\71\2\uffff\1\u00fc\1\157"+
+		"\1\143\1\165\1\154\1\u00fc\2\145\1\151\1\162\1\155\1\162\1\u00fc\1\uffff"+
+		"\1\u00fc\1\uffff\2\u00fc\1\155\1\u00fc\1\151\1\u00fc\1\154\1\151\1\145"+
+		"\1\142\1\71\1\151\1\154\1\162\1\u00fc\1\164\1\u00fc\1\161\1\145\1\142"+
+		"\1\157\3\uffff\1\142\3\145\1\155\1\162\1\uffff\1\162\1\145\1\u00fc\1\151"+
+		"\1\uffff\1\165\1\u00fc\1\162\1\u00fc\2\162\1\164\1\162\1\142\1\145\2\u00fc"+
+		"\1\uffff\1\156\1\145\1\uffff\1\145\1\uffff\1\145\3\u00fc\1\162\1\u00fc"+
+		"\2\uffff\4\u00fc\1\145\2\uffff\1\u00fc";
+	static final String DFA12_acceptS =
+		"\17\uffff\1\24\1\25\1\uffff\1\26\26\uffff\1\17\34\uffff\1\21\1\16\1\uffff"+
+		"\1\20\1\22\15\uffff\1\11\1\uffff\1\14\25\uffff\1\10\1\12\1\23\6\uffff"+
+		"\1\15\4\uffff\1\5\14\uffff\1\4\2\uffff\1\7\1\uffff\1\13\6\uffff\1\1\1"+
+		"\2\5\uffff\1\3\1\6\1\uffff";
+	static final String DFA12_specialS =
+		"\u00a1\uffff}>";
+	static final String[] DFA12_transitionS = {
+			"\2\20\2\uffff\1\20\22\uffff\1\20\15\uffff\1\17\1\uffff\12\15\5\uffff"+
+			"\1\17\41\uffff\1\2\1\3\1\22\1\10\1\16\1\12\3\22\1\11\2\22\1\7\1\6\1\14"+
+			"\1\22\1\21\1\5\1\13\1\4\1\22\1\1\4\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\23",
+			"\1\27\2\uffff\1\24\2\uffff\1\25\1\26",
+			"\1\30",
+			"\1\31",
+			"\1\32",
+			"\1\33\5\uffff\1\34",
+			"\1\36\15\uffff\1\35",
+			"\1\37\3\uffff\1\40\11\uffff\1\41",
+			"\1\42\3\uffff\1\44\17\uffff\1\43",
+			"\1\45",
+			"\1\46",
+			"\1\47\21\uffff\1\50",
+			"\12\52",
+			"\1\54\5\uffff\1\53",
+			"",
+			"",
+			"\1\55",
+			"",
+			"\1\56",
+			"\1\57",
+			"\1\60",
+			"\1\61",
+			"\1\62",
+			"\1\63",
+			"\1\64",
+			"\1\65",
+			"\1\66\10\uffff\1\67",
+			"\1\70",
+			"\1\71\12\uffff\1\72",
+			"\1\74\10\uffff\1\73",
+			"\1\76\5\uffff\1\75",
+			"\1\77",
+			"\1\100",
+			"\1\101",
+			"\1\102",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\1\103",
+			"\1\104",
+			"\1\105",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"",
+			"\1\111\16\uffff\1\111\12\110",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\1\113",
 			"\1\114",
 			"\1\115",
 			"\1\116",
@@ -1353,324 +1584,160 @@ public class tal_sqlLexer extends Lexer {
 			"\1\120",
 			"\1\121",
 			"\1\122",
-			"\1\64\16\uffff\1\71",
 			"\1\123",
 			"\1\124",
 			"\1\125",
 			"\1\126",
 			"\1\127",
-			"\1\130",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\131",
-			"\1\132",
-			"\1\133",
-			"\1\134",
-			"\1\135",
-			"\1\64\16\uffff\1\71",
-			"\1\64\16\uffff\1\71",
-			"\1\64\16\uffff\1\71",
-			"\1\136",
-			"\1\64\16\uffff\1\71",
-			"\1\137",
-			"\1\140",
-			"\1\141",
-			"\1\64\16\uffff\1\71",
-			"\1\64\16\uffff\1\71",
-			"\1\64\16\uffff\1\71"
-	};
-
-	static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
-	static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
-	static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
-	static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
-	static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
-	static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
-	static final short[][] DFA6_transition;
-
-	static {
-		int numStates = DFA6_transitionS.length;
-		DFA6_transition = new short[numStates][];
-		for (int i=0; i<numStates; i++) {
-			DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
-		}
-	}
-
-	protected class DFA6 extends DFA {
-
-		public DFA6(BaseRecognizer recognizer) {
-			this.recognizer = recognizer;
-			this.decisionNumber = 6;
-			this.eot = DFA6_eot;
-			this.eof = DFA6_eof;
-			this.min = DFA6_min;
-			this.max = DFA6_max;
-			this.accept = DFA6_accept;
-			this.special = DFA6_special;
-			this.transition = DFA6_transition;
-		}
-		@Override
-		public String getDescription() {
-			return "37:1: VAR_DATE : ( ( JOUR ' ' MOIS ' ' ANNEE ) | ( JOUR '/' MOIS '/' ANNEE ) | ( MOIS '/' ANNEE ) | ( MOIS ' ' ANNEE ) );";
-		}
-	}
-
-	static final String DFA11_eotS =
-		"\1\uffff\14\26\1\56\4\63\1\26\2\uffff\1\26\1\uffff\20\26\1\24\3\26\1\117"+
-		"\1\63\1\56\2\uffff\3\63\1\uffff\2\56\1\uffff\1\117\1\120\10\26\1\131\1"+
-		"\26\1\63\13\26\2\uffff\1\24\3\26\1\63\3\26\1\uffff\1\63\1\155\1\156\1"+
-		"\26\1\24\3\26\1\63\6\26\1\63\1\26\1\172\1\26\2\uffff\13\26\1\uffff\2\26"+
-		"\1\u0089\6\26\1\u0090\1\u0091\3\26\1\uffff\1\26\3\63\1\26\1\63\2\uffff"+
-		"\1\u0097\1\u0098\2\63\1\26\2\uffff\1\63";
-	static final String DFA11_eofS =
-		"\u009a\uffff";
-	static final String DFA11_minS =
-		"\1\11\2\157\1\165\1\151\1\165\2\141\1\157\1\141\2\145\1\143\5\40\1\156"+
-		"\2\uffff\1\165\1\uffff\1\165\1\164\1\162\1\165\1\154\1\164\1\142\1\164"+
-		"\1\151\1\156\1\143\1\156\1\155\1\166\1\156\1\151\1\141\1\166\1\160\1\164"+
-		"\1\141\2\40\2\uffff\3\40\1\uffff\2\40\1\uffff\2\141\1\151\1\154\2\151"+
-		"\1\164\1\154\2\162\1\141\1\163\1\40\1\145\1\163\1\145\1\164\2\145\1\166"+
-		"\1\154\1\162\1\164\1\157\2\uffff\1\141\1\157\1\143\1\154\1\40\2\145\1"+
-		"\151\1\uffff\1\40\2\141\1\155\1\141\1\162\1\155\1\151\1\40\1\154\1\151"+
-		"\1\145\1\142\1\151\1\154\1\40\1\164\1\141\1\161\2\uffff\1\142\1\157\1"+
-		"\142\3\145\1\155\2\162\1\145\1\151\1\uffff\1\165\1\162\1\141\2\162\1\164"+
-		"\1\162\1\142\1\145\2\141\1\156\2\145\1\uffff\1\145\3\40\1\162\1\40\2\uffff"+
-		"\2\141\2\40\1\145\2\uffff\1\40";
-	static final String DFA11_maxS =
-		"\1\u00fc\1\157\1\166\1\165\1\151\1\165\2\157\2\165\2\145\1\165\5\71\1"+
-		"\164\2\uffff\1\165\1\uffff\1\165\1\164\1\162\1\165\1\154\1\164\1\142\1"+
-		"\164\1\162\1\164\1\143\1\156\1\155\1\166\1\156\1\151\1\u00fc\1\166\1\160"+
-		"\1\164\1\u00fc\2\71\2\uffff\3\71\1\uffff\2\71\1\uffff\2\u00fc\1\151\1"+
-		"\154\2\151\1\164\1\154\2\162\1\u00fc\1\163\1\u00fc\1\145\1\163\1\145\1"+
-		"\164\2\145\1\166\1\156\1\162\1\164\1\157\2\uffff\1\u00fc\1\157\1\143\1"+
-		"\154\1\u00fc\2\145\1\151\1\uffff\3\u00fc\1\155\1\u00fc\1\162\1\155\1\151"+
-		"\1\u00fc\1\154\1\151\1\145\1\142\1\151\1\154\1\u00fc\1\164\1\u00fc\1\161"+
-		"\2\uffff\1\142\1\157\1\142\3\145\1\155\2\162\1\145\1\151\1\uffff\1\165"+
-		"\1\162\1\u00fc\2\162\1\164\1\162\1\142\1\145\2\u00fc\1\156\2\145\1\uffff"+
-		"\1\145\3\u00fc\1\162\1\u00fc\2\uffff\4\u00fc\1\145\2\uffff\1\u00fc";
-	static final String DFA11_acceptS =
-		"\23\uffff\1\20\1\21\1\uffff\1\22\27\uffff\1\13\1\14\3\uffff\1\11\2\uffff"+
-		"\1\12\30\uffff\1\15\1\16\10\uffff\1\6\23\uffff\1\7\1\17\13\uffff\1\4\16"+
-		"\uffff\1\10\6\uffff\1\1\1\2\5\uffff\1\3\1\5\1\uffff";
-	static final String DFA11_specialS =
-		"\u009a\uffff}>";
-	static final String[] DFA11_transitionS = {
-			"\2\24\2\uffff\1\24\22\uffff\1\24\15\uffff\1\23\1\uffff\1\15\1\16\1\17"+
-			"\1\20\6\21\47\uffff\1\2\1\3\1\26\1\7\1\22\1\12\3\26\1\11\2\26\1\6\1\10"+
-			"\1\14\1\26\1\25\1\5\1\13\1\4\1\26\1\1\4\26\145\uffff\1\26\6\uffff\4\26"+
-			"\3\uffff\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\1\27",
-			"\1\32\2\uffff\1\30\3\uffff\1\31",
-			"\1\33",
-			"\1\34",
-			"\1\35",
-			"\1\37\15\uffff\1\36",
-			"\1\40\3\uffff\1\41\11\uffff\1\42",
-			"\1\44\5\uffff\1\43",
-			"\1\45\3\uffff\1\47\17\uffff\1\46",
-			"\1\50",
-			"\1\51",
-			"\1\52\21\uffff\1\53",
-			"\1\57\16\uffff\1\57\1\55\11\54",
-			"\1\57\16\uffff\1\57\1\60\1\61\1\62\7\55",
-			"\1\57\16\uffff\1\57\12\55",
-			"\1\57\16\uffff\1\57\1\64\1\65\10\66",
-			"\1\57\16\uffff\1\57\12\66",
-			"\1\70\5\uffff\1\67",
-			"",
-			"",
-			"\1\71",
-			"",
-			"\1\72",
-			"\1\73",
-			"\1\74",
-			"\1\75",
-			"\1\76",
-			"\1\77",
-			"\1\100",
-			"\1\101",
-			"\1\103\10\uffff\1\102",
-			"\1\105\5\uffff\1\104",
-			"\1\106",
-			"\1\107",
-			"\1\110",
-			"\1\111",
-			"\1\112",
-			"\1\113",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\114",
-			"\1\115",
-			"\1\116",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\57\16\uffff\1\57\12\66",
-			"\1\57\16\uffff\1\57\12\66",
-			"",
-			"",
-			"\1\57\16\uffff\1\57\12\66",
-			"\1\57\16\uffff\1\57\12\66",
-			"\1\57\16\uffff\1\57\12\66",
-			"",
-			"\1\57\16\uffff\1\57\12\66",
-			"\1\57\16\uffff\1\57\12\66",
-			"",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\121",
-			"\1\122",
-			"\1\123",
-			"\1\124",
-			"\1\125",
-			"\1\126",
-			"\1\127",
-			"\1\130",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\132",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
 			"\1\133",
 			"\1\134",
 			"\1\135",
 			"\1\136",
 			"\1\137",
-			"\1\140",
-			"\1\141",
-			"\1\143\1\uffff\1\142",
+			"\1\141\1\uffff\1\140",
+			"\1\142",
+			"\1\143",
 			"\1\144",
-			"\1\145",
+			"",
+			"",
+			"\12\145",
+			"",
+			"",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\146",
-			"",
-			"",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
 			"\1\147",
 			"\1\150",
 			"\1\151",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
 			"\1\152",
 			"\1\153",
 			"\1\154",
-			"",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
+			"\1\155",
+			"\1\156",
 			"\1\157",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\160",
-			"\1\161",
-			"\1\162",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\163",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\164",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
 			"\1\165",
 			"\1\166",
 			"\1\167",
 			"\1\170",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\1\171",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
+			"\12\51",
+			"\1\172",
 			"\1\173",
-			"",
-			"",
 			"\1\174",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
 			"\1\175",
-			"\1\176",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\177",
 			"\1\u0080",
 			"\1\u0081",
 			"\1\u0082",
+			"",
+			"",
+			"",
 			"\1\u0083",
 			"\1\u0084",
 			"\1\u0085",
 			"\1\u0086",
-			"",
 			"\1\u0087",
 			"\1\u0088",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
+			"",
+			"\1\u0089",
 			"\1\u008a",
-			"\1\u008b",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\u008c",
+			"",
 			"\1\u008d",
-			"\1\u008e",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"\1\u008f",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\1\u0091",
 			"\1\u0092",
 			"\1\u0093",
 			"\1\u0094",
-			"",
 			"\1\u0095",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
 			"\1\u0096",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
 			"",
-			"",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff\2\26\11\uffff\1\26\1\uffff"+
-			"\2\26",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26",
 			"\1\u0099",
+			"\1\u009a",
+			"",
+			"\1\u009b",
+			"",
+			"\1\u009c",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\u009d",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
 			"",
 			"",
-			"\1\57\16\uffff\1\57\61\uffff\32\26\145\uffff\1\26\6\uffff\4\26\3\uffff"+
-			"\2\26\11\uffff\1\26\1\uffff\2\26"
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\32\22\145\uffff\1\22\7\uffff\2\22\22\uffff\1\22",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22",
+			"\1\u00a0",
+			"",
+			"",
+			"\1\111\16\uffff\1\111\61\uffff\32\22\145\uffff\1\22\7\uffff\2\22\22"+
+			"\uffff\1\22"
 	};
 
-	static final short[] DFA11_eot = DFA.unpackEncodedString(DFA11_eotS);
-	static final short[] DFA11_eof = DFA.unpackEncodedString(DFA11_eofS);
-	static final char[] DFA11_min = DFA.unpackEncodedStringToUnsignedChars(DFA11_minS);
-	static final char[] DFA11_max = DFA.unpackEncodedStringToUnsignedChars(DFA11_maxS);
-	static final short[] DFA11_accept = DFA.unpackEncodedString(DFA11_acceptS);
-	static final short[] DFA11_special = DFA.unpackEncodedString(DFA11_specialS);
-	static final short[][] DFA11_transition;
+	static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
+	static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
+	static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
+	static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
+	static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
+	static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
+	static final short[][] DFA12_transition;
 
 	static {
-		int numStates = DFA11_transitionS.length;
-		DFA11_transition = new short[numStates][];
+		int numStates = DFA12_transitionS.length;
+		DFA12_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA11_transition[i] = DFA.unpackEncodedString(DFA11_transitionS[i]);
+			DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
 		}
 	}
 
-	protected class DFA11 extends DFA {
+	protected class DFA12 extends DFA {
 
-		public DFA11(BaseRecognizer recognizer) {
+		public DFA12(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 11;
-			this.eot = DFA11_eot;
-			this.eof = DFA11_eof;
-			this.min = DFA11_min;
-			this.max = DFA11_max;
-			this.accept = DFA11_accept;
-			this.special = DFA11_special;
-			this.transition = DFA11_transition;
+			this.decisionNumber = 12;
+			this.eot = DFA12_eot;
+			this.eof = DFA12_eof;
+			this.min = DFA12_min;
+			this.max = DFA12_max;
+			this.accept = DFA12_accept;
+			this.special = DFA12_special;
+			this.transition = DFA12_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( SELECT | ARTICLE | BULLETIN | TITRE | RUBRIQUE | MOT | DATE | NUMERO | MOIS | ANNEE | JOUR | VAR_DATE | CONJ | EN | DANS | POINT | WS | VAR );";
+			return "1:1: Tokens : ( SELECT | ARTICLE | BULLETIN | AUTEUR | TITRE | RUBRIQUE | NOMBRE | STR_MOIS | MOT | DATE | NUMERO | MONTH | DIGIT4 | DIGIT2 | INT | VAR_DATE | CONJ | EN | DANS | PONC | WS | VAR );";
 		}
 	}
 

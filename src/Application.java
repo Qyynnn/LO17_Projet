@@ -23,13 +23,17 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "je veux les articles qui a le numéro 291 dans la rubrique \"Du côté des pôles\".";
+        String s = "articles ont été publiés au mois decembre";
         //antlr
         //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
         //String s = scanner.nextLine();
         while (!s.equals("*")){
             s=s.toLowerCase();
+            s=s.trim();
+            if (s.charAt(s.length()-1)!='.' || s.charAt(s.length()-1)!='?' ){
+                s=s+'.';
+            }
             s=normalisation(s);
             System.out.println(s);
             try {
@@ -38,7 +42,7 @@ public class Application {
                 tal_sqlParser parser = new tal_sqlParser(tokens);
                 String arbre = parser.listerequetes();
                 System.out.println(arbre);
-                interrogPostgresql.interroger(arbre);
+                //interrogPostgresql.interroger(arbre);
             }
             catch (Exception e) {
                 System.out.println(""+e);

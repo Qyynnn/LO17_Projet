@@ -12,8 +12,7 @@ public class Lexique {
     private static int seuilMin = 4; // La différence de longueur entre deux mots
     private static int seuilLettresCommunes = 4;
     private static int proxMin = 70;
-    private static int distanceMin=3;
-    private String filePath = "src/files/filtreCorpus_P16.txt";
+    private static int distanceMax=3;
 
     public Lexique(HashMap<String, String> dic) {
         dictionnaire=dic;
@@ -87,7 +86,7 @@ public class Lexique {
         ArrayList<String> listLemme = new ArrayList<>();
         for (String motLex : dictionnaire.keySet()) {
             int distance = levenshtein(motLex, mot);
-            if (distance <= distanceMin) {
+            if (distance <= distanceMax) {
                 listLemme.add(dictionnaire.get(motLex));
             }
         }
@@ -133,7 +132,7 @@ public class Lexique {
             } else if (lemmeList.size() == 1) {
                 return lemmeList.get(0);
             } else {
-                String choix = "";
+                String choix;
                 while (true) {
                     printLemmeList(lemmeList, str);
                     Scanner scan = new Scanner(System.in);

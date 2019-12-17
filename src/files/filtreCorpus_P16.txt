@@ -8514,7 +8514,6 @@ nul 	nul
 nullement 	nullement 
 numérique 	numérique
 numériques 	numérique
-numéro 	numér
 nuptiale 	nuptiale 
 nuremberg 	nuremberg 
 nutox 	nutox 
