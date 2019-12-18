@@ -4,6 +4,7 @@ voudrais 	vouloir
 cherche 	vouloir
 affiche 	vouloir
 afficher 	vouloir
+souhaites 	vouloir
 savoir 	vouloir
 voir 	vouloir
 quel 	vouloir
@@ -13,6 +14,7 @@ quelles 	vouloir
 trouve-moi 	vouloir
 retournez 	vouloir
 retourner 	vouloir
+avoir 	vouloir
 fichier 	article
 fichiers 	article
 page 	page
@@ -33,7 +35,9 @@ traiter 	mot
 traitant 	mot
 concernent 	mot
 concernant 	mot
+évoquant 	mot
 sur 	mot
+mots 	mot
 combien 	nombre
 contact 	auteur
 contacts  	auteur

@@ -41,7 +41,7 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "Quel est le auteur d’articles parus entre le 3 mars 2013 et le 4 mai 2013";
+        String s = "Je veux les articles qui contiennent mot focus et intelligence artificielle. ";
         //antlr
         //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");

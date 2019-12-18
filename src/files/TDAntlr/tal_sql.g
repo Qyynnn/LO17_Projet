@@ -107,8 +107,7 @@ requete returns [Arbre req_arbre = new Arbre("")]
 			{
 				req_arbre.ajouteFils(new Arbre("","SELECT DISTINCT"));
 			}
-		(((ARTICLE 
-		| BULLETIN)
+		((ARTICLE
 			{
 				
 				req_arbre.ajouteFils(new Arbre("","tt.fichier"));
@@ -657,18 +656,33 @@ numeroParam returns [Arbre lepar_arbre = new Arbre("")]:
 rubriqueParam returns [Arbre lepar_arbre = new Arbre("")]:
 		(DANS|EN)?
 		RUBRIQUE
-		value = VAR+
+		value = VAR
 			{
-				lepar_arbre.ajouteFils(new Arbre("", "("));	
-				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
+				lepar_arbre.ajouteFils(new Arbre("", "(tt.rubrique = '"+value.getText()+"'"));	
 			}
+		(value=VAR
+			{
+				lepar_arbre.ajouteFils(new Arbre("", "AND"));	
+				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));	
+			})*
 		(c=CONJ 
-		value = VAR+
 			{
 				String conj=c.getText().toUpperCase().equals("ET")?"AND":"OR";
 				lepar_arbre.ajouteFils(new Arbre("", conj));	
-				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));		
+			}
+		value = VAR
+			{
+				lepar_arbre.ajouteFils(new Arbre("", "(tt.rubrique = '"+value.getText()+"'"));	
+			}
+		(value=VAR
+			{
+				lepar_arbre.ajouteFils(new Arbre("", "AND"));	
+				lepar_arbre.ajouteFils(new Arbre("", "tt.rubrique = '"+value.getText()+"'"));	
 			})*
+			{
+				lepar_arbre.ajouteFils(new Arbre("", ")"));	
+			}
+		)*
 			{
 				lepar_arbre.ajouteFils(new Arbre("", ")"));	
 			}
@@ -676,7 +690,7 @@ rubriqueParam returns [Arbre lepar_arbre = new Arbre("")]:
 		
 motParam returns [Arbre lepar_arbre = new Arbre("")]
 	@init	{String str;} :
-		MOT
+		MOT+
 		value = VAR
 			{
 				lepar_arbre.ajouteFils(new Arbre("", "("));	

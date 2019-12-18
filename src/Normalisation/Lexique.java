@@ -1,7 +1,4 @@
 package Normalisation;
-
-import Library.DictionnaryName;
-
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -87,6 +84,10 @@ public class Lexique {
 
     private ArrayList<String> searchLemmeLeven(String mot) {
         ArrayList<String> listLemme = new ArrayList<>();
+        if (mot.length()<=seuilMax){
+            listLemme.add(mot);
+            return listLemme;
+        }
         for (String motLex : dictionnaire.keySet()) {
             int distance = levenshtein(motLex, mot);
             if (distance <= distanceMax) {
