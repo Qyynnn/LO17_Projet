@@ -20,10 +20,10 @@ public class Application {
         System.out.println("Input : "+req);
         req = normHelper.replaceFromDic(req, DictionnaryName.stoplist);
         System.out.println("After stoplist : "+req);
+        req = normHelper.replaceFromDic(req, DictionnaryName.lexique);
+        System.out.println("After orthographe : "+req);
         req = normHelper.replaceFromDic(req, DictionnaryName.structure);
         System.out.println("After structure : "+req);
-        req = normHelper.replaceFromDic(req, DictionnaryName.lexique);
-        System.out.println("Output : "+req);
         return req;
     }
 
@@ -41,7 +41,7 @@ public class Application {
     }
 
     public static void main(String[] arg) {
-        String s = "Je veux les articles qui contiennent mot focus et intelligence artificielle. ";
+        String s = "Je veux tous les auteurs ayant écrit des articles sur le nucléaire. ";
         //antlr
         //Scanner scanner = new Scanner(System.in);
         System.out.print("Requete : ");
@@ -51,7 +51,7 @@ public class Application {
             System.out.println(s);
             s=generateSQL(s);
             System.out.println(s);
-            interrogPostgresql.interroger(s);
+            //interrogPostgresql.interroger(s);
             //s = scanner.nextLine();
             s="*";
         }

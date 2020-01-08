@@ -12,7 +12,7 @@ public class Lexique {
     private static int seuilMin = 4; // La différence de longueur entre deux mots
     private static int seuilLettresCommunes = 4;
     private static int proxMin = 70;
-    private static int distanceMax=3;
+    private static int distanceMax=2;
 
     public Lexique(HashMap<String, String> dic) {
         dictionnaire=dic;
@@ -56,7 +56,7 @@ public class Lexique {
                 dis[i][j] = min(min(dis[i - 1][j] + 1, dis[i][j - 1] + 1), dis[i - 1][j - 1] + cost);
             }
         }
-        return dis[m1.length() - 1][m2.length() - 1];
+        return dis[m1.length()][m2.length()];
     }
 
     private ArrayList<String> searchPrefixe(String mot) {
@@ -88,10 +88,25 @@ public class Lexique {
             listLemme.add(mot);
             return listLemme;
         }
+        /*int minDistance=99;
         for (String motLex : dictionnaire.keySet()) {
             int distance = levenshtein(motLex, mot);
             if (distance <= distanceMax) {
-                listLemme.add(dictionnaire.get(motLex));
+                if (distance<minDistance){
+                    minDistance=distance;
+                    listLemme.clear();
+                }
+                if (distance==minDistance) {
+                    listLemme.add(dictionnaire.get(motLex));
+                }
+            }
+        }*/
+        for (String motLex : dictionnaire.keySet()) {
+            if (motLex.charAt(0)==mot.charAt(0)){
+                int distance = levenshtein(motLex, mot);
+                if (distance <= distanceMax ) {
+                    listLemme.add(dictionnaire.get(motLex));
+                }
             }
         }
         return removeDuplicate(listLemme);
